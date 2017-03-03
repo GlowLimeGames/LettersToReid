@@ -11,7 +11,10 @@ public class MyCharacterController : MonoBehaviour {
     public bool isGrounded;
     public bool canClimb = false;
     
-
+	public Vector3[] memoryLocations = { new Vector3(5.76f, 0.26f, 0), new Vector3(16.21f, 2.37f, 0),
+		new Vector3(7.1f, 2.43f, 0), new Vector3(-6.06f, 2.43f, 0), new Vector3(-10.66f, 4.55f, 0),
+		new Vector3(-16.82f, 6.74f, 0), new Vector3(3.77f, 6.69f, 0), new Vector3(11.13f, 4.56f, 0),
+		new Vector3(13.46f, 8.91f, 0), new Vector3(15.87f, 11.08f, 0)};
     
 
     // Use this for initialization
