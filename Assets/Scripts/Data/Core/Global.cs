@@ -21,7 +21,12 @@ public class Global
 	public const string MUSIC_MUTE = "musicMute";
 	public const string FX_MUTE = "fxMute";
 	public const string VO_MUTE = "voMute";
-  public const string TIME_STAMP = "TIME_STAMP";
+	public const string TIME_STAMP = "TIME_STAMP";
+	public const string CSV_DIR = "CSV";
+	public const string PREFABS_DIR = "Prefabs";
+	public const string LEFT_KEY = "left";
+	public const string RIGHT_KEY = "right";
+	public const string BACK_KEY = "back";
 
 	public const char JOIN_CHAR = '_';
 
