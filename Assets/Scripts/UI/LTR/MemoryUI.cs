@@ -16,6 +16,8 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
     [SerializeField]
     ScrollRect scroll;
 
+    CanvasGroup canvas;
+
     bool mouseIsDown;
 
     public void DisplayMemory(Memory mem)
@@ -26,10 +28,17 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 
     public override void Show()
     {
+        toggleCanvasGroup(canvas, true);
         scroll.verticalNormalizedPosition = 1;
         base.Show();
     }
         
+    public override void Hide()
+    {
+        toggleCanvasGroup(canvas, false);
+        base.Hide();
+    }
+
     void Update()
     {
         if(isVisible && !mouseIsDown && Input.GetMouseButtonDown(0))
@@ -46,6 +55,12 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData pData)
     {
         this.mouseIsDown = false;
+    }
+
+    protected override void setReferences()
+    {
+        base.setReferences();
+        canvas = GetComponent<CanvasGroup>();
     }
 
 }

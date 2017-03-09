@@ -4,6 +4,8 @@
  * Usage: [no notes]
  */
 
+using UnityEngine;
+
 public abstract class LTRUITemplate : MonoBehaviourExtended 
 {	
     protected UIInterchange interchange;
@@ -37,4 +39,11 @@ public abstract class LTRUITemplate : MonoBehaviourExtended
         interchange.RegisterUI(GetType(), this);
     }
 
+    protected void toggleCanvasGroup(CanvasGroup canvas, bool isEnabled)
+    {
+        canvas.alpha = isEnabled ? 1 : 0;
+        canvas.interactable = isEnabled;
+        canvas.blocksRaycasts = isEnabled;
+    }
+        
 }
