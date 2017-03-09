@@ -12,12 +12,14 @@ public class ItemController : SingletonController<ItemController>
 {
 	MapTuning mapTuning;
 	MemoryController memories;
+    UIInterchange ui;
 
 	protected override void fetchReferences()
 	{
 		base.fetchReferences();
 		this.memories = MemoryController.Instance;
 		this.mapTuning = MapTuning.Get;
+        this.ui = UIInterchange.Instance;
 	}
 
 	public void CollectItem(MapItemBehaviour item)
@@ -32,7 +34,7 @@ public class ItemController : SingletonController<ItemController>
 	{
 		Memory mem = memories.GetMemory(item.Descriptor.DelegateStr(mapTuning.IdDelegate));
 		memories.CollectMemory(mem);
-		Debug.Log(mem.Body);
+        ui.DisplayMemory(mem);
 	}
 
 	public bool ItemIsMemory(MapItemBehaviour item)
