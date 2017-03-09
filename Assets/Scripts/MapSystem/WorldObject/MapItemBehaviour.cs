@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class MapItemBehaviour : MapObjectBehaviour
 {
+    ItemController items;
+
     public MapItem GetItem 
     {
         get 
@@ -19,7 +21,7 @@ public class MapItemBehaviour : MapObjectBehaviour
 	public override void Initialize()
 	{
 		base.Initialize();
-		if(GetItem.Collectible)
+		if(GetItem.IsCollectible)
 		{
 			BoxCollider2D coll;
 			if(!(coll = GetComponent<BoxCollider2D>()))
@@ -28,6 +30,15 @@ public class MapItemBehaviour : MapObjectBehaviour
 			}
 			coll.isTrigger = true;
 		}
+        this.items = ItemController.Instance;
 	}
+
+    void OnMouseUp()
+    {
+        if(GetItem.IsCollectible)
+        {
+            items.CollectItem(this);
+        }
+    }
 
 }

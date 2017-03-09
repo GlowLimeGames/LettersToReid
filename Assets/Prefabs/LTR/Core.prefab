@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4532915214151398}
   - component: {fileID: 114067652235126784}
   - component: {fileID: 114655364939563282}
+  - component: {fileID: 114983356264425494}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -64,3 +65,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memoryPathInResources: JSON/Memories
+--- !u!114 &114983356264425494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381176711715622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1369f04b17544654a98a6f8d5893c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
