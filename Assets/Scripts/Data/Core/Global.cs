@@ -21,8 +21,10 @@ public class Global
 	public const string MUSIC_MUTE = "musicMute";
 	public const string FX_MUTE = "fxMute";
 	public const string VO_MUTE = "voMute";
-  public const string TIME_STAMP = "TIME_STAMP";
-
+  	public const string TIME_STAMP = "TIME_STAMP";
+	public const string MUSIC_VOLUME = "MUSIC_VOLUME";
+	public const string FX_VOLUME = "FX_VOLUME";
+	public const int FULL_VOLUME = "FULL_VOLUME";
 	public const char JOIN_CHAR = '_';
 
 	public const int CORRECT_HEX_NUM_LENGTH = 6;
