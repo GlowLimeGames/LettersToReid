@@ -24,7 +24,13 @@ public class Global
   	public const string TIME_STAMP = "TIME_STAMP";
 	public const string MUSIC_VOLUME = "MUSIC_VOLUME";
 	public const string FX_VOLUME = "FX_VOLUME";
-	public const char JOIN_CHAR = '_';
+	public const string CSV_DIR = "CSV";
+	public const string PREFABS_DIR = "Prefabs";
+	public const string LEFT_KEY = "left";
+	public const string RIGHT_KEY = "right";
+	public const string BACK_KEY = "back";
+
+    public const char JOIN_CHAR = '_';
 
     public const int FULL_VOLUME = 100;
 	public const int CORRECT_HEX_NUM_LENGTH = 6;
