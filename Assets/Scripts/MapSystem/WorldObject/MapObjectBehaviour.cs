@@ -39,5 +39,15 @@ public abstract class MapObjectBehaviour : MonoBehaviour
             }
         }
     }
+
+    protected T ensureRef<T>() where T : Component
+    {
+        T comp = GetComponent<T>();
+        if(comp == null)
+        {
+            comp = gameObject.AddComponent<T>();
+        }
+        return comp;
+    }
         
 }
