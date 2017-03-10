@@ -110,6 +110,10 @@ public class MapParser : Parser
             obj = Resources.Load<GameObject>(PrefabsPath(key));
             bufferedPrefabs.Add(key, obj);
         }
+        if(!obj)
+        {
+            Debug.LogErrorFormat("Key {0} is null", key);
+        }
         return invisibleClone(obj);
     }
 
