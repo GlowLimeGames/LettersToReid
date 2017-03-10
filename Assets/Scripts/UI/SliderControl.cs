@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SliderControl : MonoBehaviour {
 
-	public Slider FXSlider = GetComponent<FXSlider>();
-	public Slider MusicSlider = GetComponent<MusicSlider>();
+    public Slider FXSlider;
+    public Slider MusicSlider;
 
 
 	float startMusicValue;
@@ -19,12 +19,12 @@ public class SliderControl : MonoBehaviour {
 		FXSlider.minValue = 0;
 		FXSlider.wholeNumbers = true;
 		FXSlider.value = 100;
-		FXSlider.onValueChanged.AddListener (ChangeFXVolume());
+		FXSlider.onValueChanged.AddListener (ChangeFXVolume);
 		MusicSlider.maxValue = 100;
 		MusicSlider.maxValue = 100;
 		MusicSlider.wholeNumbers = true;
 		MusicSlider.value = 100;
-		MusicSlider.onValueChanged.AddListener (ChangeMusicVolume());
+		MusicSlider.onValueChanged.AddListener (ChangeMusicVolume);
 
 	}
 	
@@ -34,16 +34,16 @@ public class SliderControl : MonoBehaviour {
 		
 	}
 
-	void ChangeFXVolume () {
+    void ChangeFXVolume (float volume) {
 		int tempValueFX;
-		tempValueFX = Mathf.RoundToInt(FXSlider.value / 100 * startFXValue);//figure out a way to have topvalue
+        tempValueFX = Mathf.RoundToInt(volume / 100f * startFXValue);//figure out a way to have topvalue
 		AudioController.Instance.SetFXVolume(tempValueFX);
 
 	}
 
-	void ChangeMusicVolume () {
+    void ChangeMusicVolume (float volume) {
 		int tempValueMusic;
-		tempValueMusic = Mathf.RoundToInt(MusicSlider.value/100 * startMusicValue);
+        tempValueMusic = Mathf.RoundToInt(volume /100f * startMusicValue);
 		AudioController.Instance.SetMusicVolume (tempValueMusic);
 
 	}

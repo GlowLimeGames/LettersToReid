@@ -10,7 +10,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using k = PPGlobal;
+using k = Global;
 
 public class AudioController : Controller, IAudioController
 {
@@ -33,7 +33,7 @@ public class AudioController : Controller, IAudioController
 
     #region Controller Overrides 
 
-    protected override bool shouldReSetRefsOnReset 
+    protected bool shouldReSetRefsOnReset 
     {
         get 
         {
@@ -135,28 +135,22 @@ public class AudioController : Controller, IAudioController
 		}
 	}
 
-    protected override void handleNamedEventWithID(string eventName, string id)
+    protected void handleNamedEventWithID(string eventName, string id)
     {
         if (playEvents.ContainsKey(eventName))
         {
             foreach (AudioFile file in playEvents[eventName])
             {
-                if (AudioUtil.HasID(file.Name, id))
-                {
-                    Play(file);
-                    break;
-                }
+                Play(file);
+                break;
             }
         }
         if (stopEvents.ContainsKey(eventName))
         {
             foreach (AudioFile file in stopEvents[eventName])
             {
-                if (AudioUtil.HasID(file.Name, id))
-                {
-                    Stop(file);
-                    break;
-                }
+                Stop(file);
+                break;
             }
         }
     }
@@ -182,7 +176,7 @@ public class AudioController : Controller, IAudioController
 
 	public void SetFXVolume(int volume)
 	{
-		this.SetFXVolume = volume;
+        this.FXVolume = volume;
 		onFXVolumeChange (this.FXVolume);
 	}
 
