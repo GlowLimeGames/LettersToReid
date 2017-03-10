@@ -51,6 +51,9 @@ public class PlayerController : MController
     [SerializeField]
     float gravityScale = 2;
 
+    [SerializeField]
+    PlayerState defaultState = PlayerState.WalkRight;
+
     Rigidbody2D rigibody;
     MapController map;
     CameraController cam;
@@ -73,6 +76,7 @@ public class PlayerController : MController
         rigibody.freezeRotation = true;
         player = GetComponent<MapUnitBehaviour>();
 		anim = GetComponent<Animator>();
+        this.currentState = defaultState;
 	}
 
     void Start()
@@ -198,10 +202,6 @@ public class PlayerController : MController
 		else if (horMove < 0)
 		{
 			updatePlayerState(PlayerState.WalkLeft);
-		}
-		else
-		{
-			updatePlayerState(PlayerState.Idle);
 		}
 	}
 
