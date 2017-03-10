@@ -37,6 +37,6 @@ public class Global
 	public const int NONE_VALUE = 0;
 	public const int INVALID_VALUE = -1;
 
-  public const float FULL_PERCENT = 100f;
+  	public const float FULL_PERCENT = 100f;
 
 }

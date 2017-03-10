@@ -11,17 +11,17 @@ public class MapItem : MapData
 {
     #region Instance Accessors
 
-    public bool Collectible
+    public bool IsCollectible
     {
         get
         {
-            return collectible;
+            return isCollectible;
         }
     }
 
     #endregion
 
     [SerializeField]
-    bool collectible;
+    bool isCollectible;
 
 }

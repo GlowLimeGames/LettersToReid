@@ -19,7 +19,7 @@ public class MapUnitBehaviour : MapObjectBehaviour
         base.Initialize();
         if(GetUnit.IsPlayer)
         {
-            gameObject.AddComponent<PlayerController>();
+            ensureRef<PlayerController>();
         }
     }
 
