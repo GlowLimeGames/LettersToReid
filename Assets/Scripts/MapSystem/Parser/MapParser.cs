@@ -93,17 +93,24 @@ public class MapParser : Parser
             {
                 key = keys[i];
             }
-            objectsAtPosition[i] = getPrefabFromKey(key);
-            MapObjectBehaviour behaviour = objectsAtPosition[i].GetComponent<MapObjectBehaviour>();
-            MapData descriptor;
-            if(behaviour && template.TryGetData(key, out descriptor))
+            try
             {
-                behaviour.AssignDescriptor(descriptor);
-                if(hasDelegates && keyPlusDelegates != null)
+                objectsAtPosition[i] = getPrefabFromKey(key);
+                MapObjectBehaviour behaviour = objectsAtPosition[i].GetComponent<MapObjectBehaviour>();
+                MapData descriptor;
+                if(behaviour && template.TryGetData(key, out descriptor))
                 {
-                    string[] delegateVals = keyPlusDelegates[1].Split(delegateSeparatorKey.ToCharArray());
-                    descriptor.SetDelegates(descriptor.Delegates, delegateVals);
+                    behaviour.AssignDescriptor(descriptor);
+                    if(hasDelegates && keyPlusDelegates != null)
+                    {
+                        string[] delegateVals = keyPlusDelegates[1].Split(delegateSeparatorKey.ToCharArray());
+                        descriptor.SetDelegates(descriptor.Delegates, delegateVals);
+                    }
                 }
+            }
+            catch
+            {
+                Debug.LogErrorFormat("Unable to parse data at cell ({0}, {1})", x, y);
             }
         }
         return objectsAtPosition;
