@@ -63,7 +63,14 @@ public class MapParser : Parser
         }
         MapDescriptor descriptor = new MapDescriptor(mapName, world);
         JSONParser metaDataParser = new JSONParser();
-        metaDataParser.ParseJSONOverwriteFromResources(getMetaFileName(mapName), descriptor);
+		try 
+		{
+        	metaDataParser.ParseJSONOverwriteFromResources(getMetaFileName(mapName), descriptor);
+		}
+		catch
+		{
+			descriptor.SetBackgroundToDefault();
+		}
         return descriptor;
     }
 
