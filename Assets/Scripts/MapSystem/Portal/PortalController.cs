@@ -7,6 +7,9 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+using k = MapGlobal;
 
 public class PortalController : MController
 {
@@ -15,14 +18,13 @@ public class PortalController : MController
     // TODO: Solve the portal loop (two portals that are gatways to each other)
     public void HandlePortalEnter(MapObjectBehaviour target, MapObjectBehaviour portal)
     {
-        if(hasDestination(portal))
+        if(isMapTravel(portal))
         {
-            MapObjectBehaviour destination = GetDestination(portal);
-            Transform targetTrans = target.transform;
-            float preserveZPos = targetTrans.position.z;
-            Vector3 destPos = destination.transform.position;
-            destPos.z = preserveZPos;
-            targetTrans.position = destPos;
+            handleMapTravel(target, portal);
+        }
+        else
+        {
+            handleSameMapPortalTravel(target, portal);
         }
     }
 
@@ -60,6 +62,38 @@ public class PortalController : MController
             Debug.LogErrorFormat("Destination with id {0} was not found", destinationId);
             return null;
         }
+    }
+
+    // Between entirely different maps:
+    void handleMapTravel(MapObjectBehaviour target, MapObjectBehaviour portal)
+    {
+        try
+        {
+            // LOAD NEW SCENE
+        }
+        catch
+        {
+            Debug.LogErrorFormat("Unable to travel to portal {0}", portal);
+        }
+    }
+
+    // Between two portals on the same map:
+    void handleSameMapPortalTravel(MapObjectBehaviour target, MapObjectBehaviour portal)
+    {
+        if(hasDestination(portal))
+        {
+            MapObjectBehaviour destination = GetDestination(portal);
+            Transform targetTrans = target.transform;
+            float preserveZPos = targetTrans.position.z;
+            Vector3 destPos = destination.transform.position;
+            destPos.z = preserveZPos;
+            targetTrans.position = destPos;
+        }
+    }
+
+    bool isMapTravel(MapObjectBehaviour portal)
+    {
+        return portal.Descriptor.Key.Equals(k.MAP_KEY);
     }
 
     bool tryGetPortal(string portalId, out MapObjectBehaviour obj)

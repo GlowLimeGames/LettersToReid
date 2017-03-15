@@ -12,6 +12,7 @@ public class MapGlobal : Global
     public const string MAP_TUNING = "MapTuning";
     public const string MAP_TEMPLATE = "MapTemplate";
 	public const string DEFAULT_BACKGROUND = "Background";
+    public const string MAP_KEY = "MP";
 
     #region Static Accessors
 
