@@ -4,6 +4,8 @@
  * Usage: [no notes]
  */
 
+using UnityEngine;
+
 public class MapUnitBehaviour : MapObjectBehaviour
 {
     public  MapUnit GetUnit 
@@ -17,6 +19,12 @@ public class MapUnitBehaviour : MapObjectBehaviour
     public override void Initialize()
     {
         base.Initialize();
+		if(GetUnit.IsSolid)
+		{
+			Destroy(GetComponent<BoxCollider2D>());
+			// Need a round collider for the character:
+			gameObject.AddComponent<CapsuleCollider2D>();
+		}
         if(GetUnit.IsPlayer)
         {
             ensureRef<PlayerController>();
