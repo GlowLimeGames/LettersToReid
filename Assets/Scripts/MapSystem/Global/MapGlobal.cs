@@ -14,6 +14,8 @@ public class MapGlobal : Global
 	public const string DEFAULT_BACKGROUND = "Background";
     public const string MAP_KEY = "MP";
 
+    const string MAP_SCENE_NAME_FORMAT = "Map{0}";
+
     #region Static Accessors
 
     public static string MAP_DATA_PATH
@@ -33,5 +35,10 @@ public class MapGlobal : Global
     }
 
     #endregion
+
+    public static string GetMapSceneName(object mapId)
+    {
+        return string.Format(MAP_SCENE_NAME_FORMAT, mapId);
+    }
 
 }
