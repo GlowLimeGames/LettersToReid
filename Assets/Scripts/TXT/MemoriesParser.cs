@@ -9,7 +9,7 @@ using System.IO;
 
 public class MemoriesParser: MonoBehaviour {
 
-    public TextAsset jsonMemory;
+    TextAsset jsonMemory;
     MemoryGroup allMemories;
 
     public void Awake() {
