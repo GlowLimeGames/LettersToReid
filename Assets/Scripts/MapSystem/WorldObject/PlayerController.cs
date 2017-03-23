@@ -62,6 +62,7 @@ public class PlayerController : MController
     MapTileBehaviour currentClimbingTarget;
     MapUnitBehaviour player;
 	PlayerState currentState = PlayerState.Idle;
+    LTRTuning gameTuning;
 
     public void Setup(MapController map)
     {
@@ -77,6 +78,7 @@ public class PlayerController : MController
         player = GetComponent<MapUnitBehaviour>();
 		anim = GetComponent<Animator>();
         this.currentState = defaultState;
+        gameTuning = LTRTuning.Get;
 	}
 
     void Start()
@@ -95,8 +97,10 @@ public class PlayerController : MController
     {
         rigibody.gravityScale = isClimbing ? 0 : gravityScale;
         rigibody.AddForce(getMoveVector());
+        // Clamps velocity to max player speed:
+        rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
     }
-
+        
     void OnTriggerEnter2D(Collider2D collider)
     {
         MapObjectBehaviour obj;
@@ -123,6 +127,11 @@ public class PlayerController : MController
                 handleExitCollideWithTile(obj as MapTileBehaviour);
             }
         }
+    }
+
+    float getClampedPlayerSpeed() 
+    {
+        return Mathf.Clamp(rigibody.velocity.x, -gameTuning.MaxPlayerSpeed, gameTuning.MaxPlayerSpeed);
     }
 
     bool checkForMapObjCollideEvent(Collider2D collider, out MapObjectBehaviour obj)
@@ -185,9 +194,16 @@ public class PlayerController : MController
             vertMove = getClimbingVertVelocity(vertMove);
 			updatePlayerState(PlayerState.Climb);
         }
-        else
+        else 
         {
-            vertMove = getJumpingVertVelocity(vertMove);
+            if(gameTuning.JumpEnabled)
+            {
+                vertMove = getJumpingVertVelocity(vertMove);
+            }
+            else
+            {
+                vertMove = 0;
+            }
 			updatePlayerWalkingState(horMove);
         }
 		return new Vector2(horMove, vertMove);
