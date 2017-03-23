@@ -3,6 +3,7 @@
  * Description: Handles Data persistence
  */
 
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -67,8 +68,9 @@ public abstract class DataController : SingletonController<DataController>
                 return loadDefaultFile();
     		}
         }
-        catch
+        catch(Exception e)
         {
+            Debug.LogErrorFormat("Unable to load data: \n{0}", e);
             return loadDefaultFile();
         }
 	}
@@ -119,6 +121,7 @@ public abstract class DataController : SingletonController<DataController>
 
     SerializableData loadDefaultFile()
     {
+        Debug.Log("Unable to load data. Loading default file");
         this.saveBuffer = getDefaultFile();
         return this.saveBuffer;
     }

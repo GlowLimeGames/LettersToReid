@@ -5,10 +5,13 @@
  */
 
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 [System.Serializable]
 public class LTRGameSave : GameSave
 {
+    const string MEM = "MEMORIES";
+    const string MEM_LOOKUP = "LOOKUP";
     #region Instance Accessors
 
     public Memory[] DiscoveredMemories
@@ -21,8 +24,30 @@ public class LTRGameSave : GameSave
 
     #endregion
 
-    List<Memory> discoveredMemories = new List<Memory>();
-    Dictionary<int, Memory> memLookup = new Dictionary<int, Memory>();
+    List<Memory> discoveredMemories;
+    Dictionary<int, Memory> memLookup;
+
+    public LTRGameSave()
+    {
+        discoveredMemories = new List<Memory>();
+        memLookup = new Dictionary<int, Memory>();
+    }
+
+    // The special constructor is used to deserialize values.
+    public LTRGameSave(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
+        discoveredMemories = (List<Memory>) info.GetValue(MEM, typeof(List<Memory>));
+        memLookup = (Dictionary<int, Memory>) info.GetValue(MEM_LOOKUP, typeof(Dictionary<int, Memory>));
+            
+    }
+
+    // Implement this method to serialize data. The method is called on serialization.
+    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        base.GetObjectData(info, context);
+        info.AddValue(MEM, discoveredMemories);
+        info.AddValue(MEM_LOOKUP, memLookup);
+    }
 
     public void AddDiscoveredMemory(Memory mem)
     {

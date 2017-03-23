@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876090a0ebaa24f75a1cca24bcb8a86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetDataKey: 127
+  resetDataKey: 48
   saveFileName: LTRSave.dat
 --- !u!114 &114655364939563282
 MonoBehaviour:
