@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public sealed class MemoryBrowser : MonoBehaviour
 {
 
-    public MemoriesParser parse;
+    MemoriesParser parse;
     System.Random IDgen = new System.Random();
     Text text;
     public Text memoryCounter;
     public Text memoriesFound;
-    public int memoryNumber = 1;
+    int memoryNumber = 1;
 
     public void Start() {
         parse = GetComponent<MemoriesParser>();
