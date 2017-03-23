@@ -14,6 +14,7 @@ public class MapGlobal : Global
     public const string MAP_TEMPLATE = "MapTemplate";
 	public const string DEFAULT_BACKGROUND = "Background";
     public const string MAP_KEY = "MP";
+    public const string MEMORY_KEY = "M";
 
     const string MAP_SCENE_NAME_FORMAT = "Map{0}";
 
@@ -36,6 +37,11 @@ public class MapGlobal : Global
     }
 
     #endregion
+
+    public static bool IsMemory(string objKey)
+    {
+        return objKey.Equals(MEMORY_KEY);
+    }
 
     public static string GetMapSceneName(object mapId)
     {

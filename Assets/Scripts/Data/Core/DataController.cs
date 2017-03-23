@@ -51,21 +51,28 @@ public abstract class DataController : SingletonController<DataController>
 
 	public SerializableData Load() 
 	{
-		if(HasSaveFile()) 
-		{
-			BinaryFormatter binaryFormatter = new BinaryFormatter();
-			FileStream file = File.Open(filePath, FileMode.Open);
-			SerializableData data = (SerializableData) binaryFormatter.Deserialize(file);
-			file.Close();
-			this.saveBuffer = data;
-			return data;
-		}
-		else 
-		{
-			this.saveBuffer = getDefaultFile();
-			return this.saveBuffer;
-		}
+        try 
+        {
+    		if(HasSaveFile()) 
+    		{
+    			BinaryFormatter binaryFormatter = new BinaryFormatter();
+    			FileStream file = File.Open(filePath, FileMode.Open);
+    			SerializableData data = (SerializableData) binaryFormatter.Deserialize(file);
+    			file.Close();
+    			this.saveBuffer = data;
+    			return data;
+    		}
+    		else 
+    		{
+                return loadDefaultFile();
+    		}
+        }
+        catch
+        {
+            return loadDefaultFile();
+        }
 	}
+
 
 	public bool Save() 
 	{
@@ -102,11 +109,18 @@ public abstract class DataController : SingletonController<DataController>
 			Reset();
 			// Reloads the scene to ensure data resets
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("Resetting data and reloading scene");
 		}
 	}
 
 	#endif
 
 	#endregion
+
+    SerializableData loadDefaultFile()
+    {
+        this.saveBuffer = getDefaultFile();
+        return this.saveBuffer;
+    }
 
 }
