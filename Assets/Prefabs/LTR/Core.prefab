@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114067652235126784}
   - component: {fileID: 114655364939563282}
   - component: {fileID: 114983356264425494}
+  - component: {fileID: 114081222529370868}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -53,6 +54,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195fdd8f57fd44346b6f9c3581c96129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114081222529370868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381176711715622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876090a0ebaa24f75a1cca24bcb8a86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetDataKey: 48
+  saveFileName: LTRSave.dat
 --- !u!114 &114655364939563282
 MonoBehaviour:
   m_ObjectHideFlags: 1
