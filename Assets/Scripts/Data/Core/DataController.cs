@@ -7,9 +7,10 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+using UnityEngine;
+
 #if UNITY_EDITOR
 
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 #endif
@@ -121,7 +122,6 @@ public abstract class DataController : SingletonController<DataController>
 
     SerializableData loadDefaultFile()
     {
-        Debug.Log("Unable to load data. Loading default file");
         this.saveBuffer = getDefaultFile();
         return this.saveBuffer;
     }
