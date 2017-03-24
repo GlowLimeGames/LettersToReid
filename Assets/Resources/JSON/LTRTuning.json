@@ -1,8 +1,5 @@
 {
-     "exampleNumber" : 1,
-     "exampleDecimal" : 2.3,
-     "exampleText" : "Hello World",
-     "exampleFlag" : true,
      "jumpEnabled" : false,
-     "maxPlayerSpeed" : 5
+     "maxPlayerSpeed" : 5,
+     "finalMemoryId" : 22
 }
