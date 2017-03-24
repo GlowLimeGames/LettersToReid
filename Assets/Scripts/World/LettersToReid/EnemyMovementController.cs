@@ -62,6 +62,26 @@ public class EnemyMovementController : MonoBehaviour {
 			Debug.Log("Exit");
 		}
 	}
+
+	void Update () {
+
+		if (Time.time >= timeToAct)
+		{
+			transform.position = new Vector3(character.transform.position.x - 3f, character.transform.position.y, 0);
+			timeToAct += timePassed + 2;
+		}
+		else
+		{
+			transform.Translate(direction * speed, 0, 0);
+			if (isGoingRight)
+			{
+				GetComponent<SpriteRenderer>().flipX = true;
+			}
+			else
+			{
+				GetComponent<SpriteRenderer>().flipX = false;
+			}
+		}
 		
 
 }
