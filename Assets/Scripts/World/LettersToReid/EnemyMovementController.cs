@@ -82,7 +82,6 @@ public class EnemyMovementController : MonoBehaviour {
 				GetComponent<SpriteRenderer>().flipX = false;
 			}
 		}
-		
+    }
 
 }
-
