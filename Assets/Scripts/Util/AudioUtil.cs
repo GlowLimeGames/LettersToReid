@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 public static class AudioUtil 
 {
@@ -58,6 +59,6 @@ public static class AudioUtil
 			default:
 				throw new System.Collections.Generic.KeyNotFoundException();
 			}
-	}
+	}        
 
 }

@@ -1,0 +1,78 @@
+{
+  "tiles" : [
+    {
+      "key" : "D",
+      "name" : "Dirt",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "W",
+      "name" : "Water",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "L",
+      "name" : "Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "GT",
+      "name" : "Gateway",
+      "delegates" : [
+        "id",
+        "destination"
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    }
+  ],
+  "units" : [
+    {
+      "key" : "PL",
+      "name" : "Player",
+      "speed" : 1,
+      "delegates" : [
+      ],
+      "isPlayer" : true,
+      "isHostile" : false,
+      "isSolid" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "SH",
+      "name" : "Shade",
+      "speed" : 0.5,
+      "delegates" : [
+      ],
+      "isPlayer" : false,
+      "isHostile" : true,
+      "isSolid" : false,
+      "isPortal" : false
+    }
+  ],
+  "items" : [
+    {
+      "key" : "LR",
+      "name" : "Letter",
+      "delegates" : [
+        "id"
+      ],
+      "isCollectible" : true,
+      "isSolid" : false,
+      "isPortal" : false
+    }
+  ]
+}

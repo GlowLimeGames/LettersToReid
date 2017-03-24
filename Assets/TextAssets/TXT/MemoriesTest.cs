@@ -12,7 +12,7 @@ public class MemoriesTest : MonoBehaviour
     public void Start() {
 
             Memory memories = JsonUtility.FromJson<Memory>(jsonMemory.text);
-            print(memories.body);
+            print(memories.Body);
  
     }
 }
