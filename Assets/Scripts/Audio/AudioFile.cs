@@ -75,6 +75,7 @@ public class AudioFile : AudioData, IAudioFile
 			return GetVolume();
 		}
 	}
+
 	public float Fade;
 
 

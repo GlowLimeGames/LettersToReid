@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿//Maia D
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioFader : MonoBehaviour {
+
 
 	float changesPerSecond;
 	float onTimeChange;
@@ -12,7 +15,7 @@ public class AudioFader : MonoBehaviour {
 	void Start () {
 		
 
-		fadeValue = Fade;
+
 
 	}
 	
@@ -21,16 +24,17 @@ public class AudioFader : MonoBehaviour {
 		
 	}
 
-	void fadeOut() {
-		changesPerSecond = Volumef/Fade;
+	void fadeOut(AudioFile audioFile) {
+		fadeValue = audioFile.Fade;
+		changesPerSecond = audioFile.Volumef/audioFile.Fade;
 		onTimeChange = 1/changesPerSecond;
 		while (fadeValue >= 1) {
-			AudioController.Instance.SetMusicVolume (Volumef-1);
+			AudioController.Instance.SetMusicVolume (audioFile.Volumef-1);
 			fadeValue= fadeValue-1;
 			WaitForSeconds (onTimeChange);
 		}
 
-			AudioController.Instance.SetMusicVolume (0);
+		AudioController.Instance.SetMusicVolume (0);
 
 
 

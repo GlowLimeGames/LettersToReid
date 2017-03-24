@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Author(s): Maia Doerner
+ * Description: Allows Sliders to control FX Volume and Music Volume independently
+ * Dependencies: AudioFile, AudioController
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -36,7 +42,7 @@ public class SliderControl : MonoBehaviour {
 
     void ChangeFXVolume (float volume) {
 		int tempValueFX;
-        tempValueFX = Mathf.RoundToInt(volume / 100f * startFXValue);//figure out a way to have topvalue
+        tempValueFX = Mathf.RoundToInt(volume / 100f * startFXValue);
 		AudioController.Instance.SetFXVolume(tempValueFX);
 
 	}

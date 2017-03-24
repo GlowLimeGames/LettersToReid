@@ -180,6 +180,23 @@ public class AudioController : Controller, IAudioController
 		onFXVolumeChange (this.FXVolume);
 	}
 
+	IEnumerator FadeOut (AudioSource audioSource, AudioFile audioFile) {
+		float startVolume = audioSource.volume;
+
+		float changesPerSecond = startVolume/audioFile.Fade;
+		float onTimeChange = 1/(changesPerSecond*100);
+
+		while (audioSource.volume > 0) {
+			
+			audioSource.volume = audioSource.volume - .01;
+
+			yield return new WaitForSeconds(onTimeChange);
+		}
+
+		audioSource.Stop ();
+
+	}
+
 	public void Play(AudioFile file) 
 	{
 		AudioSource source = getChannel(file.Channel);
@@ -218,7 +235,9 @@ public class AudioController : Controller, IAudioController
 			source.time = clipTime;
 		}
 		source.Play();
+
 	}
+
 
 	public void Stop(AudioFile file) 
 	{

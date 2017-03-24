@@ -30,11 +30,7 @@ public interface IAudioFile
 		get;
 	}
 
-	float Fade 
-	{
-		get;
-	}
-
+	float Fade;
 		
 	#endregion
 
