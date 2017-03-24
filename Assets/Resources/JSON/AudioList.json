@@ -1,0 +1,43 @@
+{
+	"AudioLiles": [{
+		"name": "ui_click_forward",
+		"JA_groups": "UI_mainmenu",
+		"JA_events": "onClick",
+		"loops": "FALSE",
+		"type": "UI",
+		"channel": "2",
+		"volume": "40"
+	}, {
+		"name": "ui_click_back",
+		"JA_groups": "UI_mainmenu",
+		"loops": "FALSE",
+		"type": "UI",
+		"channel": "2",
+		"volume": "40"
+	}, {
+		"name": "ui_hover",
+		"JA_groups": "UI_mainmenu",
+		"loops": "FALSE",
+		"type": "UI",
+		"channel": "2",
+		"volume": "40"
+	}, {
+		"name": "play_music_menu_main theme",
+		"JA_groups": "MX_mainmenu",
+		"JA_events": "play_mainmenu",
+		"JA_stopEvents": "stop_mainmenu",
+		"loops": "TRUE",
+		"type": "Music",
+		"channel": "1",
+		"volume": "80"
+	}, {
+		"name": "amb_beginning",
+		"JA_groups": "AMB_mainmenu",
+		"JA_events": "play_mainmenu",
+		"JA_stopEvents": "stop_mainmenu",
+		"loops": "TRUE",
+		"type": "SFX",
+		"channel": "1",
+		"volume": "60"
+	}]
+}

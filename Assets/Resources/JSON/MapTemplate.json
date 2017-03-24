@@ -1,0 +1,195 @@
+{
+  "tiles" : [
+    {
+      "key" : "OTL",
+      "name" : "Old Top of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "OML",
+      "name" : "Old Middle of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "OBL",
+      "name" : "Old Bottom of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "NTL",
+      "name" : "New Top of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "NML",
+      "name" : "New Middle of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "NBL",
+      "name" : "New Bottom of Ladder",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "C",
+      "name" : "Ceiling",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "W",
+      "name" : "Wall",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "P1",
+      "name" : "Platform 1",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "P2",
+      "name" : "Platform 2",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "P3",
+      "name" : "Platform 3",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "G",
+      "name" : "Ground",
+      "delegates" : [
+      ],
+      "isSolid" : true,
+      "isClimbable" : false,
+      "isPortal" : false
+    },
+    {
+      "key" : "MP",
+      "name" : "Map",
+      "delegates" : [
+        "id",
+        "destination"
+      ],
+      "isSolid" : false,
+      "isClimbable" : true,
+      "isPortal" : true
+    },
+    {
+      "key" : "TPTL",
+      "name" : "Top of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "MPTL",
+      "name" : "Middle of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "BPTL",
+      "name" : "Bottom of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "PT",
+      "name" : "Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    }
+  ],
+  "units" : [
+    {
+      "key" : "PL",
+      "name" : "Player",
+      "speed" : 1,
+      "delegates" : [
+      ],
+      "isPlayer" : true,
+      "isHostile" : false,
+      "isSolid" : true,
+      "isPortal" : false
+    },
+    {
+      "key" : "SD",
+      "name" : "Shadow Figure",
+      "speed" : 1,
+      "delegates" : [
+      ],
+      "isPlayer" : false,
+      "isHostile" : true,
+      "isSolid" : true,
+      "isPortal" : false
+    }
+  ],
+  "items" : [
+    {
+      "key" : "M",
+      "name" : "Memory",
+      "delegates" : [
+        "id"
+      ],
+      "isCollectible" : true,
+      "isSolid" : false,
+      "isPortal" : false
+    }
+  ]
+}

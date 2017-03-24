@@ -10,9 +10,14 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using k = Global;
 
 public class AudioController : Controller, IAudioController
 {
+	const int FULL_VOL = k.FULL_VOLUME;
+
+	private static AudioController _instance;
+
 	#region Static Accessors
 
 	// Singleton implementation
@@ -26,7 +31,40 @@ public class AudioController : Controller, IAudioController
 
 	#endregion
 
-	private static AudioController _instance;
+    #region Controller Overrides 
+
+    protected bool shouldReSetRefsOnReset 
+    {
+        get 
+        {
+            return false;
+        }
+    }
+        
+    #endregion
+
+	int musicVolume 
+	{
+		get 
+		{
+			return SettingsUtil.GetMusicVolume();
+		}
+		set 
+		{
+			SettingsUtil.SetMusicVolume(value);
+		}
+	}
+
+	int FXVolume
+	{
+		get 
+		{
+			return SettingsUtil.GetFXVolume ();
+		}
+		set {
+			SettingsUtil.SetFXVolume(value);
+		}
+	}
 
 	[SerializeField]
 	bool isAudioListener = false;
@@ -84,7 +122,7 @@ public class AudioController : Controller, IAudioController
 		base.cleanupReferences();
 		unsubscribeEvents();
 	}
-
+        
 	protected override void handleNamedEvent(string eventName)
 	{
 		if(playEvents.ContainsKey(eventName)) 
@@ -97,8 +135,28 @@ public class AudioController : Controller, IAudioController
 		}
 	}
 
-	// Uses C#'s delegate system
-	protected override void subscribeEvents() {
+    protected void handleNamedEventWithID(string eventName, string id)
+    {
+        if (playEvents.ContainsKey(eventName))
+        {
+            foreach (AudioFile file in playEvents[eventName])
+            {
+                Play(file);
+                break;
+            }
+        }
+        if (stopEvents.ContainsKey(eventName))
+        {
+            foreach (AudioFile file in stopEvents[eventName])
+            {
+                Stop(file);
+                break;
+            }
+        }
+    }
+
+    // Uses C#'s delegate system
+    protected override void subscribeEvents() {
 		base.subscribeEvents();
 		EventController.Subscribe(handleAudioEvent);
 	}
@@ -109,6 +167,18 @@ public class AudioController : Controller, IAudioController
 	}
 
 	#endregion
+
+	public void SetMusicVolume(int volume)
+	{
+		this.musicVolume = volume;
+		onMusicVolumeChange(this.musicVolume);
+	}
+
+	public void SetFXVolume(int volume)
+	{
+        this.FXVolume = volume;
+		onFXVolumeChange (this.FXVolume);
+	}
 
 	public void Play(AudioFile file) 
 	{
@@ -136,7 +206,13 @@ public class AudioController : Controller, IAudioController
 		}
 		source.clip = file.Clip;
 		source.loop = file.Loop;
-		source.volume = file.Volumef;
+		if (file.Type == AudioType.FX) {
+			source.volume = ((float)this.FXVolume / 100f) * file.Volumef;
+		} else if (file.Type == AudioType.Music) {
+			source.volume = ((float)this.musicVolume / 100f) * file.Volumef;
+		} else {
+			source.volume = file.Volumef;
+		}
 		if(shouldResumeClip) 
 		{
 			source.time = clipTime;
@@ -171,6 +247,34 @@ public class AudioController : Controller, IAudioController
 		SettingsUtil.ToggleMusicMuted(!SettingsUtil.MusicMuted);
 	}
 
+	void onMusicVolumeChange(int newVolume)
+	{
+		foreach(AudioSource channel in channels.Values)
+		{
+			if(isMusicChannel(channel))
+			{
+				adjustToVolume(channel, newVolume);
+			}
+		}
+	}
+
+	void onFXVolumeChange(int newVolume)
+	{
+		foreach (AudioSource channel in channels.Values) 
+		{
+			if (isMusicChannel (channel)) 
+			{
+				adjustToVolume (channel, newVolume);
+			}
+
+		}
+	}
+
+	bool isMusicChannel(AudioSource channel)
+	{
+		return getChannelType(channel) == AudioType.Music;
+	}
+
 	void checkMute(AudioFile file, AudioSource source) 
 	{
 		source.mute = AudioUtil.IsMuted(file.Type);
@@ -180,6 +284,23 @@ public class AudioController : Controller, IAudioController
 	bool channelExists(int channelNumber) 
 	{
 		return channels.ContainsKey(channelNumber);
+	}
+
+	// Volume should be on a [0, 100] scale
+	void adjustToVolume(AudioSource channel, int volume)
+	{
+		if(channel.clip)
+		{
+			float scaledVolume = volumeToDecimalf(volume);
+			AudioFile file = fileList.GetAudioFile(channel.clip);
+			scaledVolume *= file.Volumef;
+			channel.volume = scaledVolume;
+		}
+	}
+
+	float volumeToDecimalf(int volume)
+	{
+		return (float) volume / (float) FULL_VOL;
 	}
 
 	AudioSource getChannel(int channelNumber) 
@@ -228,6 +349,7 @@ public class AudioController : Controller, IAudioController
 			{
 				playMainMusic();
 			}
+            SetMusicVolume(musicVolume);
 		}
 	}
 
@@ -277,6 +399,18 @@ public class AudioController : Controller, IAudioController
 		}
 	}
 
+	AudioType getChannelType(AudioSource channel)
+	{
+		if(channel.clip)
+		{
+			return fileList.GetAudioType(channel.clip);
+		}
+		else
+		{
+			return default(AudioType);
+		}
+	}
+
 	void addStopEvents(AudioData file) 
 	{
 		for(int j = 0; j < file.StopEvents.Length; j++) 
@@ -294,7 +428,8 @@ public class AudioController : Controller, IAudioController
 		}
 	}
 		
-	void playMainMusic() {
+	void playMainMusic()
+    {
 		EventController.Event(mainMusicEventName);
 	}
 

@@ -1,0 +1,12 @@
+{
+     "joinKey" : "+",
+     "delegateKey" : ":",
+     "delegateSeparator" : "|",
+     "characterMoveSpeed" : 25,
+     "characterJumpSpeed" : 750,
+     "playerGravityScale" : 2,
+     "idDelegate" : "id",
+     "destinationDelegate" : "destination",
+     "metaSuffix" : "Meta",
+     "fileJoinKey" : "_"
+}
