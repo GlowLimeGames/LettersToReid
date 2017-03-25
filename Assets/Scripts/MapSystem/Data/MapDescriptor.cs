@@ -6,9 +6,13 @@
 
 using UnityEngine;
 
+using k = MapGlobal;
+
 [System.Serializable]
 public class MapDescriptor 
 {
+	const string DEFAULT_BACKGROUND = k.DEFAULT_BACKGROUND;
+
     #region Instance Acccessors 
 
     public string BackgroundSprite
@@ -54,5 +58,10 @@ public class MapDescriptor
     }
         
     #endregion
+
+	public void SetBackgroundToDefault()
+	{
+		this.backgroundSprite = DEFAULT_BACKGROUND;
+	}
 
 }

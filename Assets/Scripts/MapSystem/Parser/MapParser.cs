@@ -63,7 +63,14 @@ public class MapParser : Parser
         }
         MapDescriptor descriptor = new MapDescriptor(mapName, world);
         JSONParser metaDataParser = new JSONParser();
-        metaDataParser.ParseJSONOverwriteFromResources(getMetaFileName(mapName), descriptor);
+		try 
+		{
+        	metaDataParser.ParseJSONOverwriteFromResources(getMetaFileName(mapName), descriptor);
+		}
+		catch
+		{
+			descriptor.SetBackgroundToDefault();
+		}
         return descriptor;
     }
 
@@ -86,17 +93,24 @@ public class MapParser : Parser
             {
                 key = keys[i];
             }
-            objectsAtPosition[i] = getPrefabFromKey(key);
-            MapObjectBehaviour behaviour = objectsAtPosition[i].GetComponent<MapObjectBehaviour>();
-            MapData descriptor;
-            if(behaviour && template.TryGetData(key, out descriptor))
+            try
             {
-                behaviour.AssignDescriptor(descriptor);
-                if(hasDelegates && keyPlusDelegates != null)
+                objectsAtPosition[i] = getPrefabFromKey(key);
+                MapObjectBehaviour behaviour = objectsAtPosition[i].GetComponent<MapObjectBehaviour>();
+                MapData descriptor;
+                if(behaviour && template.TryGetData(key, out descriptor))
                 {
-                    string[] delegateVals = keyPlusDelegates[1].Split(delegateSeparatorKey.ToCharArray());
-                    descriptor.SetDelegates(descriptor.Delegates, delegateVals);
+                    behaviour.AssignDescriptor(descriptor);
+                    if(hasDelegates && keyPlusDelegates != null)
+                    {
+                        string[] delegateVals = keyPlusDelegates[1].Split(delegateSeparatorKey.ToCharArray());
+                        descriptor.SetDelegates(descriptor.Delegates, delegateVals);
+                    }
                 }
+            }
+            catch
+            {
+                Debug.LogErrorFormat("Unable to parse data at cell ({0}, {1})", x, y);
             }
         }
         return objectsAtPosition;
@@ -109,6 +123,10 @@ public class MapParser : Parser
         {
             obj = Resources.Load<GameObject>(PrefabsPath(key));
             bufferedPrefabs.Add(key, obj);
+        }
+        if(!obj)
+        {
+            Debug.LogErrorFormat("Key {0} is null", key);
         }
         return invisibleClone(obj);
     }
