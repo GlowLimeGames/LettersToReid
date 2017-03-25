@@ -35,12 +35,14 @@ public class MemoryBehvior : MonoBehaviour
     {
         myCanvas.enabled = true;
         myText.text = memoryText[memoryNumbers];
+		EventController.Event(sx_letter_open);
     }
 
     public void closeMemory()
     {
         myCanvas.enabled = false;
         memoryNumbers++;
+		EventController.Event(sx_letter_close);
     }
 
     // Update is called once per frame

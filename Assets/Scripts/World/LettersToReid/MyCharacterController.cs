@@ -11,6 +11,11 @@ public class MyCharacterController : MonoBehaviour {
     public bool isGrounded;
     public bool canClimb = false;
     public int  enemyHits = 0;
+	int stepCounter;
+	int stepDelay = 5;
+	public float stepTimer = 0;
+	int walkDelay = 5;
+	public float walkTimer = 0;
 
     Vector3[] memoryLocations = { new Vector3(5.76f, 0.26f, 0), new Vector3(16.21f, 2.37f, 0),
     new Vector3(7.1f, 2.43f, 0), new Vector3(-6.06f, 2.43f, 0), new Vector3(-10.66f, 4.55f, 0),
@@ -25,6 +30,9 @@ public class MyCharacterController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		//adjust timer
+		stepTimer += Time.deltaTime;
+
         //move left
         if (transform.position.y <= oldY + 0.1f && !isGrounded)
         {
@@ -55,13 +63,42 @@ public class MyCharacterController : MonoBehaviour {
                 GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                 transform.Translate(0, climbSpeed, 0);
 
+				if (stepTimer >= stepDelay) 
+				{
+					if (stepCounter <= 9) 
+					{
+						EventController.Event (sx_ladderclimb_0 + stepCounter);
+					} 
+					else 
+					{
+						EventController.Event (sx_ladderclimb_ + stepCounter);
+					}
+					stepCounter = stepCounter + 1;
+					stepTimer = 0;
+				}
             }
 
             if (Input.GetKey(KeyCode.S))
             {
+				
                 GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                 transform.Translate(0, -climbSpeed, 0);
-            }
+
+				if (stepTimer >= stepDelay) 
+				{
+					if (stepCounter <= 9) 
+					{
+						EventController.Event (sx_ladderclimb_0 + stepCounter);
+					} 
+					else 
+					{
+						EventController.Event (sx_ladderclimb_ + stepCounter);
+					}
+					stepCounter = stepCounter + 1;
+					stepTimer = 0;
+				}
+			}
+
 
         }
         else

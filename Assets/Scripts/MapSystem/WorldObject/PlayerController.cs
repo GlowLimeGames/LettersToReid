@@ -15,6 +15,12 @@ public class PlayerController : MController
 {
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
+	int climbCounter = 1;
+	int climbDelay = 5;
+	public float climbTimer = 0;
+	int walkCounter = 1;
+	int walkDelay = 5;
+	public float walkTimer = 0;
 
     float speed
     {
@@ -95,6 +101,46 @@ public class PlayerController : MController
     {
         rigibody.gravityScale = isClimbing ? 0 : gravityScale;
         rigibody.AddForce(getMoveVector());
+		if(currentState == PlayerState.Climb)
+		{
+			if (climbTimer >= climbDelay) 
+			{
+				if (stepCounter <= 9) 
+				{
+					EventController.Event (sx_ladderclimb_0 + climbCounter);
+				} 
+				else 
+				{
+					EventController.Event (sx_ladderclimb_ + climbCounter);
+				}
+				climbTimer = 0;
+				if (climbCounter >= 14) {
+					climbCounter = 1;
+				} else {
+					climbCounter = climbCounter + 1;
+				}
+			}
+		}
+		else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
+		{
+			if (walkTimer >= walkDelay) 
+			{
+				if (stepCounter <= 9) 
+				{
+					EventController.Event (sx_ladderclimb_0 + walkCounter);
+				} 
+				else 
+				{
+					EventController.Event (sx_ladderclimb_ + walkCounter);
+				}
+				walkTimer = 0;
+				if (walkCounter >= 16) {
+					walkCounter = 1;
+				} else {
+					walkCounter = walkCounter + 1;
+				}
+			}
+		}
     }
 
     void OnTriggerEnter2D(Collider2D collider)
