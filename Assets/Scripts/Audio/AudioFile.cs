@@ -76,6 +76,15 @@ public class AudioFile : AudioData, IAudioFile
 		}
 	}
 
+	public float Fade
+    {
+        get
+        {
+            return fade;
+        }
+    }
+
+
 	#endregion
 
 	#endregion
@@ -91,6 +100,8 @@ public class AudioFile : AudioData, IAudioFile
 	int channel;
 	[SerializeField]
 	string[] groups;
+    [SerializeField]
+    float fade;
 
 	AudioClip _clip;
 
