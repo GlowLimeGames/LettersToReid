@@ -37,8 +37,11 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 
     public override void Show()
     {
-        toggleCanvasGroup(memoryDisplayCanvas, true);
-        scroll.verticalNormalizedPosition = 1;
+        if(memoryDisplayCanvas.alpha == 0)
+        {
+            toggleCanvasGroup(memoryDisplayCanvas, true);
+            scroll.verticalNormalizedPosition = 1;
+        }
     }
         
     public override void Hide()
@@ -65,12 +68,6 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
     }
 
     #region MonoBehaviourExtended Overrides
-
-    protected override void setReferences()
-    {
-        base.setReferences();
-        memoryDisplayCanvas = GetComponent<CanvasGroup>();
-    }
 
     protected override void fetchReferences()
     {
