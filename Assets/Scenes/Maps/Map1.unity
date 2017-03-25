@@ -223,6 +223,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1293406971 stripped
+CanvasGroup:
+  m_PrefabParentObject: {fileID: 225759316537974768, guid: 0410080eb221541a5a5b8e83d5fccab4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1579516137}
 --- !u!1001 &1401742262
 Prefab:
   m_ObjectHideFlags: 0
@@ -465,7 +470,7 @@ Prefab:
     - target: {fileID: 224057618746397346, guid: 0410080eb221541a5a5b8e83d5fccab4,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.83444405
+      value: 0.8343635
       objectReference: {fileID: 0}
     - target: {fileID: 224057618746397346, guid: 0410080eb221541a5a5b8e83d5fccab4,
         type: 2}
@@ -475,12 +480,12 @@ Prefab:
     - target: {fileID: 224057618746397346, guid: 0410080eb221541a5a5b8e83d5fccab4,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.99959284
+      value: 0.9995123
       objectReference: {fileID: 0}
     - target: {fileID: 224677799369311534, guid: 0410080eb221541a5a5b8e83d5fccab4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.67056274
+      value: 0.8032532
       objectReference: {fileID: 0}
     - target: {fileID: 224254575149913494, guid: 0410080eb221541a5a5b8e83d5fccab4,
         type: 2}
@@ -497,8 +502,27 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114977026437962594, guid: 0410080eb221541a5a5b8e83d5fccab4, type: 2}
+    - target: {fileID: 224863858394234730, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224147812450808640, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225759316537974768, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395366577974476, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: memoryDisplayCanvas
+      value: 
+      objectReference: {fileID: 1293406971}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0410080eb221541a5a5b8e83d5fccab4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2126295910

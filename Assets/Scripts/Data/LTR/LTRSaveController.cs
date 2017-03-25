@@ -32,6 +32,14 @@ public class LTRSaveController : DataController
         }
     }
 
+    public LTRGameSave GetSave
+    {
+        get
+        {
+            return this.save;
+        }
+    }
+
     #endregion
 
     [SerializeField]

@@ -10,13 +10,22 @@ using UnityEngine.EventSystems;
 
 public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 {
+    MemoryController memories;
+
     [SerializeField]
     Text memoryText;
 
     [SerializeField]
     ScrollRect scroll;
 
-    CanvasGroup canvas;
+    [SerializeField]
+    CanvasGroup memoryDisplayCanvas;
+
+    [SerializeField]
+    Text memoriesCollectedDisplay;
+
+    [SerializeField]
+    string memoriesCollectedFormat = "{0}/{1} Memories";
 
     bool mouseIsDown;
 
@@ -28,15 +37,13 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 
     public override void Show()
     {
-        toggleCanvasGroup(canvas, true);
+        toggleCanvasGroup(memoryDisplayCanvas, true);
         scroll.verticalNormalizedPosition = 1;
-        base.Show();
     }
         
     public override void Hide()
     {
-        toggleCanvasGroup(canvas, false);
-        base.Hide();
+        toggleCanvasGroup(memoryDisplayCanvas, false);
     }
 
     void Update()
@@ -57,10 +64,37 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
         this.mouseIsDown = false;
     }
 
+    #region MonoBehaviourExtended Overrides
+
     protected override void setReferences()
     {
         base.setReferences();
-        canvas = GetComponent<CanvasGroup>();
+        memoryDisplayCanvas = GetComponent<CanvasGroup>();
+    }
+
+    protected override void fetchReferences()
+    {
+        base.fetchReferences();
+        memories = MemoryController.Instance;
+        memories.SubscribeToMemoryCollected(updateMemoriesCollected);
+        updateMemoriesCollected();
+    }
+
+    protected override void cleanupReferences()
+    {
+        base.cleanupReferences();
+        memories.UnsubscribeFromMemoryCollected(updateMemoriesCollected);
+    }
+
+    #endregion
+
+    void updateMemoriesCollected()
+    {
+        memoriesCollectedDisplay.text = string.Format(
+            memoriesCollectedFormat,
+            memories.MemoryDiscoveredCount,
+            memories.TotalMemoryCount);
+
     }
 
 }

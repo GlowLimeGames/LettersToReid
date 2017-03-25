@@ -22,6 +22,14 @@ public class LTRGameSave : GameSave
         }
     }
 
+    public int DiscoveredMemoryCount
+    {
+        get
+        {
+            return this.discoveredMemories.Count;
+        }
+    }
+
     #endregion
 
     List<Memory> discoveredMemories;
