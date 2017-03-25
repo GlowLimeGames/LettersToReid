@@ -1,5 +1,5 @@
 ﻿/*
- * Author(s): Isaiah Mann
+ * Author(s): Isaiah Mann, Maia Doerner
  * Description: Used to control the audio in the game
  * Is a Singleton (only one instance can exist at once)
  * Attached to a GameObject that stores all AudioSources and AudioListeners for the game
@@ -94,6 +94,8 @@ public class AudioController : Controller, IAudioController
 	Dictionary<string, List<AudioData>> playEvents = new Dictionary<string, List<AudioData>>();
 	Dictionary<string, List<AudioData>> stopEvents = new Dictionary<string, List<AudioData>>();
 
+    Dictionary<AudioFile, IEnumerator> automaticFades = new Dictionary<AudioFile, IEnumerator>();
+
 	// Audio Control Patterns
 	RandomizedQueue<AudioFile> swells;
 	RandomizedQueue<AudioFile> sweeteners;
@@ -180,23 +182,6 @@ public class AudioController : Controller, IAudioController
 		onFXVolumeChange (this.FXVolume);
 	}
 
-	IEnumerator FadeOut (AudioSource audioSource, AudioFile audioFile) {
-		float startVolume = audioSource.volume;
-
-		float changesPerSecond = startVolume/audioFile.Fade;
-		float onTimeChange = 1/(changesPerSecond*100);
-
-		while (audioSource.volume > 0) {
-			
-			audioSource.volume = audioSource.volume - .01f;
-
-			yield return new WaitForSeconds(onTimeChange);
-		}
-
-		audioSource.Stop ();
-
-	}
-
 	public void Play(AudioFile file) 
 	{
 		AudioSource source = getChannel(file.Channel);
@@ -235,7 +220,10 @@ public class AudioController : Controller, IAudioController
 			source.time = clipTime;
 		}
 		source.Play();
-
+        if(file.HasFade)
+        {
+            setupFadeAtClipEnd(file);
+        }
 	}
 
 
@@ -246,7 +234,16 @@ public class AudioController : Controller, IAudioController
 			AudioSource source = getChannel(file.Channel);
 			if(source.clip == file.Clip) 
 			{
-				source.Stop();
+                if(file.HasFade)
+                {
+                    handleFade(file);
+                }
+                else
+                {
+				    source.Stop();
+                }
+                // Prevent automatic fade from running because we're stopping clip early
+                haltAutomaticFade(file);
 			}
 		}
 	}
@@ -336,6 +333,27 @@ public class AudioController : Controller, IAudioController
 			return newSource;
 		}
 	}
+        
+    // Returns source if AudioFile is currently playing, otherwise returns null;
+    AudioSource getSource(AudioFile file)
+    {
+        try
+        {
+            AudioSource source = channels[file.Channel];
+            if(source.clip == file.Clip)
+            {
+                return source;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch
+        {
+            return null;
+        }
+    }
 
 	// Must be colled to setup the class's functionality
 	void init() {
@@ -358,7 +376,6 @@ public class AudioController : Controller, IAudioController
 			fileList.PopulateGroups();
 			initFileDictionary(fileList);
 			addAudioEvents();
-			subscribeEvents();
 			if(isAudioListener) 
 			{
 				addAudioListener();
@@ -626,5 +643,68 @@ public class AudioController : Controller, IAudioController
 			}
 		}
 	}
+
+
+    #region Fades 
+
+    void setupFadeAtClipEnd(AudioFile file)
+    {
+        if(file.HasFade)
+        {
+            float timeUntilFade = file.ClipLength - file.Fade;
+            IEnumerator waitCoroutine = waitToFade(timeUntilFade, file);
+            automaticFades[file] = waitCoroutine;
+            StartCoroutine(waitCoroutine);
+        }
+        else
+        {
+            Debug.LogError("File has no fade time");
+        }
+    }
+
+    void haltAutomaticFade(AudioFile file)
+    {
+        IEnumerator fadeCoroutine;
+        if(automaticFades.TryGetValue(file, out fadeCoroutine))
+        {
+            StopCoroutine(fadeCoroutine);
+            // Cleanup to remove from Dict:
+            automaticFades.Remove(file);
+        }
+    }
+
+    IEnumerator waitToFade(float waitTime, AudioFile file)
+    {
+        yield return new WaitForSeconds(waitTime);
+        handleFade(file);
+    }
+
+    void handleFade(AudioFile file)
+    {
+        AudioSource channel = getSource(file);
+        // Channel may be null, if so do not fade out
+        if(channel)
+        {
+            StartCoroutine(fadeOut(channel, file));
+        }
+    }
+
+    IEnumerator fadeOut (AudioSource audioSource, AudioFile audioFile) {
+        float startVolume = audioSource.volume;
+
+        float changesPerSecond = startVolume/audioFile.Fade;
+        float onTimeChange = 1/(changesPerSecond*100);
+
+        while (audioSource.volume > 0) {
+            audioSource.volume = audioSource.volume - .01f;
+
+            yield return new WaitForSeconds(onTimeChange);
+        }
+
+        audioSource.Stop ();
+
+    }
+
+    #endregion
 
 }

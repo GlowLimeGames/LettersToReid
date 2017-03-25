@@ -84,7 +84,14 @@ public class AudioFile : AudioData, IAudioFile
         }
     }
 
-
+    public bool HasFade
+    {
+        get
+        {
+            return Fade > 0;
+        }
+    }
+        
 	#endregion
 
 	#endregion
