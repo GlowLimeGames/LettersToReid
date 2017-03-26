@@ -1,54 +1,98 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿/*
+ * Authors: Martha Hollister, Isaiah Mann
+ * Description: Controls a single memory in game
+ */
 
+using UnityEngine;
 
-public class MemoryBehvior : MonoBehaviour
+using k = MapGlobal;
+
+public class MemoryBehvior : MonoBehaviourExtended
 {
-
-    //script for mouse clicking on opening memories
-    string[] memoryText;
-    public TextAsset textFile;
-    public int memoryNumbers = 0;
-
-    public Canvas myCanvas;
-    public Text myText;
-
-    
-
-    // Use this for initialization
-    void Start()
+    Memory memory
     {
-        myCanvas.enabled = false;
-
-        string [] memoryArray = textFile.text.Split('*');
-        memoryText = new string[memoryArray.Length];
-
-        for(int i = 0; i < memoryArray.Length; i++)
+        get
         {
-            memoryText[i] = memoryArray[i];
+            return controller.GetMemory(memoryId.ToString());
+        }
+    }
+
+    int memoryId
+    {
+        get
+        {
+            return int.Parse(memoryDescriptor.DelegateStr(tuning.IdDelegate));
+        }
+    }
+
+    MemoryController controller;
+    SpriteRenderer sRenderer;
+    MapTuning tuning;
+
+    [SerializeField]
+    Sprite closedMemory;
+    [SerializeField]
+    Sprite openMemory;
+
+    MapItem memoryDescriptor;
+
+    public void SetMemory(MapItem mem)
+    {
+        this.memoryDescriptor = mem;
+        updateMemoryDisplay();
+    }
+
+    public void Collect()
+    {
+
+		EventController.Event("sx_letter_open");
+
+        controller.CollectMemory(memoryId);
+        updateMemoryDisplay();
+
+    }
+
+    #region MonoBehaviourExtended Overrides
+
+    protected override void setReferences()
+    {
+
+
+		base.setReferences();
+        sRenderer = GetComponentInChildren<SpriteRenderer>();
+        tuning = MapTuning.Get;
+        controller = MemoryController.Instance;
+
+    }
+   
+    #endregion
+
+	public void letterClose()
+	{
+		EventController.Event("sx_letter_close");
+	}
+
+    void updateMemoryDisplay()
+    {
+        if(!sRenderer)
+        {
+            Debug.LogError("Sprite Renderer is null");
+            return;
+        }
+        if(!controller)
+        {
+            Debug.LogError("MemoryController is null");
+            return;
         }
 
-    }
-
-    public void showMemory()
-    {
-        myCanvas.enabled = true;
-        myText.text = memoryText[memoryNumbers];
-		EventController.Event(sx_letter_open);
-    }
-
-    public void closeMemory()
-    {
-        myCanvas.enabled = false;
-        memoryNumbers++;
-		EventController.Event(sx_letter_close);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if(controller.MemoryDiscovered(memoryId))
+        {
+            sRenderer.sprite = openMemory;
+        }
+        else
+        {
+            sRenderer.sprite = closedMemory;
+        }
     }
 
 }

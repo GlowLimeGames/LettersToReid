@@ -188,7 +188,7 @@ public class AudioController : Controller, IAudioController
 
 		while (audioSource.volume > 0) {
 			
-			audioSource.volume = audioSource.volume - .01;
+			audioSource.volume = audioSource.volume - .01f;
 
 			yield return new WaitForSeconds(onTimeChange);
 		}

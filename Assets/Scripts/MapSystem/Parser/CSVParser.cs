@@ -4,6 +4,8 @@
  * Usage: [no notes]
  */
 
+using UnityEngine;
+
 public class CSVParser : Parser
 {
     public string[,] ParseCSVFromResources (string fileName) {
@@ -23,8 +25,15 @@ public class CSVParser : Parser
         result = new string[width, height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                // Need to reverse the x-axis so the file reads in correctly
-                result[x, y] = allStringsByWord[height - y - 1][x].Trim();
+				if(x < result.GetLength(0) && 
+					y < result.GetLength(1) && 
+					height - y - 1 < allStringsByWord.GetLength(0) && 
+					height - y - 1 >= 0 &&
+					x < allStringsByWord[height - y - 1].Length)
+				{
+	                // Need to reverse the x-axis so the file reads in correctly
+	                result[x, y] = allStringsByWord[height - y - 1][x].Trim();
+				}
             }
         }
         return result;

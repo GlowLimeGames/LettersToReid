@@ -118,6 +118,42 @@
       "isSolid" : false,
       "isClimbable" : true,
       "isPortal" : true
+    },
+    {
+      "key" : "TPTL",
+      "name" : "Top of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "MPTL",
+      "name" : "Middle of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "BPTL",
+      "name" : "Bottom of Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
+    },
+    {
+      "key" : "PT",
+      "name" : "Portal",
+      "delegates" : [
+      ],
+      "isSolid" : false,
+      "isClimbable" : false,
+      "isPortal" : true
     }
   ],
   "units" : [

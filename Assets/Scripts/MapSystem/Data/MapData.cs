@@ -7,6 +7,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using System.Linq;
 
 using UnityEngine;
 
@@ -106,6 +107,19 @@ public abstract class MapData
         }
     }
 
+    public object DelegateValueAt(int index)
+    {
+        if(0 <= index && index < delegateLookup.Count)
+        {
+            return delegateLookup.Values.ToArray()[index];
+        }
+        else
+        {
+            Debug.LogErrorFormat("Index {0} is out of range", index);
+            return null;
+        }
+    }
+
     public string DelegateStr(string deleateId)
     {
         try
@@ -117,7 +131,7 @@ public abstract class MapData
             return null;
         }
     }
-
+        
     // Adapted from http://stackoverflow.com/questions/1031023/copy-a-class-c-sharp
     public MapData Copy() {
         using (MemoryStream memoryStream = new MemoryStream())

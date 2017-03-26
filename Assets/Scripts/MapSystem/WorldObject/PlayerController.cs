@@ -15,10 +15,8 @@ public class PlayerController : MController
 {
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
-	int climbCounter = 1;
 	int climbDelay = 5;
 	public float climbTimer = 0;
-	int walkCounter = 1;
 	int walkDelay = 5;
 	public float walkTimer = 0;
 
@@ -68,6 +66,7 @@ public class PlayerController : MController
     MapTileBehaviour currentClimbingTarget;
     MapUnitBehaviour player;
 	PlayerState currentState = PlayerState.Idle;
+    LTRTuning gameTuning;
 
     public void Setup(MapController map)
     {
@@ -83,6 +82,7 @@ public class PlayerController : MController
         player = GetComponent<MapUnitBehaviour>();
 		anim = GetComponent<Animator>();
         this.currentState = defaultState;
+        gameTuning = LTRTuning.Get;
 	}
 
     void Start()
@@ -101,48 +101,35 @@ public class PlayerController : MController
     {
         rigibody.gravityScale = isClimbing ? 0 : gravityScale;
         rigibody.AddForce(getMoveVector());
+		rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
+
 		if(currentState == PlayerState.Climb)
 		{
 			if (climbTimer >= climbDelay) 
 			{
-				if (stepCounter <= 9) 
-				{
-					EventController.Event (sx_ladderclimb_0 + climbCounter);
-				} 
-				else 
-				{
-					EventController.Event (sx_ladderclimb_ + climbCounter);
-				}
+				
+				EventController.Event ("play_ladder_climb");
+				
 				climbTimer = 0;
-				if (climbCounter >= 14) {
-					climbCounter = 1;
-				} else {
-					climbCounter = climbCounter + 1;
-				}
+
 			}
 		}
 		else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
 		{
 			if (walkTimer >= walkDelay) 
 			{
-				if (stepCounter <= 9) 
-				{
-					EventController.Event (sx_ladderclimb_0 + walkCounter);
-				} 
-				else 
-				{
-					EventController.Event (sx_ladderclimb_ + walkCounter);
-				}
+				
+				EventController.Event ("play_footsteps"); 
+
 				walkTimer = 0;
-				if (walkCounter >= 16) {
-					walkCounter = 1;
-				} else {
-					walkCounter = walkCounter + 1;
-				}
 			}
 		}
-    }
 
+        // Clamps velocity to max player speed:
+        
+
+    }
+        
     void OnTriggerEnter2D(Collider2D collider)
     {
         MapObjectBehaviour obj;
@@ -169,6 +156,11 @@ public class PlayerController : MController
                 handleExitCollideWithTile(obj as MapTileBehaviour);
             }
         }
+    }
+
+    float getClampedPlayerSpeed() 
+    {
+        return Mathf.Clamp(rigibody.velocity.x, -gameTuning.MaxPlayerSpeed, gameTuning.MaxPlayerSpeed);
     }
 
     bool checkForMapObjCollideEvent(Collider2D collider, out MapObjectBehaviour obj)
@@ -231,9 +223,16 @@ public class PlayerController : MController
             vertMove = getClimbingVertVelocity(vertMove);
 			updatePlayerState(PlayerState.Climb);
         }
-        else
+        else 
         {
-            vertMove = getJumpingVertVelocity(vertMove);
+            if(gameTuning.JumpEnabled)
+            {
+                vertMove = getJumpingVertVelocity(vertMove);
+            }
+            else
+            {
+                vertMove = 0;
+            }
 			updatePlayerWalkingState(horMove);
         }
 		return new Vector2(horMove, vertMove);

@@ -67,11 +67,11 @@ public class MyCharacterController : MonoBehaviour {
 				{
 					if (stepCounter <= 9) 
 					{
-						EventController.Event (sx_ladderclimb_0 + stepCounter);
+						EventController.Event ("sx_ladderclimb_0" + stepCounter);
 					} 
 					else 
 					{
-						EventController.Event (sx_ladderclimb_ + stepCounter);
+						EventController.Event ("sx_ladderclimb_" + stepCounter);
 					}
 					stepCounter = stepCounter + 1;
 					stepTimer = 0;
@@ -88,11 +88,11 @@ public class MyCharacterController : MonoBehaviour {
 				{
 					if (stepCounter <= 9) 
 					{
-						EventController.Event (sx_ladderclimb_0 + stepCounter);
+						EventController.Event ("sx_ladderclimb_0" + stepCounter);
 					} 
 					else 
 					{
-						EventController.Event (sx_ladderclimb_ + stepCounter);
+						EventController.Event ("sx_ladderclimb_" + stepCounter);
 					}
 					stepCounter = stepCounter + 1;
 					stepTimer = 0;

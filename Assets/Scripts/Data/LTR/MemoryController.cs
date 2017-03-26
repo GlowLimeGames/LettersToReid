@@ -13,7 +13,10 @@ public class MemoryController : SingletonController<MemoryController>
 	[SerializeField]
 	string memoryPathInResources;
 
+    LTRSaveController save;
 	MemoryDatabase data;
+
+    #region MonoBehaviourExtended Overrides 
 
 	protected override void setReferences()
 	{
@@ -21,14 +24,33 @@ public class MemoryController : SingletonController<MemoryController>
 		data = new MemoryDatabase(parseMemories(memoryPathInResources));
 	}
 
+    protected override void fetchReferences()
+    {
+        base.fetchReferences();
+        save = LTRSaveController.GetInstance;
+    }
+
+    #endregion
+
+    public bool MemoryDiscovered(int memId)
+    {
+        return save.MemoryDiscovered(memId);
+    }
+
 	public Memory GetMemory(string id)
 	{
 		return data.GetMemory(id);	
 	}
 
+    public void CollectMemory(int memId)
+    {
+        CollectMemory(GetMemory(memId.ToString()));
+    }
+
 	public void CollectMemory(Memory mem)
 	{
 		data.CollectMemory(mem);
+        save.FindMemory(mem);
 	}
 
 	Memory[] parseMemories(string path)

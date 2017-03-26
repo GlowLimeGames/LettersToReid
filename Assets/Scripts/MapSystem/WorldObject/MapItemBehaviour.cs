@@ -9,6 +9,7 @@ using UnityEngine;
 public class MapItemBehaviour : MapObjectBehaviour
 {
     ItemController items;
+    MemoryBehvior memory;
 
     public MapItem GetItem 
     {
@@ -31,6 +32,11 @@ public class MapItemBehaviour : MapObjectBehaviour
 			coll.isTrigger = true;
 		}
         this.items = ItemController.Instance;
+        memory = GetComponent<MemoryBehvior>();
+        if(memory)
+        {
+            memory.SetMemory(GetItem);
+        }
 	}
 
     void OnMouseUp()
@@ -38,6 +44,10 @@ public class MapItemBehaviour : MapObjectBehaviour
         if(GetItem.IsCollectible)
         {
             items.CollectItem(this);
+            if(memory)
+            {
+                memory.Collect();
+            }
         }
     }
 
