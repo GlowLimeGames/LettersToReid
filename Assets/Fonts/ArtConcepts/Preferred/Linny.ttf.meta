@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 984d31d8f18b341598c062a0047c9c87
+timeCreated: 1490546617
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Linny
+  fontNames:
+  - Linny
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
