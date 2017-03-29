@@ -35,3 +35,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Maps/Map9.unity
   - enabled: 1
     path: Assets/Scenes/Maps/Map10.unity
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen/TitleScreen.unity
