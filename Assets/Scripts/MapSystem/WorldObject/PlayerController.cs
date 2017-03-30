@@ -24,6 +24,14 @@ public class PlayerController : MController
         }
     }
 
+    float climbSpeed
+    {
+        get
+        {
+            return tuning.PlayerClimbSpeed;
+        }
+    }
+
     float jump
     {
         get
@@ -97,10 +105,25 @@ public class PlayerController : MController
     {
         rigibody.gravityScale = isClimbing ? 0 : gravityScale;
         rigibody.AddForce(getMoveVector());
-        // Clamps velocity to max player speed:
-        rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
+        if(movementKeyPressed())
+        {
+            // Clamps velocity to max player speed:
+            rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
+        }
+        else
+        {
+            rigibody.velocity = Vector2.zero;
+        }
     }
         
+    bool movementKeyPressed()
+    {
+        return Input.GetKey(KeyCode.A) ||
+                Input.GetKey(KeyCode.D) ||
+                Input.GetKey(KeyCode.W) ||
+                Input.GetKey(KeyCode.S);
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         MapObjectBehaviour obj;
@@ -187,8 +210,9 @@ public class PlayerController : MController
 
     Vector2 getMoveVector()
     {
-		float horMove = Input.GetAxis(HOR) * speed;
+        float horMove;
         float vertMove = Input.GetAxis(VERT);
+        horMove = Input.GetAxis(HOR) * speed;
         if(isClimbing)
         {
             vertMove = getClimbingVertVelocity(vertMove);
@@ -223,7 +247,7 @@ public class PlayerController : MController
 
     float getClimbingVertVelocity(float vertMove)
     {
-        return vertMove * speed;
+        return vertMove * climbSpeed;
     }
 
     float getJumpingVertVelocity(float vertMove)

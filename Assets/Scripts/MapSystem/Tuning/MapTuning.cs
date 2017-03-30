@@ -89,7 +89,15 @@ public class MapTuning : Tuning<MapTuning>
             return fileJoinKey;
         }
     }
-        
+
+    public float PlayerClimbSpeed
+    {
+        get
+        {
+            return playerClimbSpeed;
+        }
+    }
+                
     #endregion
 
     #region Tuning<T> Overrides 
@@ -124,5 +132,7 @@ public class MapTuning : Tuning<MapTuning>
     string metaSuffix;
     [SerializeField]
     string fileJoinKey;
+    [SerializeField]
+    float playerClimbSpeed;
 
 }
