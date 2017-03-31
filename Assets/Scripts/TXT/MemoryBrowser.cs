@@ -11,11 +11,12 @@ public sealed class MemoryBrowser : MonoBehaviour
     Text text;
     public Text memoryCounter;
     public Text memoriesFound;
-    int memoryNumber = 1;
+    public int memoryNumber;
 
     public void Start() {
         parse = GetComponent<MemoriesParser>();
         text = GetComponent<Text>();
+        memoryNumber = PlayerPrefs.GetInt("memory number");
 
         updateScreen();
     }
