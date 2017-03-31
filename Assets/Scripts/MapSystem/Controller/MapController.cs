@@ -20,6 +20,7 @@ public class MapController : MController
 
     CameraController cam;
     PortalController portals;
+    PlayerController activePlayer;
 
     MapDescriptor currentMap;
     Dictionary<string, MapDescriptor> mapBuffer = new Dictionary<string, MapDescriptor>();
@@ -44,6 +45,15 @@ public class MapController : MController
         {
             createMap(currentMap);
         }
+        if(travel.InTransit)
+        {
+            startMapFromPortal();
+        }
+    }
+
+    public void SetActivePlayer(PlayerController player)
+    {
+        this.activePlayer = player;
     }
 
     public bool TryChangeMap(string name)
@@ -77,6 +87,14 @@ public class MapController : MController
         this.currentMap = map;
     }
 
+    void startMapFromPortal()
+    {
+        if(activePlayer)
+        {
+            portals.SendToPortal(travel.GetDestinationID(), activePlayer.transform);
+        }
+    }
+        
     MapDescriptor parseMap(string mapName)
     {
         CSVParser csv = new CSVParser();
