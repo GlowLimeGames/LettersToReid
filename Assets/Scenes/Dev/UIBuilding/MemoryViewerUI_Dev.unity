@@ -290,6 +290,16 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 225759316537974768, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225759316537974768, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0410080eb221541a5a5b8e83d5fccab4, type: 2}
   m_IsPrefabParent: 0
