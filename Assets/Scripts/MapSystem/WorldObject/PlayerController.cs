@@ -89,8 +89,9 @@ public class PlayerController : MController
         gameTuning = LTRTuning.Get;
 	}
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         tuning = MapTuning.Get;
         rigibody.gravityScale = tuning.PlayerGravityScale;
         rigibody.drag = tuning.PlayerGravityScale;

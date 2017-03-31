@@ -71,6 +71,7 @@ public class PortalController : MController
         {
             string mapId = portal.Descriptor.DelegateValueAt(0).ToString();
             string sceneName = k.GetMapSceneName(mapId);
+            travel.BeginTravel(SceneManager.GetActiveScene().name, sceneName);
             SceneManager.LoadScene(sceneName);
         }
         catch

@@ -23,7 +23,8 @@ public class MapUnitBehaviour : MapObjectBehaviour
 		{
 			Destroy(GetComponent<BoxCollider2D>());
 			// Need a round collider for the character:
-			gameObject.AddComponent<CapsuleCollider2D>();
+            CapsuleCollider2D collide = gameObject.AddComponent<CapsuleCollider2D>();
+            collide.size *= 0.75f;
 		}
         if(GetUnit.IsPlayer)
         {

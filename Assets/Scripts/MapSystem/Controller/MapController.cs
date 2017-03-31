@@ -35,8 +35,9 @@ public class MapController : MController
         this.portals = GetComponent<PortalController>();
     }
 
-    void Start() 
+    protected override void Start ()
     {
+        base.Start ();
         this.cam = CameraController.Get;
         this.currentMap = parseMap(startingMapName);
         if(createMapOnStart)
