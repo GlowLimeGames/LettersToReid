@@ -85,6 +85,12 @@ public class LTRSaveController : DataController
         return new LTRGameSave();
     }
 
+    public override void Reset ()
+    {
+        base.Reset();
+        LoadGame();
+    }
+
     #endregion
 
     #region MonoBehaviourExtended Overrides
