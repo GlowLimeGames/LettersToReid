@@ -32,6 +32,14 @@ public class LTRSaveController : DataController
         }
     }
 
+    public LTRGameSave GetSave
+    {
+        get
+        {
+            return this.save;
+        }
+    }
+
     #endregion
 
     [SerializeField]
@@ -75,6 +83,12 @@ public class LTRSaveController : DataController
     protected override SerializableData getDefaultFile()
     {
         return new LTRGameSave();
+    }
+
+    public override void Reset ()
+    {
+        base.Reset();
+        LoadGame();
     }
 
     #endregion

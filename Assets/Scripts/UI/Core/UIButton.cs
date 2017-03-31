@@ -90,6 +90,7 @@ public class UIButton : UIElement
 		if(clickAction != null) 
 		{
 			clickAction();
+
 		}
 	}
 

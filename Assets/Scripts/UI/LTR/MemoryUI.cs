@@ -8,17 +8,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
+public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 {
+    MemoryController memories;
+
     [SerializeField]
     Text memoryText;
 
     [SerializeField]
     ScrollRect scroll;
 
-    CanvasGroup canvas;
+    [SerializeField]
+    CanvasGroup memoryDisplayCanvas;
 
-    bool mouseIsDown;
+    [SerializeField]
+    Text memoriesCollectedDisplay;
+
+    [SerializeField]
+    string memoriesCollectedFormat = "{0}/{1} Memories";
+
+    bool mouseInCanvas;
 
     public void DisplayMemory(Memory mem)
     {
@@ -28,39 +37,61 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 
     public override void Show()
     {
-        toggleCanvasGroup(canvas, true);
-        scroll.verticalNormalizedPosition = 1;
-        base.Show();
+        if(memoryDisplayCanvas.alpha == 0)
+        {
+            toggleCanvasGroup(memoryDisplayCanvas, true);
+            scroll.verticalNormalizedPosition = 1;
+        }
     }
         
     public override void Hide()
     {
-        toggleCanvasGroup(canvas, false);
-        base.Hide();
+        toggleCanvasGroup(memoryDisplayCanvas, false);
     }
 
     void Update()
     {
-        if(isVisible && !mouseIsDown && Input.GetMouseButtonDown(0))
+        if(isVisible && !mouseInCanvas && Input.GetMouseButtonDown(0))
         {
             Hide();
         }
     }
 
-    public void OnPointerDown(PointerEventData pData)
+    public void OnPointerEnter(PointerEventData pData)
     {
-        this.mouseIsDown = true;
+        mouseInCanvas = true;   
     }
 
-    public void OnPointerUp(PointerEventData pData)
+    public void OnPointerExit(PointerEventData pData)
     {
-        this.mouseIsDown = false;
+        mouseInCanvas = false;
     }
 
-    protected override void setReferences()
+    #region MonoBehaviourExtended Overrides
+
+    protected override void fetchReferences()
     {
-        base.setReferences();
-        canvas = GetComponent<CanvasGroup>();
+        base.fetchReferences();
+        memories = MemoryController.Instance;
+        memories.SubscribeToMemoryCollected(updateMemoriesCollected);
+        updateMemoriesCollected();
+    }
+
+    protected override void cleanupReferences()
+    {
+        base.cleanupReferences();
+        memories.UnsubscribeFromMemoryCollected(updateMemoriesCollected);
+    }
+
+    #endregion
+
+    void updateMemoriesCollected()
+    {
+        memoriesCollectedDisplay.text = string.Format(
+            memoriesCollectedFormat,
+            memories.MemoryDiscoveredCount,
+            memories.TotalMemoryCount);
+
     }
 
 }

@@ -1,425 +1,592 @@
 {
-  "files" : {
-    "ui_ click_ forward" : {
-      "name" : "ui_ click_ forward",
-      "JA_groups" : "",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "UI",
-      "channel" : 1,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "ui_ click_ back" : {
-      "name" : "ui_ click_ back",
-      "JA_groups" : "",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "UI",
-      "channel" : 1,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "ui_ hover" : {
-      "name" : "ui_ hover",
-      "JA_groups" : "",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "UI",
-      "channel" : 1,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "play_music_menu_main theme" : {
-      "name" : "play_music_menu_main theme",
-      "JA_groups" : "",
-      "JA_events" : "play_mainmenu",
-      "JA_stopEvents" : "stop_mainmenu",
-      "loop" : true,
-      "type" : "Music",
-      "channel" : 2,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "amb_beginning_01" : {
-      "name" : "amb_beginning_01",
-      "JA_groups" : "",
-      "JA_events" : "play_beginningamb",
-      "JA_stopEvents" : "stop_beginningamb",
-      "loop" : true,
-      "type" : "SFX",
-      "channel" : 3,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "amb_ghost" : {
-      "name" : "amb_ghost",
-      "JA_groups" : "",
-      "JA_events" : "play_ambghost",
-      "JA_stopEvents" : "stop_ambghost",
-      "loop" : true,
-      "type" : "SFX",
-      "channel" : 4,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "amb_nature_01" : {
-      "name" : "amb_nature_01",
-      "JA_groups" : "",
-      "JA_events" : "play_endingamb",
-      "JA_stopEvents" : "stop_endingamb",
-      "loop" : true,
-      "type" : "SFX",
-      "channel" : 3,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_letter_open" : {
-      "name" : "sx_letter_open",
-      "JA_groups" : "",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : 7,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_letter_close" : {
-      "name" : "sx_letter_close",
-      "JA_groups" : "",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : 7,
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_01" : {
-      "name" : "sx_ladderclimb_01",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_02" : {
-      "name" : "sx_ladderclimb_02",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_03" : {
-      "name" : "sx_ladderclimb_03",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_04" : {
-      "name" : "sx_ladderclimb_04",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_05" : {
-      "name" : "sx_ladderclimb_05",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_06" : {
-      "name" : "sx_ladderclimb_06",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_07" : {
-      "name" : "sx_ladderclimb_07",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_08" : {
-      "name" : "sx_ladderclimb_08",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_09" : {
-      "name" : "sx_ladderclimb_09",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_10" : {
-      "name" : "sx_ladderclimb_10",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_11" : {
-      "name" : "sx_ladderclimb_11",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_12" : {
-      "name" : "sx_ladderclimb_12",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_ladderclimb_13" : {
-      "name" : "sx_ladderclimb_13",
-      "JA_groups" : "ladder_climb",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_01" : {
-      "name" : "sx_player_footsteps_01",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_02" : {
-      "name" : "sx_player_footsteps_02",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_03" : {
-      "name" : "sx_player_footsteps_03",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_04" : {
-      "name" : "sx_player_footsteps_04",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_05" : {
-      "name" : "sx_player_footsteps_05",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_06" : {
-      "name" : "sx_player_footsteps_06",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_07" : {
-      "name" : "sx_player_footsteps_07",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_08" : {
-      "name" : "sx_player_footsteps_08",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_09" : {
-      "name" : "sx_player_footsteps_09",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_10" : {
-      "name" : "sx_player_footsteps_10",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_11" : {
-      "name" : "sx_player_footsteps_11",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_12" : {
-      "name" : "sx_player_footsteps_12",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_13" : {
-      "name" : "sx_player_footsteps_13",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_14" : {
-      "name" : "sx_player_footsteps_14",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    },
-    "sx_player_footsteps_15" : {
-      "name" : "sx_player_footsteps_15",
-      "JA_groups" : "footsteps",
-      "JA_events" : "",
-      "JA_stopEvents" : "",
-      "loop" : false,
-      "type" : "SFX",
-      "channel" : "2017-05-06T04:00:00.000Z",
-      "volume" : "??",
-      "fade" : ""
-    }
-  },
-  "groups" : {
-    "ladder_climb" : {
-      "name" : "ladder_climb",
-      "type" : "Random",
-      "JA_events" : "",
-      "JA_stopEvents" : ""
-    },
-    "footsteps" : {
-      "name" : "footsteps",
-      "type" : "Random",
-      "JA_events" : "",
-      "JA_stopEvents" : ""
-    }
-  }
-}
+  "files" : [
+       {
+        "name" : "TestSiren",
+        "groups" : [
+        ],
+        "events" : [
+             "FadeTest"
+        ],
+        "stopEvents" : [
+             "EndFadeTest"
+        ],
+        "loop" : false,
+        "type" : "SFX",
+        "channel" : 1,
+        "volume" : 100,
+        "fade" : 5
+      },
+     {
+       "name" : "ui_click_forward",
+       "groups" : [
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : 1,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "ui_click_back",
+       "groups" : [
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : 1,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "ui_hover",
+       "groups" : [
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : 1,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "play_music_menu_main theme",
+       "groups" : [
+       ],
+       "events" : [
+         "play_mainmenu"
+       ],
+       "stopEvents" : [
+         "stop_mainmenu"
+       ],
+       "loop" : true,
+       "type" : "Music",
+       "channel" : 2,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "amb_beginning_01",
+       "groups" : [
+       ],
+       "events" : [
+         "play_beginningamb"
+       ],
+       "stopEvents" : [
+         "stop_beginningamb"
+       ],
+       "loop" : true,
+       "type" : "SFX",
+       "channel" : 3,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "amb_ghost",
+       "groups" : [
+       ],
+       "events" : [
+         "play_ambghost"
+       ],
+       "stopEvents" : [
+         "stop_ambghost"
+       ],
+       "loop" : true,
+       "type" : "SFX",
+       "channel" : 4,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "amb_nature_01",
+       "groups" : [
+       ],
+       "events" : [
+         "play_endingamb"
+       ],
+       "stopEvents" : [
+         "stop_endingamb"
+       ],
+       "loop" : true,
+       "type" : "SFX",
+       "channel" : 3,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_letter_open",
+       "groups" : [
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : 7,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_letter_close",
+       "groups" : [
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : 7,
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_01",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_02",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_03",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_04",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_05",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_06",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_07",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_08",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_09",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_10",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_11",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_12",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_ladder_climb_13",
+       "groups" : [
+         "ladder_climb"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_01",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_02",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_03",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_04",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_05",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_06",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_07",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_08",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_09",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_10",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_11",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_12",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_13",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_14",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     },
+     {
+       "name" : "sx_player_footsteps_15",
+       "groups" : [
+         "footsteps"
+       ],
+       "events" : [
+       ],
+       "stopEvents" : [
+       ],
+       "loop" : false,
+       "type" : "SFX",
+       "channel" : "2017-05-06T04:00:00.000Z",
+       "volume" : 100,
+       "fade" : 0
+     }
+   ],
+   "groups" : [
+     {
+       "name" : "ladder_climb",
+       "type" : "Random",
+       "events" : [
+       ],
+       "stopEvents" : [
+       ]
+     },
+     {
+       "name" : "footsteps",
+       "type" : "Random",
+       "events" : [
+       ],
+       "stopEvents" : [
+       ]
+     }
+   ]
+ }

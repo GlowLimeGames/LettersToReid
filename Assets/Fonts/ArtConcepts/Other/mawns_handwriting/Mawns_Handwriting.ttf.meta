@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b2e942e58ec0c496cbc095fbdcc68608
+timeCreated: 1490546656
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 'MAWNS Handwriting '
+  fontNames:
+  - 'MAWNS Handwriting '
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,11 +10,32 @@ using UnityEngine;
 
 public class MemoryController : SingletonController<MemoryController>
 {
+    #region Instance Accessors
+
+    public int MemoryDiscoveredCount
+    {
+        get
+        {
+            return save.GetSave.DiscoveredMemoryCount;
+        }
+    }
+
+    public int TotalMemoryCount
+    {
+        get
+        {
+            return data.TotalMemoryCount;   
+        }
+    }
+
+    #endregion
+
 	[SerializeField]
 	string memoryPathInResources;
 
     LTRSaveController save;
 	MemoryDatabase data;
+    MonoAction onMemoryCollected;
 
     #region MonoBehaviourExtended Overrides 
 
@@ -51,19 +72,50 @@ public class MemoryController : SingletonController<MemoryController>
 	{
 		data.CollectMemory(mem);
         save.FindMemory(mem);
+        callOnMemoryCollected();
 	}
+
+    public void SubscribeToMemoryCollected(MonoAction act)
+    {
+        onMemoryCollected += act;
+    }
+
+    public void UnsubscribeFromMemoryCollected(MonoAction act)
+    {
+        onMemoryCollected -= act;
+    }
+
+    void callOnMemoryCollected()
+    {
+        if(onMemoryCollected != null)
+        {
+            onMemoryCollected();
+        }
+    }
 
 	Memory[] parseMemories(string path)
 	{
 		MemoryList list	= JsonUtility.FromJson<MemoryList>(Resources.Load<TextAsset>(path).text);
 		return list.Memories;
 	}
-	
+        
 }
 
 [Serializable]
 public class MemoryDatabase
 {
+    #region Instance Accessors
+
+    public int TotalMemoryCount
+    {
+        get
+        {
+            return allMemories.Count;
+        }
+    }
+
+    #endregion
+
 	Dictionary<string, Memory> allMemories;
 	List<Memory> collectedMemories;
 
