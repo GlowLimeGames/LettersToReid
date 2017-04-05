@@ -30,6 +30,17 @@ public class MapLoader : Loader
                     {
                         handleSetupPortal(behaviour, portals);
                     }
+					for (int index = 1; index < 8; index++) {
+						if (descriptor.PeekMap () == "Map" + index) {
+							EventController.Event("amb_beginnning_01");
+						}
+					}
+					for (int index = 8; index < 10; index++) {
+						if (descriptor.PeekMap () == "Map" + index) {
+							EventController.Event("amb_nature_01");
+						}
+					}
+
                 }
             }
         }
