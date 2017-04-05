@@ -166,8 +166,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1891317418}
   m_HandleRect: {fileID: 1891317417}
   m_Direction: 2
-  m_Value: 0.66214913
-  m_Size: 0.3113431
+  m_Value: 0.50940615
+  m_Size: 0.31134307
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 61235164}
   m_Layer: 5
   m_Name: NextButton
-  m_TagString: Untagged
+  m_TagString: ForwardButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 317109470}
   m_Layer: 5
   m_Name: Back Button
-  m_TagString: Untagged
+  m_TagString: BackButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -963,7 +963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.093879454, y: 191.67969}
+  m_AnchoredPosition: {x: 0.093879454, y: 278.33844}
   m_SizeDelta: {x: 0, y: 823.85}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &601341175
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 1049928466}
   m_Layer: 5
   m_Name: PrevButton
-  m_TagString: Untagged
+  m_TagString: BackButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

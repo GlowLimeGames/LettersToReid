@@ -362,6 +362,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1888352666342504, guid: c11cefd19cffa4300a6ec41df10ceafb, type: 2}
+      propertyPath: m_TagString
+      value: BackButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c11cefd19cffa4300a6ec41df10ceafb, type: 2}
   m_IsPrefabParent: 0

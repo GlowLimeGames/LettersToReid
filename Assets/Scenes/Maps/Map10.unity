@@ -362,6 +362,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1888352666342504, guid: c11cefd19cffa4300a6ec41df10ceafb, type: 2}
+      propertyPath: m_TagString
+      value: BackButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c11cefd19cffa4300a6ec41df10ceafb, type: 2}
   m_IsPrefabParent: 0
@@ -501,6 +505,21 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_FontSize
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.8452273
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0410080eb221541a5a5b8e83d5fccab4, type: 2}

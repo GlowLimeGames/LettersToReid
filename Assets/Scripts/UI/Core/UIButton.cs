@@ -90,7 +90,11 @@ public class UIButton : UIElement
 		if(clickAction != null) 
 		{
 			clickAction();
-
+			if (this.tag == "BackButton") {
+				EventController.Event("ui_click_back");
+			} else {
+				EventController.Event("ui_click_forward");
+			}
 		}
 	}
 
