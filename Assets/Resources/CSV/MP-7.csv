@@ -2,12 +2,12 @@ C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C
 W,TPTL,,,,,,,,,,,,,,,W,W,W,W,W,W,W,W,W,W
 W,MPTL,,,,,,,,,,,,,,,W,W,W,W,W,W,W,W,W,W
 W,MPTL,,,,,,,,,,,,,,,W,W,W,W,W,W,W,W,W,W
-W,BPTL:PT21|PT22,,,,,,,,,,,,,,,W,W,W,W,W,W,W,W,W,W
+W,BPTL:PT21|PT22,PL,,,,,,,,,,,,M:35,,W,W,W,W,W,W,W,W,W,W
 W,P1,P2,P3,NTL,P2,P1,P3,P1,P2,P3,P3,W,W,W,W,W,W,W,W,W,P2,P3,P1,P3,W
 W,,,,NML,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,W
 W,,,,NML,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,W
 W,,,,NML,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,W
-W,,,,NBL,,,,PL,,,,W,W,W,W,W,W,W,W,W,,,,M:15,W
+W,,,,NBL,,,,,,,,W,W,W,W,W,W,W,W,W,,,,M:32,W
 W,P1,P2,P3,P1,P2,P3,P1,P3,NTL,P1,P2,P3,W,W,W,W,P1,P2,P1,P2,P1,P2,NTL,P1,W
 W,,,,,,,,,NML,,,,W,W,W,W,,,,,,,NML,,W
 W,,,,,,,,,NML,,,,W,W,W,W,,,,,,,NML,,W
@@ -17,7 +17,7 @@ W,P2,P3,P1,NTL,W,W,W,W,W,W,W,NTL,P2,P1,P3,P1,NTL,W,W,NTL,P2,P3,P1,P2,W
 W,,,,NML,W,W,W,W,W,W,W,NML,,TPTL,,,NML,W,W,NML,,,,,W
 W,,,,NML,W,W,W,W,W,W,W,NML,,MPTL,,,NML,W,W,NML,,,,,W
 W,,,,NML,W,W,W,W,W,W,W,NML,,MPTL,,,NML,W,W,NML,,,,,W
-W,,M:14,,NBL,W,W,W,W,W,W,W,NBL,,BPTL:PT19|PT20,,,NBL,W,W,NBL,,,,,W
+W,,M:34,,NBL,W,W,W,W,W,W,W,NBL,,BPTL:PT19|PT20,,M:33,NBL,W,W,NBL,,,,,W
 W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,P1,P3,P1,NTL,P3,W
 W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,,,,NML,,W
 W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,,,,NML,,W
@@ -27,5 +27,5 @@ W,W,W,W,W,W,W,W,W,W,W,W,P2,P3,P2,P1,P2,P3,P2,P3,P2,NTL,P2,P2,P1,W
 W,W,W,W,W,W,W,W,W,W,W,W,TPTL,,,,,,,,,NML,,,,W
 W,W,W,W,W,W,W,W,W,W,W,W,MPTL,,,,,,,,,NML,,,,W
 W,W,W,W,W,W,W,W,W,W,W,W,MPTL,,,,,,,,,NML,,,,W
-W,W,W,W,W,W,W,W,W,W,W,W,BPTL:PT16|PT15,,,,,,,,,NBL,,,,W
+W,W,W,W,W,W,W,W,W,W,W,W,BPTL:PT16|PT15,,M:31,,,,,,,NBL,,,,W
 G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,NTL+MP:3,G,G,G,G,G,G,G,G,G,G

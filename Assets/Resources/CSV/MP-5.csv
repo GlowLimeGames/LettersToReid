@@ -2,7 +2,7 @@ C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C,C
 W,,,,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,,W
 W,,,,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,,W
 W,,,,,,,,,,,W,W,W,W,W,W,W,W,W,,,,,,W
-W,,,,,,,,,,,W,W,W,W,W,W,W,W,W,M:10,,,,,W
+W,PL,,,,M:25,,,,,,W,W,W,W,W,W,W,W,W,M:24,,,,,W
 W,P1,P3,P1,P2,P3,P1,P2,P3,P1,OTL,P3,P3,P2,P1,P2,P3,P1,P2,P1,P3,P2,OTL,P2,P1,W
 W,,,,,,,,TPTL,,OML,,,,,,,,,,,,OML,,,W
 W,,,,,,,,MPTL,,OML,,,,,,,,,,,,OML,,,W
@@ -17,15 +17,15 @@ W,,,,,OTL,W,W,W,W,P1,P2,P1,P2,OTL,P1,P2,P3,P1,W,W,OTL,,,,W
 W,,,,,OML,W,W,W,W,,,,,OML,,,,,W,W,OML,,,,W
 W,,,,,OML,W,W,W,W,,,,,OML,,,,,W,W,OML,,,,W
 W,,,,,OML,W,W,W,W,,,,,OML,,,,,W,W,OML,,,,W
-W,,,,,OBL,W,W,W,W,,,,,OBL,,,,,W,W,OBL,,,,W
+W,,,,,OBL,W,W,W,W,,,,,OBL,,,M:22,,W,W,OBL,,,,W
 W,,,OTL,W,W,P2,P3,P1,P2,OTL,P3,P2,P3,P1,P2,P3,P1,P2,W,W,W,W,OTL,,W
 W,,,OML,W,W,,,,,OML,,,,,,,,,W,W,W,W,OML,,W
 W,,,OML,W,W,,,,,OML,,,,,,,,,W,W,W,W,OML,,W
 W,,,OML,W,W,,,,,OML,,,,,,,,,W,W,W,W,OML,,W
-W,M:9,,OBL,W,W,,,,,OBL,,,,PL,,,,,W,W,W,W,OBL,,W
+W,M:23,,OBL,W,W,,,,,OBL,,,,,,,,,W,W,W,W,OBL,,W
 W,W,W,W,P1,P3,P1,P2,P2,P1,P3,P2,P1,P2,P3,OTL,P2,P3,P1,P3,P2,P1,W,W,W,W
 W,W,W,W,,TPTL,,,,,,,,,,OML,,,,,,,W,W,W,W
 W,W,W,W,,MPTL,,,,,,,,,,OML,,,,,,,W,W,W,W
 W,W,W,W,,MPTL,,,,,,,,,,OML,,,,,,,W,W,W,W
-W,W,W,W,,BPTL:PT10|PT9,,,,,,,,,,OBL,,,,,,,W,W,W,W
+W,W,W,W,,BPTL:PT10|PT9,,M:21,,,,,,,,OBL,,,,,,,W,W,W,W
 G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G,G
