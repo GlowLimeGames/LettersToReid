@@ -15,10 +15,10 @@ public sealed class MemoryBrowser : MonoBehaviour
 
     public void Start() {
         parse = GetComponent<MemoriesParser>();
-        text = GetComponent<Text>();
         memoryNumber = PlayerPrefs.GetInt("memory number");
-
+        text = GetComponent<Text>();
         updateScreen();
+        
     }
 
     public void goNext() {
@@ -41,9 +41,18 @@ public sealed class MemoryBrowser : MonoBehaviour
     }
 
     private void updateScreen() {
-        text.text = parse.getMemory(memoryNumber);
-        memoryCounter.text = memoryNumber.ToString();
-        if(memoriesFound)
+        if (MemoryController.Instance.MemoryDiscovered(memoryNumber))
+        {
+            text.text = parse.getMemory(memoryNumber);
+            memoryCounter.text = memoryNumber.ToString();
+        }
+        else
+        {
+            memoryCounter.text = memoryNumber.ToString();
+            text.text = "";
+        }
+
+        if (memoriesFound)
         {
             memoriesFound.text = "Memories Found: " + memoryNumber.ToString() + "/" + parse.getLength();
         }
