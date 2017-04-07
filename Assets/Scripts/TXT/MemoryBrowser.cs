@@ -49,7 +49,7 @@ public sealed class MemoryBrowser : MonoBehaviour
         else
         {
             memoryCounter.text = memoryNumber.ToString();
-            text.text = "";
+            text.text = "Locked";
         }
 
         if (memoriesFound)
