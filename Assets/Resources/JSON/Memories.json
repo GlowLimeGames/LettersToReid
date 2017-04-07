@@ -2,7 +2,7 @@
   "Memories" : [
     {
       "id" : 1,
-      "Body" : "Did someone tell me you died? I don’t know if I was told or if I just assumed. Why else would I have been brought to the hospital in the early hours of the morning? I wish I could remember. Maybe if I remembered someone saying it, I would be able to believe it.\n"
+      "Body" : "\tDid someone tell me you died? I don’t know if I was told or if I just assumed. Why else would I have been brought to the hospital in the early hours of the morning? I wish I could remember. Maybe if I remembered someone saying it, I would be able to believe it.\n"
     },
     {
       "id" : 2,
@@ -18,7 +18,7 @@
     },
     {
       "id" : 5,
-      "Body" : "        It seemed like such a normal evening. There were no signs that something bad was going to happen. You always think in movies that looking back, they should have known something bad was going to happen. I’m trying to find that clue I missed, the one thing which would have prevented this.\n        Even when Mom came home and said you’d been in a car accident, I didn’t take it seriously. My gut told me that you were going to be fine."
+      "Body" : "\tIt seemed like such a normal evening. There were no signs that something bad was going to happen. You always think in movies that looking back, they should have known something bad was going to happen. I’m trying to find that clue I missed, the one thing which would have prevented this.\n        Even when Mom came home and said you’d been in a car accident, I didn’t take it seriously. My gut told me that you were going to be fine."
     },
     {
       "id" : 6,
@@ -182,7 +182,7 @@
     },
     {
       "id" : 46,
-      "Body" : "I’m really lucky that I took some community college classes before going back to college full time . I have enough credits that I’m able to only take three classes a semester. I’ve found that four classes is too much for me to handle. I tried, but my work suffered. With my insomnia, I’m not able to be as productive as I would like to be. It’s hard to not be frustrated with myself, but I need to remember to respect my limitations. It’s hard to remember that they’re not a sign of weakness."
+      "Body" : "\tI’m really lucky that I took some community college classes before going back to college full time . I have enough credits that I’m able to only take three classes a semester. I’ve found that four classes is too much for me to handle. I tried, but my work suffered. With my insomnia, I’m not able to be as productive as I would like to be. It’s hard to not be frustrated with myself, but I need to remember to respect my limitations. It’s hard to remember that they’re not a sign of weakness."
     },
     {
       "id" : 47,
