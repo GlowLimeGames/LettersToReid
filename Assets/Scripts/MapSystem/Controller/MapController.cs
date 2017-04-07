@@ -12,6 +12,8 @@ using UnityEngine;
     
 public class MapController : MController 
 {
+	public static MapController Instance;
+
     [SerializeField]
     string startingMapName;
 
@@ -33,6 +35,7 @@ public class MapController : MController
     {
         base.Awake();
         this.portals = GetComponent<PortalController>();
+		Instance = this;
     }
 
     void Start() 

@@ -72,6 +72,18 @@ public class PortalController : MController
             string mapId = portal.Descriptor.DelegateValueAt(0).ToString();
             string sceneName = k.GetMapSceneName(mapId);
             SceneManager.LoadScene(sceneName);
+			for (int index = 1; index < 8; index++) {
+
+				if (sceneName == "Map" + index) {
+					EventController.Event("amb_beginnning_01");
+				}
+			}
+			for (int index = 8; index < 10; index++) {
+
+				if (sceneName == "Map" + index) {
+					EventController.Event("amb_nature_01");
+				}
+			}
         }
         catch
         {
