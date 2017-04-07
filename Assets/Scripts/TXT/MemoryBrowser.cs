@@ -13,6 +13,9 @@ public sealed class MemoryBrowser : MonoBehaviour
     public Text memoriesFound;
     public int memoryNumber;
 
+    [SerializeField]
+    Scrollbar scroll;
+
     public void Start() {
         parse = GetComponent<MemoriesParser>();
         memoryNumber = PlayerPrefs.GetInt("memory number");
@@ -41,6 +44,7 @@ public sealed class MemoryBrowser : MonoBehaviour
     }
 
     private void updateScreen() {
+        scroll.value = 1f;
         if (MemoryController.Instance.MemoryDiscovered(memoryNumber))
         {
             text.text = parse.getMemory(memoryNumber);
