@@ -18,13 +18,18 @@ public class PortalController : MController
     // TODO: Solve the portal loop (two portals that are gatways to each other)
     public void HandlePortalEnter(MapObjectBehaviour target, MapObjectBehaviour portal)
     {
+        if(travel.InTransit)
+        {
+            return;
+        }
+
         if(isMapTravel(portal))
         {
             handleMapTravel(target, portal);
         }
         else
         {
-            handleSameMapPortalTravel(target, portal);
+            handlePortalTravel(target, portal);
         }
     }
 
@@ -59,11 +64,30 @@ public class PortalController : MController
         }
         else
         {
-            Debug.LogErrorFormat("Destination with id {0} was not found", destinationId);
-            return null;
+            string map = travel.GetMapFromPortal(destinationId);
+            if(string.IsNullOrEmpty(map))
+            {
+                Debug.LogErrorFormat("Destination with id {0} was not found", destinationId);
+                return null;
+            }
+            else
+            {
+                travel.BeginTravel(getDelegateStr(gateway, tuning.IdDelegate), destinationId);
+                SceneManager.LoadScene(map);
+                return null;
+            }
         }
     }
 
+    public void SendToPortal(string portalId, Transform target)
+    {
+        MapObjectBehaviour portal;
+        if(tryGetPortal(portalId, out portal))
+        {
+            target.position = portal.Position;
+        }
+    }
+        
     // Between entirely different maps:
     void handleMapTravel(MapObjectBehaviour target, MapObjectBehaviour portal)
     {
@@ -71,6 +95,7 @@ public class PortalController : MController
         {
             string mapId = portal.Descriptor.DelegateValueAt(0).ToString();
             string sceneName = k.GetMapSceneName(mapId);
+            travel.BeginTravel(SceneManager.GetActiveScene().name, sceneName);
             SceneManager.LoadScene(sceneName);
 			for (int index = 1; index < 8; index++) {
 
@@ -92,16 +117,19 @@ public class PortalController : MController
     }
 
     // Between two portals on the same map:
-    void handleSameMapPortalTravel(MapObjectBehaviour target, MapObjectBehaviour portal)
+    void handlePortalTravel(MapObjectBehaviour target, MapObjectBehaviour portal)
     {
         if(hasDestination(portal))
         {
             MapObjectBehaviour destination = GetDestination(portal);
-            Transform targetTrans = target.transform;
-            float preserveZPos = targetTrans.position.z;
-            Vector3 destPos = destination.transform.position;
-            destPos.z = preserveZPos;
-            targetTrans.position = destPos;
+            if(destination)
+            {
+                Transform targetTrans = target.transform;
+                float preserveZPos = targetTrans.position.z;
+                Vector3 destPos = destination.transform.position;
+                destPos.z = preserveZPos;
+                targetTrans.position = destPos;
+            }
         }
     }
 

@@ -141,6 +141,8 @@
       "key" : "BPTL",
       "name" : "Bottom of Portal",
       "delegates" : [
+        "id",
+        "destination"
       ],
       "isSolid" : false,
       "isClimbable" : false,

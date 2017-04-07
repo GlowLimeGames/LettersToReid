@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2424bb584121d340b360b70e2410435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedMemory: {fileID: 21300000, guid: 4f9cf8eb2181d4876b9a6447443100ad, type: 3}
-  openMemory: {fileID: 21300000, guid: ba61336f33f3241b9baddd429b351fba, type: 3}
+  closedMemory: {fileID: 21300000, guid: cf4d9e2a8d3ab4c69b3c0d24edab83b7, type: 3}
+  openMemory: {fileID: 21300000, guid: e492b958f3ef5416e8d9778c29ddd4c0, type: 3}
 --- !u!212 &212683342111858138
 SpriteRenderer:
   m_ObjectHideFlags: 1

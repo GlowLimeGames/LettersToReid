@@ -13,6 +13,12 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
+    [SerializeField]
+    KeyCode enterDoorway = KeyCode.W;
+    KeyCode enterDoorwayAlt = KeyCode.UpArrow;
+
+    int collisionCount;
+
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
 	int climbDelay = 5;
@@ -76,9 +82,12 @@ public class PlayerController : MController
 	PlayerState currentState = PlayerState.Idle;
     LTRTuning gameTuning;
 
+    MapObjectBehaviour collidingPortal;
+
     public void Setup(MapController map)
     {
         this.map = map;
+        map.SetActivePlayer(this);
     }
 
 	// Use this for initialization
@@ -93,8 +102,9 @@ public class PlayerController : MController
         gameTuning = LTRTuning.Get;
 	}
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         tuning = MapTuning.Get;
         rigibody.gravityScale = tuning.PlayerGravityScale;
         rigibody.drag = tuning.PlayerGravityScale;
@@ -109,44 +119,45 @@ public class PlayerController : MController
     {
         rigibody.gravityScale = isClimbing ? 0 : gravityScale;
         rigibody.AddForce(getMoveVector());
-		rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
-
-		if(currentState == PlayerState.Climb)
-		{
-			if (climbTimer >= climbDelay) 
-			{
-				
-				EventController.Event ("play_ladder_climb");
-				
-				climbTimer = 0;
-
-			}
-		}
-		else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
-		{
-			if (walkTimer >= walkDelay) 
-			{
-				
-				EventController.Event ("play_footsteps"); 
-
-				walkTimer = 0;
-			}
-		}
-
-        // Clamps velocity to max player speed:
-        
-
-
         if(movementKeyPressed())
         {
             // Clamps velocity to max player speed:
             rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
         }
-        else
+        else if(collisionCount > 0)
         {
             rigibody.velocity = Vector2.zero;
         }
 
+        if((Input.GetKeyDown(enterDoorway) || Input.GetKeyDown(enterDoorwayAlt)) && collidingPortal)
+        {
+            travel.CompleteTravel();
+            map.HandlePortalEnter(player, collidingPortal);
+        }
+
+        if(currentState == PlayerState.Climb)
+        {
+            if (climbTimer >= climbDelay) 
+            {
+
+                EventController.Event ("play_ladder_climb");
+
+                climbTimer = 0;
+
+            }
+        }
+        else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
+        {
+            if (walkTimer >= walkDelay) 
+            {
+
+                EventController.Event ("play_footsteps"); 
+
+                walkTimer = 0;
+            }
+        }
+
+        // Clamps velocity to max player speed:
     }
         
     bool movementKeyPressed()
@@ -154,11 +165,16 @@ public class PlayerController : MController
         return Input.GetKey(KeyCode.A) ||
                 Input.GetKey(KeyCode.D) ||
                 Input.GetKey(KeyCode.W) ||
-                Input.GetKey(KeyCode.S);
+                Input.GetKey(KeyCode.S) ||
+                Input.GetKey(KeyCode.UpArrow) ||
+                Input.GetKey(KeyCode.LeftArrow) ||
+                Input.GetKey(KeyCode.RightArrow) ||
+                Input.GetKey(KeyCode.DownArrow);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        collisionCount++;
         MapObjectBehaviour obj;
         if(checkForMapObjCollideEvent(collider, out obj))
         {
@@ -175,12 +191,18 @@ public class PlayerController : MController
 
     void OnTriggerExit2D(Collider2D collider)
     {
+        collisionCount--;
         MapObjectBehaviour obj;
         if(checkForMapObjCollideEvent(collider, out obj))
         {
             if(obj is MapTileBehaviour)
             {
                 handleExitCollideWithTile(obj as MapTileBehaviour);
+            }
+            if(obj.Descriptor.IsPortal)
+            {
+                travel.CompleteTravel();
+                handlePortalExit(obj);
             }
         }
     }
@@ -238,7 +260,22 @@ public class PlayerController : MController
         
     void handlePortalCollider(MapObjectBehaviour obj)
     {
-        map.HandlePortalEnter(player, obj);
+        if(obj.name.Contains(MapGlobal.MAP_KEY))
+        {
+            map.HandlePortalEnter(player, obj);
+        }
+        else
+        {
+            collidingPortal = obj;
+        }
+    }
+
+    void handlePortalExit(MapObjectBehaviour obj)
+    {
+        if(collidingPortal == obj)
+        {
+            collidingPortal = null;
+        }
     }
 
     Vector2 getMoveVector()

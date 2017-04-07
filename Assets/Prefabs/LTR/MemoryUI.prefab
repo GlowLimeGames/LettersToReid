@@ -589,7 +589,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224424782993789344}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.15477271
+  m_Size: 0.15477273
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -871,6 +871,6 @@ CanvasGroup:
   m_GameObject: {fileID: 1271415244309928}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

@@ -8,11 +8,17 @@ using UnityEngine;
 
 public abstract class MController : MonoBehaviour 
 {
+    protected TravelController travel;
     protected MapTuning tuning;
 
     protected virtual void Awake()
     {
         tuning = MapTuning.Get;
+    }
+
+    protected virtual void Start()
+    {
+        travel = TravelController.Instance;
     }
 
     protected object getDelegate(MapObjectBehaviour obj, string delegateId)
