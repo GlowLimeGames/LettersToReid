@@ -206,6 +206,7 @@ public class PlayerController : MController
     void handlePortalCollider(MapObjectBehaviour obj)
     {
         map.HandlePortalEnter(player, obj);
+		EventController.Event ("sx_wooden_door_open_01");
     }
 
     Vector2 getMoveVector()
