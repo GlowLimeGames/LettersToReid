@@ -260,7 +260,7 @@ public class PlayerController : MController
         
     void handlePortalCollider(MapObjectBehaviour obj)
     {
-<<<<<<< HEAD
+
         if(obj.name.Contains(MapGlobal.MAP_KEY))
         {
             map.HandlePortalEnter(player, obj);
@@ -277,10 +277,11 @@ public class PlayerController : MController
         {
             collidingPortal = null;
         }
-=======
+
         map.HandlePortalEnter(player, obj);
 		EventController.Event ("sx_wooden_door_open_01");
->>>>>>> master
+
+
     }
 
     Vector2 getMoveVector()

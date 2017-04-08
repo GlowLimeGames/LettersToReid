@@ -5,6 +5,7 @@
       "groups" : [
       ],
       "events" : [
+        "ui_click_forward"
       ],
       "stopEvents" : [
       ],
@@ -19,6 +20,7 @@
       "groups" : [
       ],
       "events" : [
+        "ui_click_back"
       ],
       "stopEvents" : [
       ],
@@ -33,6 +35,7 @@
       "groups" : [
       ],
       "events" : [
+        "ui_hover"
       ],
       "stopEvents" : [
       ],
@@ -47,7 +50,7 @@
       "groups" : [
       ],
       "events" : [
-        "play_mainmenu"
+        "play_music_menu_main theme"
       ],
       "stopEvents" : [
         "stop_mainmenu"
@@ -63,7 +66,7 @@
       "groups" : [
       ],
       "events" : [
-        "play_beginningamb"
+        "amb_beginning_01"
       ],
       "stopEvents" : [
         "stop_beginningamb"
@@ -79,6 +82,7 @@
       "groups" : [
       ],
       "events" : [
+        "sx_wooden_door_open_01"
       ],
       "stopEvents" : [
       ],
@@ -93,7 +97,7 @@
       "groups" : [
       ],
       "events" : [
-        "play_endingamb"
+        "amb_wooden_door_open_01"
       ],
       "stopEvents" : [
         "stop_endingamb"
@@ -109,6 +113,7 @@
       "groups" : [
       ],
       "events" : [
+        "sx_letter_open"
       ],
       "stopEvents" : [
       ],
@@ -123,6 +128,7 @@
       "groups" : [
       ],
       "events" : [
+        "sx_letter_close"
       ],
       "stopEvents" : [
       ],
@@ -138,6 +144,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_01"
       ],
       "stopEvents" : [
       ],
@@ -153,6 +160,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_02"
       ],
       "stopEvents" : [
       ],
@@ -168,6 +176,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_03"
       ],
       "stopEvents" : [
       ],
@@ -183,6 +192,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_04"
       ],
       "stopEvents" : [
       ],
@@ -198,6 +208,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_05"
       ],
       "stopEvents" : [
       ],
@@ -213,6 +224,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_06"
       ],
       "stopEvents" : [
       ],
@@ -228,6 +240,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_07"
       ],
       "stopEvents" : [
       ],
@@ -243,6 +256,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_08"
       ],
       "stopEvents" : [
       ],
@@ -258,6 +272,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_09"
       ],
       "stopEvents" : [
       ],
@@ -273,6 +288,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_10"
       ],
       "stopEvents" : [
       ],
@@ -288,6 +304,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_11"
       ],
       "stopEvents" : [
       ],
@@ -303,6 +320,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_12"
       ],
       "stopEvents" : [
       ],
@@ -318,6 +336,7 @@
         "ladder_climb"
       ],
       "events" : [
+        "sx_ladder_climb_13"
       ],
       "stopEvents" : [
       ],
@@ -333,6 +352,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_01"
       ],
       "stopEvents" : [
       ],
@@ -348,6 +368,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_02"
       ],
       "stopEvents" : [
       ],
@@ -363,6 +384,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_03"
       ],
       "stopEvents" : [
       ],
@@ -378,6 +400,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_04"
       ],
       "stopEvents" : [
       ],
@@ -393,6 +416,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_05"
       ],
       "stopEvents" : [
       ],
@@ -408,6 +432,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_06"
       ],
       "stopEvents" : [
       ],
@@ -423,6 +448,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_07"
       ],
       "stopEvents" : [
       ],
@@ -438,6 +464,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_08"
       ],
       "stopEvents" : [
       ],
@@ -453,6 +480,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_09"
       ],
       "stopEvents" : [
       ],
@@ -468,6 +496,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_10"
       ],
       "stopEvents" : [
       ],
@@ -483,6 +512,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_11"
       ],
       "stopEvents" : [
       ],
@@ -498,6 +528,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_12"
       ],
       "stopEvents" : [
       ],
@@ -513,6 +544,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_13"
       ],
       "stopEvents" : [
       ],
@@ -528,6 +560,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_14"
       ],
       "stopEvents" : [
       ],
@@ -543,6 +576,7 @@
         "footsteps"
       ],
       "events" : [
+        "sx_player_footsteps_15"
       ],
       "stopEvents" : [
       ],
@@ -557,7 +591,7 @@
       "groups" : [
       ],
       "events" : [
-        "stop_gamplay"
+        "play_transition_gameplayto_mainmenu"
       ],
       "stopEvents" : [
       ],
@@ -572,7 +606,7 @@
       "groups" : [
       ],
       "events" : [
-        "stop_mainmenu"
+        "play_transition_gameplayto_mainmenu"
       ],
       "stopEvents" : [
       ],
