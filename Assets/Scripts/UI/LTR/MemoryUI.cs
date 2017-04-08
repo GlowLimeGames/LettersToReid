@@ -10,6 +10,14 @@ using UnityEngine.EventSystems;
 
 public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 {
+    public bool IsOpen
+    {
+        get
+        {
+            return this.isOpen;
+        }
+    }
+
     MemoryController memories;
 
     [SerializeField]
@@ -28,6 +36,7 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     string memoriesCollectedFormat = "{0}/{1} Memories";
 
     bool mouseInCanvas;
+    bool isOpen;
 
     public void DisplayMemory(Memory mem)
     {
@@ -42,11 +51,13 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
             toggleCanvasGroup(memoryDisplayCanvas, true);
             scroll.verticalNormalizedPosition = 1;
         }
+        isOpen = true;
     }
         
     public override void Hide()
     {
         toggleCanvasGroup(memoryDisplayCanvas, false);
+        isOpen = false;
     }
 
     void Update()

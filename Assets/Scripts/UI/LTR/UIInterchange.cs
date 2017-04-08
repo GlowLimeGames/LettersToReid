@@ -38,6 +38,23 @@ public class UIInterchange : SingletonController<UIInterchange>
         }
     }
 
+    public void ToggleMemoryDisplay(Memory mem)
+    {
+        LTRUITemplate ui;
+        if(getInterface(typeof(MemoryUI), out ui))
+        {
+            MemoryUI memoryUI = ui as MemoryUI;
+            if(memoryUI.IsOpen)
+            {
+                memoryUI.Hide();
+            }
+            else
+            {
+                memoryUI.DisplayMemory(mem);
+            }
+        }
+    }
+
     bool getInterface(Type type, out LTRUITemplate ui)
     {
         return interfaces.TryGetValue(type, out ui);
