@@ -21,6 +21,10 @@ public class PlayerController : MController
 
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
+	int climbDelay = 5;
+	public float climbTimer = 0;
+	int walkDelay = 5;
+	public float walkTimer = 0;
 
     float speed
     {
@@ -124,11 +128,36 @@ public class PlayerController : MController
         {
             rigibody.velocity = Vector2.zero;
         }
+
         if((Input.GetKeyDown(enterDoorway) || Input.GetKeyDown(enterDoorwayAlt)) && collidingPortal)
         {
             travel.CompleteTravel();
             map.HandlePortalEnter(player, collidingPortal);
         }
+
+        if(currentState == PlayerState.Climb)
+        {
+            if (climbTimer >= climbDelay) 
+            {
+
+                EventController.Event ("play_ladder_climb");
+
+                climbTimer = 0;
+
+            }
+        }
+        else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
+        {
+            if (walkTimer >= walkDelay) 
+            {
+
+                EventController.Event ("play_footsteps"); 
+
+                walkTimer = 0;
+            }
+        }
+
+        // Clamps velocity to max player speed:
     }
         
     bool movementKeyPressed()
@@ -236,6 +265,7 @@ public class PlayerController : MController
         
     void handlePortalCollider(MapObjectBehaviour obj)
     {
+
         if(obj.name.Contains(MapGlobal.MAP_KEY))
         {
             map.HandlePortalEnter(player, obj);
@@ -252,6 +282,11 @@ public class PlayerController : MController
         {
             collidingPortal = null;
         }
+
+        map.HandlePortalEnter(player, obj);
+		EventController.Event ("sx_wooden_door_open_01");
+
+
     }
 
     Vector2 getMoveVector()

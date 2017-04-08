@@ -1291,6 +1291,7 @@ GameObject:
   - component: {fileID: 1327924335}
   - component: {fileID: 1327924334}
   - component: {fileID: 1327924338}
+  - component: {fileID: 1327924339}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1387,6 +1388,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSelectionScreenName: MapSelection
+--- !u!114 &1327924339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1327924333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c3de6c187145098cd46fbb9923e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1398755125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1410,7 @@ GameObject:
   - component: {fileID: 1398755129}
   - component: {fileID: 1398755128}
   - component: {fileID: 1398755127}
+  - component: {fileID: 1398755130}
   m_Layer: 5
   m_Name: Resume Game
   m_TagString: Untagged
@@ -1509,6 +1522,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1398755125}
+--- !u!114 &1398755130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398755125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b54f762609fe48cba586ac4228edb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alternateSprites: []
 --- !u!1 &1564418376
 GameObject:
   m_ObjectHideFlags: 0

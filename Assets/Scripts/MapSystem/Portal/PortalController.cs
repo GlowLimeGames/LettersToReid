@@ -97,6 +97,18 @@ public class PortalController : MController
             string sceneName = k.GetMapSceneName(mapId);
             travel.BeginTravel(SceneManager.GetActiveScene().name, sceneName);
             SceneManager.LoadScene(sceneName);
+			for (int index = 1; index < 8; index++) {
+
+				if (sceneName == "Map" + index) {
+					EventController.Event("amb_beginnning_01");
+				}
+			}
+			for (int index = 8; index < 10; index++) {
+
+				if (sceneName == "Map" + index) {
+					EventController.Event("amb_nature_01");
+				}
+			}
         }
         catch
         {

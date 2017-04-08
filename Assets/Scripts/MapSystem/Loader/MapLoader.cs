@@ -53,6 +53,8 @@ public class MapLoader : Loader
                             safetyNet.transform.SetParent(parent);
                         }
                     }
+
+
                 }
             }
         }
