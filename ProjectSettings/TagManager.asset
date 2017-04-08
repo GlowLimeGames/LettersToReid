@@ -10,6 +10,8 @@ TagManager:
   - wallLadder
   - wall
   - enemy
+  - BackButton
+  - ForwardButton
   layers:
   - Default
   - TransparentFX
