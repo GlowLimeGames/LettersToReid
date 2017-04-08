@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
+public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 {
     MemoryController memories;
 
@@ -27,7 +27,7 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
     [SerializeField]
     string memoriesCollectedFormat = "{0}/{1} Memories";
 
-    bool mouseIsDown;
+    bool mouseInCanvas;
 
     public void DisplayMemory(Memory mem)
     {
@@ -51,20 +51,20 @@ public class MemoryUI : LTRUITemplate, IPointerDownHandler, IPointerUpHandler
 
     void Update()
     {
-        if(isVisible && !mouseIsDown && Input.GetMouseButtonDown(0))
+        if(isVisible && !mouseInCanvas && Input.GetMouseButtonDown(0))
         {
             Hide();
         }
     }
 
-    public void OnPointerDown(PointerEventData pData)
+    public void OnPointerEnter(PointerEventData pData)
     {
-        this.mouseIsDown = true;
+        mouseInCanvas = true;   
     }
 
-    public void OnPointerUp(PointerEventData pData)
+    public void OnPointerExit(PointerEventData pData)
     {
-        this.mouseIsDown = false;
+        mouseInCanvas = false;
     }
 
     #region MonoBehaviourExtended Overrides

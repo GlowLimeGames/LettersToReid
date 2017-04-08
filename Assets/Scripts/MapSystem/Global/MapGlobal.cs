@@ -15,6 +15,7 @@ public class MapGlobal : Global
 	public const string DEFAULT_BACKGROUND = "Background";
     public const string MAP_KEY = "MP";
     public const string MEMORY_KEY = "M";
+    public const string PORTAL_SAFETY_NET = "PortalSafetyNet";
 
     const string MAP_SCENE_NAME_FORMAT = "Map{0}";
 

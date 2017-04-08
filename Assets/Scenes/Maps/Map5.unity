@@ -91,22 +91,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &140910611 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1381176711715622, guid: 90b451e59b3c74e6fad0dafa7a151d21,
-    type: 2}
-  m_PrefabInternal: {fileID: 1401742262}
---- !u!114 &140910612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 140910611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6173837cdf86340d694b875bea6d1eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &380161202
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +480,21 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.x
       value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.84522724
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224424782993789344, guid: 0410080eb221541a5a5b8e83d5fccab4,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0410080eb221541a5a5b8e83d5fccab4, type: 2}

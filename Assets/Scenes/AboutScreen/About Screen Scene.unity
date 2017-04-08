@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 358493018}
   - component: {fileID: 358493017}
   - component: {fileID: 358493016}
+  - component: {fileID: 358493019}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -378,6 +379,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 358493014}
+--- !u!114 &358493019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358493014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734bd690e96494a509a94c7f24b78cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: TitleScreen
 --- !u!1 &444188167
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +605,7 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Isaiah Mann\t\nLead Engineer\r\n\nXuzhen Xiang\t\nEngineer\r\n\nMaia Doerner\t\nEngineer\r\n\nAnisha
     Pai \t\nEngineer\r\n\nShuyang Wang \t\nEngineer\r\n\nJeff Abt\t\nEngineer"
@@ -665,7 +678,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '<size=80>About </size>
 
-    Version 0.05
+    Version 0.0.6
 
 
 '
@@ -880,7 +893,7 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Bryan Prieto\t\nLead Artist\r\n\n\rWolfie Smith\t\n2D Artist\r\n\nHyeonseok
     Cho\t\n2D Artist\r\n\nMatthew Waters\t\n3D Artist\r\n\nZoe Haziett \t\n2D Artist\r\r"
@@ -1118,7 +1131,7 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Chandra Hughes\t\nProducer\r\n\nMartha Hollister\t\nCreative Director\r\n\nAidan
     Alice West\t\nDesigner\r\n\nRachel Hartanto\t\nLead Audio\n\nLisa Utzig\t\nAudio\r\n\nJeff

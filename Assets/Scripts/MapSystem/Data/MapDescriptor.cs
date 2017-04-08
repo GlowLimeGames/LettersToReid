@@ -64,4 +64,9 @@ public class MapDescriptor
 		this.backgroundSprite = DEFAULT_BACKGROUND;
 	}
 
+    public bool EdgeOfMap(int x, int y)
+    {
+        return x == 0 || y == 0 || x == _map.GetLength(0) - 1 || y == _map.GetLength(1)- 1;
+    }
+
 }

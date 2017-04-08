@@ -10,15 +10,17 @@ public sealed class MemoryBrowser : MonoBehaviour
     System.Random IDgen = new System.Random();
     Text text;
     public Text memoryCounter;
-    public Text memoriesFound;
     public int memoryNumber;
+
+    [SerializeField]
+    Scrollbar scroll;
 
     public void Start() {
         parse = GetComponent<MemoriesParser>();
-        text = GetComponent<Text>();
         memoryNumber = PlayerPrefs.GetInt("memory number");
-
+        text = GetComponent<Text>();
         updateScreen();
+        
     }
 
     public void goNext() {
@@ -41,8 +43,16 @@ public sealed class MemoryBrowser : MonoBehaviour
     }
 
     private void updateScreen() {
-        text.text = parse.getMemory(memoryNumber);
-        memoryCounter.text = memoryNumber.ToString();
-        memoriesFound.text = "Memories Found: " + memoryNumber.ToString() + "/" + parse.getLength();
+        scroll.value = 1f;
+        if (MemoryController.Instance.MemoryDiscovered(memoryNumber))
+        {
+            text.text = parse.getMemory(memoryNumber);
+            memoryCounter.text = memoryNumber.ToString();
+        }
+        else
+        {
+            memoryCounter.text = memoryNumber.ToString();
+            text.text = "Locked";
+        }
     }
 }

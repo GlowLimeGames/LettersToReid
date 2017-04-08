@@ -8,6 +8,14 @@ using UnityEngine;
 
 public abstract class MapObjectBehaviour : MonoBehaviour
 {
+    public Vector3 Position
+    {
+        get
+        {
+            return transform.position;
+        }
+    }
+
     public MapData Descriptor
     {
         get
