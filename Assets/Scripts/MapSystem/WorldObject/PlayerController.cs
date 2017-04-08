@@ -143,7 +143,12 @@ public class PlayerController : MController
                 Input.GetKey(KeyCode.DownArrow);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    public void CompleteTravel()
+    {
+        travel.CompleteTravel();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         collisionCount++;
         MapObjectBehaviour obj;
