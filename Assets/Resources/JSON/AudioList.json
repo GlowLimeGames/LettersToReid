@@ -97,7 +97,7 @@
       "groups" : [
       ],
       "events" : [
-        "amb_wooden_door_open_01"
+        "amb_nature_01"
       ],
       "stopEvents" : [
         "stop_endingamb"
@@ -606,7 +606,7 @@
       "groups" : [
       ],
       "events" : [
-        "play_transition_gameplayto_mainmenu"
+        "play_transition_mainmenuto_gameplay"
       ],
       "stopEvents" : [
       ],

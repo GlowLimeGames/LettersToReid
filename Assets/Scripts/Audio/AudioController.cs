@@ -323,19 +323,14 @@ public class AudioController : Controller, IAudioController
 
 	public IEnumerator musicShift() {
 		EventController.Event ("play_transition_mainmenuto_gameplay");
-		Debug.Log ("reaches step 1");
 
-		yield return new WaitForSeconds (9);
-		Debug.Log ("reaches step 2");
-
-
-		EventController.Event("amb_beginnning_01");
+		yield return new WaitForSeconds (4);
 
 
 		for (int index = 1; index < 8; index++) {
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_beginnning_01");
+				EventController.Event("amb_beginning_01");
 			}
 		}
 		for (int index = 8; index < 10; index++) {
