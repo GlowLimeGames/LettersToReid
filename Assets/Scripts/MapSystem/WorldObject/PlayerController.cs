@@ -13,9 +13,15 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
+    UIInterchange ui;
+
     [SerializeField]
     KeyCode enterDoorway = KeyCode.W;
+    [SerializeField]
     KeyCode enterDoorwayAlt = KeyCode.UpArrow;
+
+    [SerializeField]
+    KeyCode openMemoryKey = KeyCode.Space;
 
     int collisionCount;
 
@@ -79,6 +85,7 @@ public class PlayerController : MController
     LTRTuning gameTuning;
 
     MapObjectBehaviour collidingPortal;
+    MemoryBehvior targetMemory;
 
     public void Setup(MapController map)
     {
@@ -101,6 +108,7 @@ public class PlayerController : MController
     protected override void Start()
     {
         base.Start();
+        this.ui = UIInterchange.Instance;
         tuning = MapTuning.Get;
         rigibody.gravityScale = tuning.PlayerGravityScale;
         rigibody.drag = tuning.PlayerGravityScale;
@@ -129,8 +137,38 @@ public class PlayerController : MController
             travel.CompleteTravel();
             map.HandlePortalEnter(player, collidingPortal);
         }
+        if(Input.GetKeyDown(openMemoryKey))
+        {
+            tryInteractWithMemory(canClose:true);
+        }
     }
         
+    void OnMouseUp()
+    {
+        tryInteractWithMemory(canClose:false);
+    }
+
+    bool tryInteractWithMemory(bool canClose)
+    {
+        if(targetMemory)
+        {
+            if(canClose)
+            {
+                ui.ToggleMemoryDisplay(targetMemory.Get);
+            }
+            else
+            {
+                ui.DisplayMemory(targetMemory.Get);
+            }
+            targetMemory.Collect();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     bool movementKeyPressed()
     {
         return Input.GetKey(KeyCode.A) ||
@@ -163,6 +201,11 @@ public class PlayerController : MController
                 handleEnterCollideWithTile(obj as MapTileBehaviour);
             }
         }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleEnterCollidedWithMemory(mem);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -180,6 +223,24 @@ public class PlayerController : MController
                 travel.CompleteTravel();
                 handlePortalExit(obj);
             }
+        }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleExitCollideWithMemory(mem);
+        }
+    }
+
+    void handleEnterCollidedWithMemory(MemoryBehvior mem)
+    {
+        this.targetMemory = mem;
+    }
+
+    void handleExitCollideWithMemory(MemoryBehvior mem)
+    {
+        if(this.targetMemory == mem)
+        {
+            this.targetMemory = null;
         }
     }
 

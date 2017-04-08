@@ -9,6 +9,14 @@ using k = MapGlobal;
 
 public class MemoryBehvior : MonoBehaviourExtended
 {
+    public Memory Get
+    {
+        get
+        {
+            return this.memory;
+        }
+    }
+
     Memory memory
     {
         get
