@@ -127,7 +127,6 @@ public class AudioController : Controller, IAudioController
         
 	protected override void handleNamedEvent(string eventName)
 	{
-		Debug.Log (eventName);
 		if(playEvents.ContainsKey(eventName)) 
 		{
 			playAudioList(playEvents[eventName]);
