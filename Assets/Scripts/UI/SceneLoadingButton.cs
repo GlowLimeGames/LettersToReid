@@ -20,24 +20,13 @@ public class SceneLoadingButton : MonoBehaviour
 	void loadScene()
 	{
 		SceneManager.LoadScene(this.sceneName);
-		musicShift ();
+		EventController.Event ("stop_mainmenu");
+
+		AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
+
+		Debug.Log ("music should be working");
 
 	}
 
-	IEnumerator musicShift() {
-		EventController.Event ("play_transition_mainmenuto_gameplay");
-		yield return new WaitForSeconds (9);
-		for (int index = 1; index < 8; index++) {
 
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_beginnning_01");
-			}
-		}
-		for (int index = 8; index < 10; index++) {
-
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_nature_01");
-			}
-		}
-	}
 }

@@ -127,6 +127,7 @@ public class AudioController : Controller, IAudioController
         
 	protected override void handleNamedEvent(string eventName)
 	{
+		Debug.Log (eventName);
 		if(playEvents.ContainsKey(eventName)) 
 		{
 			playAudioList(playEvents[eventName]);
@@ -139,6 +140,7 @@ public class AudioController : Controller, IAudioController
 
     protected void handleNamedEventWithID(string eventName, string id)
     {
+		Debug.Log (eventName);
         if (playEvents.ContainsKey(eventName))
         {
             foreach (AudioFile file in playEvents[eventName])
@@ -317,6 +319,31 @@ public class AudioController : Controller, IAudioController
 	float volumeToDecimalf(int volume)
 	{
 		return (float) volume / (float) FULL_VOL;
+	}
+
+	public IEnumerator musicShift() {
+		EventController.Event ("play_transition_mainmenuto_gameplay");
+		Debug.Log ("reaches step 1");
+
+		yield return new WaitForSeconds (9);
+		Debug.Log ("reaches step 2");
+
+
+		EventController.Event("amb_beginnning_01");
+
+
+		for (int index = 1; index < 8; index++) {
+
+			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+				EventController.Event("amb_beginnning_01");
+			}
+		}
+		for (int index = 8; index < 10; index++) {
+
+			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+				EventController.Event("amb_nature_01");
+			}
+		}
 	}
 
 	AudioSource getChannel(int channelNumber) 
