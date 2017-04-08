@@ -23,53 +23,65 @@ public class EnemyMovementController : MonoBehaviour {
 	
     void OnCollisionEnter2D (Collision2D coll)
     {
-        if (coll.gameObject.tag == "wall")
-        {
-                if (isGoingRight)
-                {
-                    direction = -1f;
-                    isGoingRight = false;
-                }
-                else
-                {
-                    direction = 1;
-                    isGoingRight = true;
-                }
-            }
+		if (coll.gameObject.tag == "wall") {
+			if (isGoingRight) {
+				direction = -1f;
+				isGoingRight = false;
+			} else {
+				direction = 1;
+				isGoingRight = true;
+			}
+		}
         //moves enemy and character to new locations after collision
-        else if (coll.gameObject.tag == "Player")
-        {
-            int i = Random.Range(0, 10);
-            transform.position = memoryLocations[i];
+        else if (coll.gameObject.tag == "Player") {
+			int i = Random.Range (0, 10);
+			transform.position = memoryLocations [i];
 
-        }
+		} 
+		else if (coll.gameObject.tag == "ladder") {
+			canClimb = true;
+			transform.Translate (0, speed, 0);
 
-        else if(coll.gameObject.tag == "ladder" || coll.gameObject.tag == "letter")
+			if (coll.gameObject.tag == "wall") {
+				transform.Translate (0, -speed, 0);
+			}
+
+		}
+
+        else if( coll.gameObject.tag == "letter")
         {
             Physics2D.IgnoreCollision(coll.collider, GetComponent<Collider2D>(), true);
         }
     }
 
-	// Update is called once per frame
+	void OnCollisionExit2D(Collision2D col2)
+	{
+		if (col2.gameObject.tag == "ladder")
+		{
+			canClimb = false;
+			Debug.Log("Exit");
+		}
+	}
+
 	void Update () {
 
-        if (Time.time >= timeToAct)
-        {
-            transform.position = new Vector3(character.transform.position.x - 3f, character.transform.position.y, 0);
-            timeToAct += timePassed + 2;
-        }
-        else
-        {
-            transform.Translate(direction * speed, 0, 0);
-            if (isGoingRight)
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-            }
-            else
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-        }
+		if (Time.time >= timeToAct)
+		{
+			transform.position = new Vector3(character.transform.position.x - 3f, character.transform.position.y, 0);
+			timeToAct += timePassed + 2;
+		}
+		else
+		{
+			transform.Translate(direction * speed, 0, 0);
+			if (isGoingRight)
+			{
+				GetComponent<SpriteRenderer>().flipX = true;
+			}
+			else
+			{
+				GetComponent<SpriteRenderer>().flipX = false;
+			}
+		}
     }
-}
 
+}
