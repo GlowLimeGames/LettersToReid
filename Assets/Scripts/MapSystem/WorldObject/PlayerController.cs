@@ -139,7 +139,7 @@ public class PlayerController : MController
 
         if((Input.GetKeyDown(enterDoorway) || Input.GetKeyDown(enterDoorwayAlt)) && collidingPortal)
         {
-            travel.CompleteTravel();
+            CompleteTravel();
             map.HandlePortalEnter(player, collidingPortal);
         }
         if(Input.GetKeyDown(openMemoryKey))
@@ -246,7 +246,7 @@ public class PlayerController : MController
             }
             if(obj.Descriptor.IsPortal)
             {
-                travel.CompleteTravel();
+                CompleteTravel();
                 handlePortalExit(obj);
             }
         }
@@ -340,11 +340,7 @@ public class PlayerController : MController
         {
             collidingPortal = null;
         }
-
-        map.HandlePortalEnter(player, obj);
 		EventController.Event ("sx_wooden_door_open_01");
-
-
     }
 
     Vector2 getMoveVector()
