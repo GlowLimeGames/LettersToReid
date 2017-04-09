@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ba61336f33f3241b9baddd429b351fba
-timeCreated: 1489047987
+guid: 3123d20236a3a4821b6783a5e8bab2b0
+timeCreated: 1491756961
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: letter_opened_0
+    21300000: letter_opened_scaled_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -41,7 +41,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 4000
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -95,13 +95,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: letter_opened_0
+      name: letter_opened_scaled_0
       rect:
         serializedVersion: 2
-        x: 570
-        y: 183
-        width: 3202
-        height: 3660
+        x: 143
+        y: 43
+        width: 806
+        height: 921
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
