@@ -13,11 +13,15 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
+	
+
     [SerializeField]
     KeyCode enterDoorway = KeyCode.W;
     KeyCode enterDoorwayAlt = KeyCode.UpArrow;
 
     int collisionCount;
+
+	bool walking;
 
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
@@ -137,10 +141,10 @@ public class PlayerController : MController
 
         if(currentState == PlayerState.Climb)
         {
+			
             if (climbTimer >= climbDelay) 
             {
-
-                EventController.Event ("play_ladder_climb");
+				
 
                 climbTimer = 0;
 
@@ -148,14 +152,18 @@ public class PlayerController : MController
         }
         else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
         {
-            if (walkTimer >= walkDelay) 
+			
+
+			if (walkTimer >= walkDelay) 
             {
-
-                EventController.Event ("play_footsteps"); 
-
+				
                 walkTimer = 0;
             }
         }
+
+		onWalkKeyPressed ();
+		onWalkKeyReleased ();
+		StartCoroutine( stepBreaks ());
 
         // Clamps velocity to max player speed:
     }
@@ -311,14 +319,39 @@ public class PlayerController : MController
         
 	void updatePlayerWalkingState(float horMove)
 	{
+
 		if(horMove > 0)
 		{
+			
 			updatePlayerState(PlayerState.WalkRight);
 		}
 		else if (horMove < 0)
 		{
+			 
 			updatePlayerState(PlayerState.WalkLeft);
 		}
+	}
+
+	void onWalkKeyPressed() {
+		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
+			walking = true;
+		}
+			
+	}
+
+	void onWalkKeyReleased () {
+		if (Input.GetKeyUp (KeyCode.A) || Input.GetKeyUp (KeyCode.D)) {
+			walking = false;
+		}
+	}
+
+	IEnumerator stepBreaks() {
+
+		while (walking == true) {
+			EventController.Event ("play_footsteps"); 
+			yield return new WaitForSeconds (2);
+		}
+
 	}
 
     float getClimbingVertVelocity(float vertMove)
