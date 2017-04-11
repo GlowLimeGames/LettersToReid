@@ -288,11 +288,8 @@ public class PlayerController : MController
 
         map.HandlePortalEnter(player, obj);
 		EventController.Event ("sx_wooden_door_open_01");
-<<<<<<< HEAD
 
 
-=======
->>>>>>> master
     }
 
     Vector2 getMoveVector()
