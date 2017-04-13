@@ -32,6 +32,9 @@ public class PlayerController : MController
 	int walkDelay = 5;
 	public float walkTimer = 0;
 
+    bool memoryOpen;
+    bool inMemoryCollider;
+
     float speed
     {
         get
@@ -180,13 +183,22 @@ public class PlayerController : MController
         {
             if(canClose)
             {
-                ui.ToggleMemoryDisplay(targetMemory.Get);
+                memoryOpen = ui.ToggleMemoryDisplay(targetMemory.Get);
+                // If memory is closed and we're outside it's collider, set it to null:
+                if(!(memoryOpen || inMemoryCollider))
+                {
+                    targetMemory = null;
+                }
             }
             else
             {
                 ui.DisplayMemory(targetMemory.Get);
+                memoryOpen = true;
             }
-            targetMemory.Collect();
+            if(memoryOpen)
+            {
+                targetMemory.Collect();
+            }
             return true;
         }
         else
@@ -260,14 +272,16 @@ public class PlayerController : MController
     void handleEnterCollidedWithMemory(MemoryBehvior mem)
     {
         this.targetMemory = mem;
+        inMemoryCollider = true;
     }
 
     void handleExitCollideWithMemory(MemoryBehvior mem)
     {
-        if(this.targetMemory == mem)
+        if(this.targetMemory == mem && !memoryOpen)
         {
             this.targetMemory = null;
         }
+        inMemoryCollider = false;
     }
 
     float getClampedPlayerSpeed() 

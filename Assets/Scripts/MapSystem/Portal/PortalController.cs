@@ -74,6 +74,7 @@ public class PortalController : MController
             {
                 travel.BeginTravel(getDelegateStr(gateway, tuning.IdDelegate), destinationId);
                 SceneManager.LoadScene(map);
+                Debug.Log("LOADING SCENE FROM GATEWAY");
                 return null;
             }
         }
@@ -97,6 +98,7 @@ public class PortalController : MController
             string sceneName = k.GetMapSceneName(mapId);
             travel.BeginTravel(SceneManager.GetActiveScene().name, sceneName);
             SceneManager.LoadScene(sceneName);
+            Debug.Log("LOADING MAP FROM LADDER");
 			for (int index = 1; index < 8; index++) {
 
 				if (sceneName == "Map" + index) {

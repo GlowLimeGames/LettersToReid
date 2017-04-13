@@ -22,7 +22,7 @@ public class SceneLoadingButton : MonoBehaviour
 		SceneManager.LoadScene(this.sceneName);
 		EventController.Event ("stop_mainmenu");
 		AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
-
+        Debug.Log("SCENE LOADING BUTTON");
 	}
 
 }
