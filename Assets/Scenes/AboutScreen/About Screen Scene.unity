@@ -514,14 +514,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 457a95847aa2c4e86b6e7f8529402b80, type: 3}
+  m_Texture: {fileID: 2800000, guid: aadfcc84e8020854e91772c4f193c2ef, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -896,7 +896,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Bryan Prieto\t\nLead Artist\r\n\n\rWolfie Smith\t\n2D Artist\r\n\nHyeonseok
-    Cho\t\n2D Artist\r\n\nMatthew Waters\t\n3D Artist\r\n\nZoe Haziett \t\n2D Artist\r\r"
+    Cho\t\n2D Artist\r\n\nMatthew Waters\t\n3D Artist\r\n\nZoe Hazlett \t\n2D Artist\r\r"
 --- !u!1 &1636550466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1133,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Chandra Hughes\t\nProducer\r\n\nMartha Hollister\t\nCreative Director\r\n\nAidan
+  m_Text: "Allegra C. Hughes\t\nProducer\r\n\nMartha Hollister\t\nCreative Director\r\n\nAidan
     Alice West\t\nDesigner\r\n\nRachel Hartanto\t\nLead Audio\n\nLisa Utzig\t\nAudio\r\n\nJeff
     Penny\t\nAudio\n"
