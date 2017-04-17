@@ -29,6 +29,7 @@ public class Global
 	public const string LEFT_KEY = "left";
 	public const string RIGHT_KEY = "right";
 	public const string BACK_KEY = "back";
+    public const string MOVING_KEY = "moving";
 
     public const char JOIN_CHAR = '_';
 
