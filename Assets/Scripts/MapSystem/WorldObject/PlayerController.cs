@@ -412,6 +412,7 @@ public class PlayerController : MController
 		anim.SetBool(k.BACK_KEY, isClimbing);
 		anim.SetBool(k.LEFT_KEY, state == PlayerState.WalkLeft);
 		anim.SetBool(k.RIGHT_KEY, state == PlayerState.WalkRight);
+        anim.SetBool(k.MOVING_KEY, movementKeyPressed());
 	}
 
 }
