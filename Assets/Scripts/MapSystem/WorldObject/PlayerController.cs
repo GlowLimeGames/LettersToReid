@@ -29,7 +29,9 @@ public class PlayerController : MController
 	public float climbTimer = 0;
 	int walkDelay = 5;
 	public float walkTimer = 0;
+
 	bool isRunning = false;
+	bool climbSpacer = false;
 
     float speed
     {
@@ -165,7 +167,7 @@ public class PlayerController : MController
 		onWalkKeyPressed ();
 		onWalkKeyReleased ();
 		StartCoroutine( stepBreaks ());
-
+		StartCoroutine (ladderClimber ());
         // Clamps velocity to max player speed:
     }
         
@@ -353,6 +355,17 @@ public class PlayerController : MController
 				EventController.Event ("play_footsteps"); 
 				yield return new WaitForSeconds (.5f);
 				isRunning = false;
+			}
+		}
+	}
+
+	IEnumerator ladderClimber() {
+		if (climbSpacer == false) {
+			while (isClimbing == true) {
+				climbSpacer = true;
+				EventController.Event ("play_ladder_climb"); 
+				yield return new WaitForSeconds (.5f);
+				climbSpacer = false;
 			}
 		}
 	}
