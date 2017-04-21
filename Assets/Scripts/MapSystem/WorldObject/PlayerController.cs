@@ -29,6 +29,7 @@ public class PlayerController : MController
 	public float climbTimer = 0;
 	int walkDelay = 5;
 	public float walkTimer = 0;
+	bool isRunning = false;
 
     float speed
     {
@@ -346,12 +347,14 @@ public class PlayerController : MController
 	}
 
 	IEnumerator stepBreaks() {
-
-		while (walking == true) {
-			EventController.Event ("play_footsteps"); 
-			yield return new WaitForSeconds (2);
+		if (isRunning == false) {
+			while (walking == true) {
+				isRunning = true;
+				EventController.Event ("play_footsteps"); 
+				yield return new WaitForSeconds (.5f);
+				isRunning = false;
+			}
 		}
-
 	}
 
     float getClimbingVertVelocity(float vertMove)
