@@ -22,6 +22,7 @@ public class PlayerController : MController
     int collisionCount;
 
 	bool walking;
+	bool climbing;
 
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
@@ -30,7 +31,7 @@ public class PlayerController : MController
 	int walkDelay = 5;
 	public float walkTimer = 0;
 
-	bool isRunning = false;
+	bool runSpacer = false;
 	bool climbSpacer = false;
 
     float speed
@@ -166,8 +167,10 @@ public class PlayerController : MController
 
 		onWalkKeyPressed ();
 		onWalkKeyReleased ();
-		StartCoroutine( stepBreaks ());
-		StartCoroutine (ladderClimber ());
+		onClimbKeyPressed ();
+		onClimbKeyReleased ();
+		StartCoroutine( stepSound ());
+		StartCoroutine (ladderSound ());
         // Clamps velocity to max player speed:
     }
         
@@ -348,20 +351,35 @@ public class PlayerController : MController
 		}
 	}
 
-	IEnumerator stepBreaks() {
-		if (isRunning == false) {
-			while (walking == true) {
-				isRunning = true;
-				EventController.Event ("play_footsteps"); 
-				yield return new WaitForSeconds (.5f);
-				isRunning = false;
-			}
+	void onClimbKeyPressed() {
+		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S)) {
+			climbing = true;
+		}
+
+	}
+
+	void onClimbKeyReleased () {
+		if (Input.GetKeyUp (KeyCode.W) || Input.GetKeyUp (KeyCode.S)) {
+			climbing = false;
 		}
 	}
 
-	IEnumerator ladderClimber() {
+	IEnumerator stepSound() {
+		if (runSpacer == false) {
+			while (walking == true) {
+				runSpacer = true;
+				EventController.Event ("play_footsteps"); 
+				yield return new WaitForSeconds (.5f);
+				runSpacer = false;
+			}
+		}
+	}
+		
+
+	IEnumerator ladderSound() {
+		
 		if (climbSpacer == false) {
-			while (isClimbing == true) {
+			while (climbing == true) {
 				climbSpacer = true;
 				EventController.Event ("play_ladder_climb"); 
 				yield return new WaitForSeconds (.5f);
