@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+using System.Collections.Generic;
+
 public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 {
     public bool IsOpen
@@ -35,13 +37,28 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     string memoriesCollectedFormat = "{0}/{1} Memories";
 
+	[SerializeField]
+	Sprite[] overlays;
+
+	[SerializeField]
+	Image overlayDisplay;
+
     bool mouseInCanvas;
     bool isOpen;
+
+	Dictionary<string, Sprite> overlayLookup;
+
+	protected override void setReferences()
+	{
+		base.setReferences();
+		initOverlayLookup();
+	}
 
     public void DisplayMemory(Memory mem)
     {
         Show();
         memoryText.text = mem.Body;
+		setOverlay(mem);
     }
 
     public override void Show()
@@ -67,6 +84,25 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
             Hide();
         }
     }
+
+	void initOverlayLookup()
+	{
+		overlayLookup = new Dictionary<string, Sprite>();
+		foreach(Sprite overlay in overlays) 
+		{
+			overlayLookup.Add(overlay.name, overlay);
+		}
+	}
+
+	void setOverlay(Memory mem)
+	{
+		overlayDisplay.enabled = !string.IsNullOrEmpty(mem.overlay);
+		Sprite overlay;
+		if(overlayDisplay.enabled && overlayLookup.TryGetValue(mem.overlay, out overlay)) 
+		{
+			overlayDisplay.sprite = overlay;
+		}
+	}
 
     public void OnPointerEnter(PointerEventData pData)
     {

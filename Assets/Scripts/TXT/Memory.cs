@@ -11,6 +11,7 @@ public class Memory {
 
     public int id;
     public string Body;
+	public string overlay;
 
     #region Object overrides 
 
