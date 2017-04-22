@@ -10,7 +10,6 @@ public sealed class MemoryBrowser : MonoBehaviour
     System.Random IDgen = new System.Random();
     Text text;
     public Text memoryCounter;
-    public Text memoriesFound;
     public int memoryNumber;
 
     [SerializeField]
@@ -54,11 +53,6 @@ public sealed class MemoryBrowser : MonoBehaviour
         {
             memoryCounter.text = memoryNumber.ToString();
             text.text = "Locked";
-        }
-
-        if (memoriesFound)
-        {
-            memoriesFound.text = "Memories Found: " + memoryNumber.ToString() + "/" + parse.getLength();
         }
     }
 }

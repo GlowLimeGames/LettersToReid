@@ -13,11 +13,17 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
-	
+
+    UIInterchange ui;
+
 
     [SerializeField]
     KeyCode enterDoorway = KeyCode.W;
+    [SerializeField]
     KeyCode enterDoorwayAlt = KeyCode.UpArrow;
+
+    [SerializeField]
+    KeyCode openMemoryKey = KeyCode.Space;
 
     int collisionCount;
 
@@ -91,6 +97,7 @@ public class PlayerController : MController
     LTRTuning gameTuning;
 
     MapObjectBehaviour collidingPortal;
+    MemoryBehvior targetMemory;
 
     public void Setup(MapController map)
     {
@@ -113,6 +120,7 @@ public class PlayerController : MController
     protected override void Start()
     {
         base.Start();
+        this.ui = UIInterchange.Instance;
         tuning = MapTuning.Get;
         rigibody.gravityScale = tuning.PlayerGravityScale;
         rigibody.drag = tuning.PlayerGravityScale;
@@ -139,10 +147,13 @@ public class PlayerController : MController
 
         if((Input.GetKeyDown(enterDoorway) || Input.GetKeyDown(enterDoorwayAlt)) && collidingPortal)
         {
-            travel.CompleteTravel();
+            CompleteTravel();
             map.HandlePortalEnter(player, collidingPortal);
         }
-
+        if(Input.GetKeyDown(openMemoryKey))
+        {
+            tryInteractWithMemory(canClose:true);
+        }
         if(currentState == PlayerState.Climb)
         {
 			
@@ -165,6 +176,7 @@ public class PlayerController : MController
             }
         }
 
+
 		onWalkKeyPressed ();
 		onWalkKeyReleased ();
 		onClimbKeyPressed ();
@@ -172,8 +184,35 @@ public class PlayerController : MController
 		StartCoroutine( stepSound ());
 		StartCoroutine (ladderSound ());
         // Clamps velocity to max player speed:
+
     }
         
+    void OnMouseUp()
+    {
+        tryInteractWithMemory(canClose:false);
+    }
+
+    bool tryInteractWithMemory(bool canClose)
+    {
+        if(targetMemory)
+        {
+            if(canClose)
+            {
+                ui.ToggleMemoryDisplay(targetMemory.Get);
+            }
+            else
+            {
+                ui.DisplayMemory(targetMemory.Get);
+            }
+            targetMemory.Collect();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     bool movementKeyPressed()
     {
         return Input.GetKey(KeyCode.A) ||
@@ -186,7 +225,12 @@ public class PlayerController : MController
                 Input.GetKey(KeyCode.DownArrow);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    public void CompleteTravel()
+    {
+        travel.CompleteTravel();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         collisionCount++;
         MapObjectBehaviour obj;
@@ -200,6 +244,11 @@ public class PlayerController : MController
             {
                 handleEnterCollideWithTile(obj as MapTileBehaviour);
             }
+        }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleEnterCollidedWithMemory(mem);
         }
     }
 
@@ -215,9 +264,27 @@ public class PlayerController : MController
             }
             if(obj.Descriptor.IsPortal)
             {
-                travel.CompleteTravel();
+                CompleteTravel();
                 handlePortalExit(obj);
             }
+        }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleExitCollideWithMemory(mem);
+        }
+    }
+
+    void handleEnterCollidedWithMemory(MemoryBehvior mem)
+    {
+        this.targetMemory = mem;
+    }
+
+    void handleExitCollideWithMemory(MemoryBehvior mem)
+    {
+        if(this.targetMemory == mem)
+        {
+            this.targetMemory = null;
         }
     }
 
@@ -291,11 +358,7 @@ public class PlayerController : MController
         {
             collidingPortal = null;
         }
-
-        map.HandlePortalEnter(player, obj);
 		EventController.Event ("sx_wooden_door_open_01");
-
-
     }
 
     Vector2 getMoveVector()
@@ -420,6 +483,7 @@ public class PlayerController : MController
 		anim.SetBool(k.BACK_KEY, isClimbing);
 		anim.SetBool(k.LEFT_KEY, state == PlayerState.WalkLeft);
 		anim.SetBool(k.RIGHT_KEY, state == PlayerState.WalkRight);
+        anim.SetBool(k.MOVING_KEY, movementKeyPressed());
 	}
 
 }

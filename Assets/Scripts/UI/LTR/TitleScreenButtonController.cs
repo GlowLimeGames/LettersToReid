@@ -21,11 +21,15 @@ public class TitleScreenButtonController : MonoBehaviourExtended
     {
         LTRSaveController.GetInstance.Reset();
         loadSelectScreen();
+
+        PlayerPrefs.SetInt("NewGame", 1);
     }
 
     public void LoadGame()
     {
         loadSelectScreen();
+
+        PlayerPrefs.SetInt("NewGame", 0);
     }
   
     void loadSelectScreen()
