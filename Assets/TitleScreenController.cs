@@ -11,7 +11,7 @@ public class TitleScreenController : MonoBehaviour {
 		EventController.Event ("play_music_menu_main theme");
 
 		EventController.Event ("play_music_menu_main_theme");
-
+		Debug.Log ("playmainmenu");
 	}
 	
 	// Update is called once per frame
