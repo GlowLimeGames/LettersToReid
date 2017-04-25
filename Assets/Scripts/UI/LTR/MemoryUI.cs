@@ -43,6 +43,9 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 	[SerializeField]
 	Image overlayDisplay;
 
+	[SerializeField]
+	Transform contentTransform;
+
     bool mouseInCanvas;
     bool isOpen;
 
@@ -63,6 +66,7 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 
     public override void Show()
     {
+		contentTransform.localScale = Vector3.one;
         if(memoryDisplayCanvas.alpha == 0)
         {
             toggleCanvasGroup(memoryDisplayCanvas, true);

@@ -455,6 +455,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a98277f1b5fd02943b381a0c47443117, type: 3}
   - {fileID: 21300000, guid: 790fec46ed216c540b035c62f10c2ebb, type: 3}
   overlayDisplay: {fileID: 114563116850754704}
+  contentTransform: {fileID: 224081391063870826}
 --- !u!114 &114514943091731854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -645,7 +646,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224424782993789344}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.15477271
+  m_Size: 0.15477273
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
