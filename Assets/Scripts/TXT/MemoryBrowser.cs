@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-/* Author: Anisha Pai
+/* Authors: Anisha Pai, Isaiah Mann
 * Description: Tests the Memory retrieval system by asking to print a random memory
 */
 public sealed class MemoryBrowser : MonoBehaviour
@@ -14,6 +14,11 @@ public sealed class MemoryBrowser : MonoBehaviour
 
     [SerializeField]
     Scrollbar scroll;
+
+	[SerializeField]
+	Transform contentTransform;
+	[SerializeField]
+	Transform textTransform;
 
     public void Start() {
         parse = GetComponent<MemoriesParser>();
@@ -43,6 +48,8 @@ public sealed class MemoryBrowser : MonoBehaviour
     }
 
     private void updateScreen() {
+		contentTransform.localScale = Vector3.one;
+		textTransform.localScale = Vector3.one;
         scroll.value = 1f;
         if (MemoryController.Instance.MemoryDiscovered(memoryNumber))
         {
