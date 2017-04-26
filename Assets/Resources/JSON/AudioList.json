@@ -631,6 +631,7 @@
       "name" : "footsteps",
       "type" : "Random",
       "events" : [
+		"play_footsteps"
       ],
       "stopEvents" : [
       ]

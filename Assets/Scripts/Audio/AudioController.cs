@@ -330,12 +330,14 @@ public class AudioController : Controller, IAudioController
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
 				EventController.Event("amb_beginning_01");
+				Debug.Log ("Sound");
 			}
 		}
 		for (int index = 8; index < 10; index++) {
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
 				EventController.Event("amb_nature_01");
+				Debug.Log ("nature");
 			}
 		}
 	}
