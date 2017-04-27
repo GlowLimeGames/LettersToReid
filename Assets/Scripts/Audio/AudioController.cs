@@ -139,7 +139,6 @@ public class AudioController : Controller, IAudioController
 
     protected void handleNamedEventWithID(string eventName, string id)
     {
-		Debug.Log (eventName);
         if (playEvents.ContainsKey(eventName))
         {
             foreach (AudioFile file in playEvents[eventName])
@@ -330,14 +329,12 @@ public class AudioController : Controller, IAudioController
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
 				EventController.Event("amb_beginning_01");
-				Debug.Log ("Sound");
 			}
 		}
 		for (int index = 8; index < 10; index++) {
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
 				EventController.Event("amb_nature_01");
-				Debug.Log ("nature");
 			}
 		}
 	}
