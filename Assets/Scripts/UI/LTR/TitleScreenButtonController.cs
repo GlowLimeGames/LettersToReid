@@ -1,6 +1,6 @@
 ﻿/*
- * Author(s): Isaiah Mann
- * Description: [to be added]
+ * Author(s): Isaiah Mann, Martha Hollister
+ * Description: Controls the functions of the title screen
  * Usage: [no notes]
  */
 
@@ -11,6 +11,8 @@ public class TitleScreenButtonController : MonoBehaviourExtended
 {	
     [SerializeField]
     string mapSelectionScreenName = "MapSelection";
+    [SerializeField]
+    string quoteScreenName = "BeginningQuote";
 
     public void QuitGame()
     {
@@ -20,21 +22,24 @@ public class TitleScreenButtonController : MonoBehaviourExtended
     public void NewGame()
     {
         LTRSaveController.GetInstance.Reset();
-        loadSelectScreen();
-
+        loadQuoteScreen();
         PlayerPrefs.SetInt("NewGame", 1);
     }
 
     public void LoadGame()
     {
         loadSelectScreen();
-
         PlayerPrefs.SetInt("NewGame", 0);
     }
   
     void loadSelectScreen()
     {
         SceneManager.LoadScene(mapSelectionScreenName);
+    }
+
+    void loadQuoteScreen()
+    {
+        SceneManager.LoadScene(quoteScreenName);
     }
 
 }
