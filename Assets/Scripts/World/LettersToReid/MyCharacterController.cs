@@ -117,7 +117,6 @@ public class MyCharacterController : MonoBehaviour {
         else if (col.gameObject.tag == "ladder")
         {
             canClimb = true;
-            Debug.Log("Enter");
         }
         else if (col.gameObject.tag == "enemy")
         {
@@ -138,7 +137,6 @@ public class MyCharacterController : MonoBehaviour {
         if (col2.gameObject.tag == "ladder")
         {
                 canClimb = false;
-                Debug.Log("Exit");
         }
     }
 }
