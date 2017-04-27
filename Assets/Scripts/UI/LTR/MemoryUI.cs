@@ -36,6 +36,9 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     Text memoriesCollectedDisplay;
 
     [SerializeField]
+    Text locationName;
+
+    [SerializeField]
     string memoriesCollectedFormat = "{0}/{1} Memories";
 
 	[SerializeField]
@@ -59,6 +62,11 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 		base.setReferences();
 		initOverlayLookup();
 	}
+
+    public void SetMap(MapDescriptor map)
+    {
+        this.locationName.text = map.MapName.Replace("MP-", "Map ");
+    }
 
     public void DisplayMemory(Memory mem)
     {
