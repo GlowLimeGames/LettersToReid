@@ -44,6 +44,7 @@ public class UIButton : UIElement
 		{
 			buttonGraphic.color = selectedColor;
 		}
+
 	}
 
 	public void Deselect()
@@ -87,6 +88,7 @@ public class UIButton : UIElement
 
 	protected virtual void executeClick() 
 	{
+		
         if (this.tag == "BackButton") {
             EventController.Event("ui_click_back");
         } else {

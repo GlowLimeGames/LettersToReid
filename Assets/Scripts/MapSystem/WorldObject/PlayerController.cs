@@ -13,7 +13,9 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
+
     UIInterchange ui;
+
 
     [SerializeField]
     KeyCode enterDoorway = KeyCode.W;
@@ -25,12 +27,18 @@ public class PlayerController : MController
 
     int collisionCount;
 
+	bool walking;
+	bool climbing;
+
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
 	int climbDelay = 5;
 	public float climbTimer = 0;
 	int walkDelay = 5;
 	public float walkTimer = 0;
+
+	bool runSpacer = false;
+	bool climbSpacer = false;
 
     float speed
     {
@@ -148,10 +156,10 @@ public class PlayerController : MController
         }
         if(currentState == PlayerState.Climb)
         {
+			
             if (climbTimer >= climbDelay) 
             {
-
-                EventController.Event ("play_ladder_climb");
+				
 
                 climbTimer = 0;
 
@@ -159,14 +167,24 @@ public class PlayerController : MController
         }
         else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
         {
-            if (walkTimer >= walkDelay) 
+			
+
+			if (walkTimer >= walkDelay) 
             {
-
-                EventController.Event ("play_footsteps"); 
-
+				
                 walkTimer = 0;
             }
         }
+
+
+		onWalkKeyPressed ();
+		onWalkKeyReleased ();
+		onClimbKeyPressed ();
+		onClimbKeyReleased ();
+		StartCoroutine( stepSound ());
+		StartCoroutine (ladderSound ());
+        // Clamps velocity to max player speed:
+
     }
         
     void OnMouseUp()
@@ -323,6 +341,7 @@ public class PlayerController : MController
         
     void handlePortalCollider(MapObjectBehaviour obj)
     {
+
         map.HandlePortalEnter(player, obj);
 
 
@@ -373,13 +392,66 @@ public class PlayerController : MController
         
 	void updatePlayerWalkingState(float horMove)
 	{
+
 		if(horMove > 0)
 		{
+			
 			updatePlayerState(PlayerState.WalkRight);
 		}
 		else if (horMove < 0)
 		{
+			 
 			updatePlayerState(PlayerState.WalkLeft);
+		}
+	}
+
+	void onWalkKeyPressed() {
+		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
+			walking = true;
+		}
+			
+	}
+
+	void onWalkKeyReleased () {
+		if (Input.GetKeyUp (KeyCode.A) || Input.GetKeyUp (KeyCode.D)) {
+			walking = false;
+		}
+	}
+
+	void onClimbKeyPressed() {
+		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S)) {
+			climbing = true;
+		}
+
+	}
+
+	void onClimbKeyReleased () {
+		if (Input.GetKeyUp (KeyCode.W) || Input.GetKeyUp (KeyCode.S)) {
+			climbing = false;
+		}
+	}
+
+	IEnumerator stepSound() {
+		if (runSpacer == false) {
+			while (walking == true) {
+				runSpacer = true;
+				EventController.Event ("play_footsteps"); 
+				yield return new WaitForSeconds (.5f);
+				runSpacer = false;
+			}
+		}
+	}
+		
+
+	IEnumerator ladderSound() {
+		
+		if (climbSpacer == false) {
+			while (climbing == true) {
+				climbSpacer = true;
+				EventController.Event ("play_ladder_climb"); 
+				yield return new WaitForSeconds (.5f);
+				climbSpacer = false;
+			}
 		}
 	}
 
