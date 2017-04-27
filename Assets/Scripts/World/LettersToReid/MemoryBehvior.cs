@@ -9,6 +9,14 @@ using k = MapGlobal;
 
 public class MemoryBehvior : MonoBehaviourExtended
 {
+    public Memory Get
+    {
+        get
+        {
+            return this.memory;
+        }
+    }
+
     Memory memory
     {
         get
@@ -44,21 +52,33 @@ public class MemoryBehvior : MonoBehaviourExtended
 
     public void Collect()
     {
+
+		EventController.Event("sx_letter_open");
+
         controller.CollectMemory(memoryId);
         updateMemoryDisplay();
+
     }
 
     #region MonoBehaviourExtended Overrides
 
     protected override void setReferences()
     {
-        base.setReferences();
+
+
+		base.setReferences();
         sRenderer = GetComponentInChildren<SpriteRenderer>();
         tuning = MapTuning.Get;
         controller = MemoryController.Instance;
+
     }
    
     #endregion
+
+	public void letterClose()
+	{
+		EventController.Event("sx_letter_close");
+	}
 
     void updateMemoryDisplay()
     {

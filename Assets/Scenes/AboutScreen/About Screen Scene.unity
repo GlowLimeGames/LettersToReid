@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 358493019}
   m_Layer: 5
   m_Name: Back Button
-  m_TagString: Untagged
+  m_TagString: BackButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,9 +313,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.16078432, g: 0.227451, b: 0.25882354, a: 0.734}
-    m_HighlightedColor: {r: 0.20784315, g: 0.26666668, b: 0.2784314, a: 1}
-    m_PressedColor: {r: 0.30330884, g: 0.3875613, b: 0.4044118, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 1}
+    m_PressedColor: {r: 0.60294116, g: 0.60294116, b: 0.60294116, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -365,7 +365,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: b92a87c4d2c804f42b288eac17ecac41, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -514,14 +514,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 457a95847aa2c4e86b6e7f8529402b80, type: 3}
+  m_Texture: {fileID: 2800000, guid: aadfcc84e8020854e91772c4f193c2ef, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Isaiah Mann\t\nLead Engineer\r\n\nXuzhen Xiang\t\nEngineer\r\n\nMaia Doerner\t\nEngineer\r\n\nAnisha
     Pai \t\nEngineer\r\n\nShuyang Wang \t\nEngineer\r\n\nJeff Abt\t\nEngineer"
@@ -678,7 +678,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '<size=80>About </size>
 
-    Version 0.05
+    Version 0.0.6
 
 
 '
@@ -893,10 +893,10 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Bryan Prieto\t\nLead Artist\r\n\n\rWolfie Smith\t\n2D Artist\r\n\nHyeonseok
-    Cho\t\n2D Artist\r\n\nMatthew Waters\t\n3D Artist\r\n\nZoe Haziett \t\n2D Artist\r\r"
+    Cho\t\n2D Artist\r\n\nMatthew Waters\t\n3D Artist\r\n\nZoe Hazlett \t\n2D Artist\r\r"
 --- !u!1 &1636550466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,8 +1131,8 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Chandra Hughes\t\nProducer\r\n\nMartha Hollister\t\nCreative Director\r\n\nAidan
+  m_Text: "Allegra C. Hughes\t\nProducer\r\n\nMartha Hollister\t\nCreative Director\r\n\nAidan
     Alice West\t\nDesigner\r\n\nRachel Hartanto\t\nLead Audio\n\nLisa Utzig\t\nAudio\r\n\nJeff
     Penny\t\nAudio\n"

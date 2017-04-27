@@ -13,8 +13,24 @@ using k = MapGlobal;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MController 
 {
+    UIInterchange ui;
+
+    [SerializeField]
+    KeyCode enterDoorway = KeyCode.W;
+    [SerializeField]
+    KeyCode enterDoorwayAlt = KeyCode.UpArrow;
+
+    [SerializeField]
+    KeyCode openMemoryKey = KeyCode.Space;
+
+    int collisionCount;
+
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
+	int climbDelay = 5;
+	public float climbTimer = 0;
+	int walkDelay = 5;
+	public float walkTimer = 0;
 
     float speed
     {
@@ -72,9 +88,13 @@ public class PlayerController : MController
 	PlayerState currentState = PlayerState.Idle;
     LTRTuning gameTuning;
 
+    MapObjectBehaviour collidingPortal;
+    MemoryBehvior targetMemory;
+
     public void Setup(MapController map)
     {
         this.map = map;
+        map.SetActivePlayer(this);
     }
 
 	// Use this for initialization
@@ -89,8 +109,10 @@ public class PlayerController : MController
         gameTuning = LTRTuning.Get;
 	}
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+        this.ui = UIInterchange.Instance;
         tuning = MapTuning.Get;
         rigibody.gravityScale = tuning.PlayerGravityScale;
         rigibody.drag = tuning.PlayerGravityScale;
@@ -110,22 +132,89 @@ public class PlayerController : MController
             // Clamps velocity to max player speed:
             rigibody.velocity = new Vector2(getClampedPlayerSpeed(), rigibody.velocity.y);
         }
-        else
+        else if(collisionCount > 0)
         {
             rigibody.velocity = Vector2.zero;
         }
+
+        if((Input.GetKeyDown(enterDoorway) || Input.GetKeyDown(enterDoorwayAlt)) && collidingPortal)
+        {
+            CompleteTravel();
+            map.HandlePortalEnter(player, collidingPortal);
+        }
+        if(Input.GetKeyDown(openMemoryKey))
+        {
+            tryInteractWithMemory(canClose:true);
+        }
+        if(currentState == PlayerState.Climb)
+        {
+            if (climbTimer >= climbDelay) 
+            {
+
+                EventController.Event ("play_ladder_climb");
+
+                climbTimer = 0;
+
+            }
+        }
+        else if (currentState == PlayerState.WalkLeft || currentState == PlayerState.WalkRight)
+        {
+            if (walkTimer >= walkDelay) 
+            {
+
+                EventController.Event ("play_footsteps"); 
+
+                walkTimer = 0;
+            }
+        }
     }
         
+    void OnMouseUp()
+    {
+        tryInteractWithMemory(canClose:false);
+    }
+
+    bool tryInteractWithMemory(bool canClose)
+    {
+        if(targetMemory)
+        {
+            if(canClose)
+            {
+                ui.ToggleMemoryDisplay(targetMemory.Get);
+            }
+            else
+            {
+                ui.DisplayMemory(targetMemory.Get);
+            }
+            targetMemory.Collect();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     bool movementKeyPressed()
     {
         return Input.GetKey(KeyCode.A) ||
                 Input.GetKey(KeyCode.D) ||
                 Input.GetKey(KeyCode.W) ||
-                Input.GetKey(KeyCode.S);
+                Input.GetKey(KeyCode.S) ||
+                Input.GetKey(KeyCode.UpArrow) ||
+                Input.GetKey(KeyCode.LeftArrow) ||
+                Input.GetKey(KeyCode.RightArrow) ||
+                Input.GetKey(KeyCode.DownArrow);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    public void CompleteTravel()
     {
+        travel.CompleteTravel();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        collisionCount++;
         MapObjectBehaviour obj;
         if(checkForMapObjCollideEvent(collider, out obj))
         {
@@ -138,10 +227,16 @@ public class PlayerController : MController
                 handleEnterCollideWithTile(obj as MapTileBehaviour);
             }
         }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleEnterCollidedWithMemory(mem);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
+        collisionCount--;
         MapObjectBehaviour obj;
         if(checkForMapObjCollideEvent(collider, out obj))
         {
@@ -149,6 +244,29 @@ public class PlayerController : MController
             {
                 handleExitCollideWithTile(obj as MapTileBehaviour);
             }
+            if(obj.Descriptor.IsPortal)
+            {
+                CompleteTravel();
+                handlePortalExit(obj);
+            }
+        }
+        MemoryBehvior mem = collider.GetComponent<MemoryBehvior>();
+        if(mem)
+        {
+            handleExitCollideWithMemory(mem);
+        }
+    }
+
+    void handleEnterCollidedWithMemory(MemoryBehvior mem)
+    {
+        this.targetMemory = mem;
+    }
+
+    void handleExitCollideWithMemory(MemoryBehvior mem)
+    {
+        if(this.targetMemory == mem)
+        {
+            this.targetMemory = null;
         }
     }
 
@@ -206,6 +324,25 @@ public class PlayerController : MController
     void handlePortalCollider(MapObjectBehaviour obj)
     {
         map.HandlePortalEnter(player, obj);
+
+
+        if(obj.name.Contains(MapGlobal.MAP_KEY))
+        {
+            map.HandlePortalEnter(player, obj);
+        }
+        else
+        {
+            collidingPortal = obj;
+        }
+    }
+
+    void handlePortalExit(MapObjectBehaviour obj)
+    {
+        if(collidingPortal == obj)
+        {
+            collidingPortal = null;
+        }
+
 		EventController.Event ("sx_wooden_door_open_01");
     }
 
@@ -278,6 +415,7 @@ public class PlayerController : MController
 		anim.SetBool(k.BACK_KEY, isClimbing);
 		anim.SetBool(k.LEFT_KEY, state == PlayerState.WalkLeft);
 		anim.SetBool(k.RIGHT_KEY, state == PlayerState.WalkRight);
+        anim.SetBool(k.MOVING_KEY, movementKeyPressed());
 	}
 
 }

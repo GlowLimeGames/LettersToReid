@@ -92,6 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da350b5ba3454a7585a118a413162d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enterDoorway: 119
+  enterDoorwayAlt: 273
+  openMemoryKey: 32
+  climbTimer: 0
+  walkTimer: 0
   gravityScale: 2
   defaultState: 2
 --- !u!114 &114588938001316720
@@ -136,7 +141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7d5b0c9a5276faa4185a3a5f4719e6e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc4faf6f503e647ba912f2402e1e230e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
