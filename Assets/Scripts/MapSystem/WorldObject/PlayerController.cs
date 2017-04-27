@@ -341,10 +341,6 @@ public class PlayerController : MController
         
     void handlePortalCollider(MapObjectBehaviour obj)
     {
-
-        map.HandlePortalEnter(player, obj);
-
-
         if(obj.name.Contains(MapGlobal.MAP_KEY))
         {
             map.HandlePortalEnter(player, obj);
