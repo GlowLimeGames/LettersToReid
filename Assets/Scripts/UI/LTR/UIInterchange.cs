@@ -81,6 +81,15 @@ public class UIInterchange : SingletonController<UIInterchange>
         }
     }
 
+    public void SetMap(MapDescriptor map)
+    {
+        LTRUITemplate ui;
+        if(getInterface(typeof(MemoryUI), out ui))
+        {
+            (ui as MemoryUI).SetMap(map);
+        }
+    }
+
     bool getInterface(Type type, out LTRUITemplate ui)
     {
         return interfaces.TryGetValue(type, out ui);

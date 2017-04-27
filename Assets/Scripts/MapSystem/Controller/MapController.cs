@@ -52,6 +52,10 @@ public class MapController : MController
         {
             startMapFromPortal();
         }
+        if(UIInterchange.Instance)
+        {
+            UIInterchange.Instance.SetMap(currentMap);
+        }
     }
 
     public void SetActivePlayer(PlayerController player)
