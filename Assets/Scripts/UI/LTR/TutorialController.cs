@@ -1,18 +1,28 @@
+/*
+ * Authors: Martha Hollister, Isaiah Mann
+ * Description: Controls the in game tutorial
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public sealed class TutorialController : MonoBehaviour
 {
+    const string NEW_GAME_KEY = "NewGame";
+    const int TRUE_INT = 1;
+    const int FALSE_INT = 0;
+
     public Text title;
     public Text instructions;
     public Canvas tutorialCanvas;
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("NewGame") == 1)
+        if (PlayerPrefs.GetInt(NEW_GAME_KEY) == TRUE_INT)
         {
             tutorialCanvas.GetComponent<Canvas>().enabled = true;
             movementText();
+            PlayerPrefs.SetInt(NEW_GAME_KEY, FALSE_INT);
         }
         else
         {
