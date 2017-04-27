@@ -34,6 +34,7 @@ public class TitleScreenButtonController : MonoBehaviourExtended
   
     void loadSelectScreen()
     {
+        Debug.Log("loading map select from title screen");
         SceneManager.LoadScene(mapSelectionScreenName);
     }
 
