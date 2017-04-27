@@ -29,6 +29,8 @@ public class PlayerController : MController
 
 	bool walking;
 	bool climbing;
+    bool memoryIsOpen;
+    bool inMemoryCollider;
 
     const string HOR = "Horizontal";
     const string VERT = "Vertical";
@@ -198,17 +200,29 @@ public class PlayerController : MController
         {
             if(canClose)
             {
-                ui.ToggleMemoryDisplay(targetMemory.Get);
+                this.memoryIsOpen = ui.ToggleMemoryDisplay(targetMemory.Get);
+                if(!memoryIsOpen && !inMemoryCollider)
+                {
+                    this.targetMemory = null;
+                }
             }
             else
             {
                 ui.DisplayMemory(targetMemory.Get);
+                this.memoryIsOpen = true;
             }
-            targetMemory.Collect();
+            if(targetMemory)
+            {
+                targetMemory.Collect();
+            }
             return true;
         }
         else
         {
+            if(canClose)
+            {
+                ui.HideMemory();
+            }
             return false;
         }
     }
@@ -278,14 +292,16 @@ public class PlayerController : MController
     void handleEnterCollidedWithMemory(MemoryBehvior mem)
     {
         this.targetMemory = mem;
+        inMemoryCollider = true;
     }
 
     void handleExitCollideWithMemory(MemoryBehvior mem)
     {
-        if(this.targetMemory == mem)
+        if(this.targetMemory == mem && !memoryIsOpen)
         {
             this.targetMemory = null;
         }
+        inMemoryCollider = false;
     }
 
     float getClampedPlayerSpeed() 
