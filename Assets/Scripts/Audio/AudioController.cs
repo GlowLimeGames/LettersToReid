@@ -324,19 +324,21 @@ public class AudioController : Controller, IAudioController
 
 		yield return new WaitForSeconds (4);
 
+        if(MapController.Instance)
+        {
+    		for (int index = 1; index < 8; index++) {
 
-		for (int index = 1; index < 8; index++) {
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("amb_beginning_01");
+    			}
+    		}
+    		for (int index = 8; index < 10; index++) {
 
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_beginning_01");
-			}
-		}
-		for (int index = 8; index < 10; index++) {
-
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_nature_01");
-			}
-		}
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("amb_nature_01");
+    			}
+    		}
+        }
 	}
 
 	AudioSource getChannel(int channelNumber) 

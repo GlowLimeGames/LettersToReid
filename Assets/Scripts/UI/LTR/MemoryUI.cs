@@ -5,6 +5,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -51,6 +52,8 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 
 	Dictionary<string, Sprite> overlayLookup;
 
+    Memory memory;
+
 	protected override void setReferences()
 	{
 		base.setReferences();
@@ -61,6 +64,7 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     {
         Show();
         memoryText.text = mem.Body;
+        this.memory = mem;
 		setOverlay(mem);
     }
 
@@ -79,6 +83,18 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     {
         toggleCanvasGroup(memoryDisplayCanvas, false);
         isOpen = false;
+        if(memory != null && !string.IsNullOrEmpty(memory.triggerScene))
+        {
+            try
+            {
+                SceneManager.LoadScene(memory.triggerScene);
+            }
+            catch
+            {
+                Debug.LogErrorFormat("Scene {0} does not exist", memory.triggerScene);
+            }
+        }
+        memory = null;
     }
 
     void Update()
