@@ -38,7 +38,8 @@ public class UIInterchange : SingletonController<UIInterchange>
         }
     }
 
-    public void ToggleMemoryDisplay(Memory mem)
+    // Returns true if the memory is open
+    public bool ToggleMemoryDisplay(Memory mem)
     {
         LTRUITemplate ui;
         if(getInterface(typeof(MemoryUI), out ui))
@@ -47,11 +48,45 @@ public class UIInterchange : SingletonController<UIInterchange>
             if(memoryUI.IsOpen)
             {
                 memoryUI.Hide();
+                return false;
             }
             else
             {
                 memoryUI.DisplayMemory(mem);
+                return true;
             }
+        }
+        return false;
+    }
+
+    public void HideMemory()
+    {
+        LTRUITemplate ui;
+        if(getInterface(typeof(MemoryUI), out ui))
+        {
+            (ui as MemoryUI).Hide();
+        }
+    }
+
+    public bool IsMemoryOpen()
+    {
+        LTRUITemplate ui;
+        if(getInterface(typeof(MemoryUI), out ui))
+        {
+            return (ui as MemoryUI).IsOpen;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void SetMap(MapDescriptor map)
+    {
+        LTRUITemplate ui;
+        if(getInterface(typeof(MemoryUI), out ui))
+        {
+            (ui as MemoryUI).SetMap(map);
         }
     }
 

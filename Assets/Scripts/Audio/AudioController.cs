@@ -142,7 +142,6 @@ public class AudioController : Controller, IAudioController
 
     protected void handleNamedEventWithID(string eventName, string id)
     {
-		Debug.Log (eventName);
         if (playEvents.ContainsKey(eventName))
         {
             foreach (AudioFile file in playEvents[eventName])
@@ -328,30 +327,31 @@ public class AudioController : Controller, IAudioController
 		EventController.Event ("play_transition_mainmenuto_gameplay");
 
 		yield return new WaitForSeconds (4);
-
 		SceneMusicPlaying = true;
+        if(MapController.Instance)
+        {
+    		for (int index = 1; index < 8; index++) {
 
-		for (int index = 1; index < 8; index++) {
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("amb_beginning_01");
+    			}
+    		}
+    		for (int index = 8; index < 11; index++) {
 
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_beginning_01");
-			}
-		}
-		for (int index = 8; index < 11; index++) {
-
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("amb_nature_01");
-			}
-		}
-		for (int index = 1; index < 10; index++) {
-			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-				EventController.Event("play_music_gameplay_0"+ index);
-			}
-		}
-		if (MapController.Instance.PeekMap().MapName == "MP-10") {
-			EventController.Event("play_music_gameplay_10");
-		}
-		SceneMusicPlaying = false;
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("amb_nature_01");
+    			}
+    		}
+    		for (int index = 1; index < 10; index++) {
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("play_music_gameplay_0"+ index);
+    			}
+    		}
+    		if (MapController.Instance.PeekMap().MapName == "MP-10") {
+    			EventController.Event("play_music_gameplay_10");
+    		}
+    		SceneMusicPlaying = false;
+        }
 	}
 
 	AudioSource getChannel(int channelNumber) 

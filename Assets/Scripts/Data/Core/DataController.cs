@@ -112,7 +112,6 @@ public abstract class DataController : SingletonController<DataController>
 			Reset();
 			// Reloads the scene to ensure data resets
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            Debug.Log("Resetting data and reloading scene");
 		}
 	}
 

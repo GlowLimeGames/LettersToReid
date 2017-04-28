@@ -12,6 +12,7 @@ public class Memory {
     public int id;
     public string Body;
 	public string overlay;
+    public string triggerScene;
 
     #region Object overrides 
 

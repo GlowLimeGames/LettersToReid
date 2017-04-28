@@ -47,3 +47,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LetterMenu/LetterMenu.unity
   - enabled: 1
     path: Assets/Scenes/LetterBrowser/LetterBrowser.unity
+  - enabled: 1
+    path: Assets/Scenes/GameEndScreen/GameEndScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/BeginningScreen/BeginningQuote.unity

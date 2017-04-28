@@ -9,4 +9,3 @@ Created by Martha Hollister
 - Jeffrey Abt
 - Shuyang Wang
 - Anisha Pai
-- Alex Taylor

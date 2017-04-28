@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a5103e0411a3b6e4180d816f8491df9d
+timeCreated: 1492983903
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Please write me a song
+  fontNames:
+  - Please write me a song
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,6 +5,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -26,13 +27,13 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     Text memoryText;
 
     [SerializeField]
-    ScrollRect scroll;
-
-    [SerializeField]
     CanvasGroup memoryDisplayCanvas;
 
     [SerializeField]
     Text memoriesCollectedDisplay;
+
+    [SerializeField]
+    Text locationName;
 
     [SerializeField]
     string memoriesCollectedFormat = "{0}/{1} Memories";
@@ -48,16 +49,24 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
 
 	Dictionary<string, Sprite> overlayLookup;
 
+    Memory memory;
+
 	protected override void setReferences()
 	{
 		base.setReferences();
 		initOverlayLookup();
 	}
 
+    public void SetMap(MapDescriptor map)
+    {
+        this.locationName.text = map.MapName.Replace("MP-", "Map ");
+    }
+
     public void DisplayMemory(Memory mem)
     {
         Show();
         memoryText.text = mem.Body;
+        this.memory = mem;
 		setOverlay(mem);
     }
 
@@ -66,7 +75,6 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
         if(memoryDisplayCanvas.alpha == 0)
         {
             toggleCanvasGroup(memoryDisplayCanvas, true);
-            scroll.verticalNormalizedPosition = 1;
         }
         isOpen = true;
     }
@@ -75,6 +83,18 @@ public class MemoryUI : LTRUITemplate, IPointerEnterHandler, IPointerExitHandler
     {
         toggleCanvasGroup(memoryDisplayCanvas, false);
         isOpen = false;
+        if(memory != null && !string.IsNullOrEmpty(memory.triggerScene))
+        {
+            try
+            {
+                SceneManager.LoadScene(memory.triggerScene);
+            }
+            catch
+            {
+                Debug.LogErrorFormat("Scene {0} does not exist", memory.triggerScene);
+            }
+        }
+        memory = null;
     }
 
     void Update()
