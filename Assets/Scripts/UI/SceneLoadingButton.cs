@@ -20,8 +20,12 @@ public class SceneLoadingButton : MonoBehaviour
 	void loadScene()
 	{
 		SceneManager.LoadScene(this.sceneName);
-		EventController.Event ("stop_mainmenu");
-		AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
+		for (int index = 1; index < 11; index++) {
+
+			if (MapController.Instance.PeekMap ().MapName == "MP-" + index) {
+				AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
+			}
+		}
 
 	}
 

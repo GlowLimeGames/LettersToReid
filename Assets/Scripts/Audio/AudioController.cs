@@ -321,6 +321,7 @@ public class AudioController : Controller, IAudioController
 	}
 
 	public IEnumerator musicShift() {
+		EventController.Event ("stop_mainmenu");
 		EventController.Event ("play_transition_mainmenuto_gameplay");
 
 		yield return new WaitForSeconds (4);
@@ -333,7 +334,7 @@ public class AudioController : Controller, IAudioController
 				Debug.Log ("Sound");
 			}
 		}
-		for (int index = 8; index < 10; index++) {
+		for (int index = 8; index < 11; index++) {
 
 			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
 				EventController.Event("amb_nature_01");
