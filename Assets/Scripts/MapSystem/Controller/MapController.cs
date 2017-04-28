@@ -56,12 +56,13 @@ public class MapController : MController
         {
             UIInterchange.Instance.SetMap(currentMap);
         }
+        EventController.Event(string.Format("{0}{1}", "play_music_gameplay_", startingMapName.Replace("MP-", string.Empty)));
     }
 
     public void SetActivePlayer(PlayerController player)
     {
         this.activePlayer = player;
-    }
+    
 
     public bool TryChangeMap(string name)
     {
