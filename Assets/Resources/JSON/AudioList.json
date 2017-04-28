@@ -58,7 +58,7 @@
       "loop" : true,
       "type" : "Music",
       "channel" : 2,
-      "volume" : 100,
+      "volume" : 60,
       "fade" : 3
     },
     {
@@ -74,7 +74,7 @@
       "loop" : true,
       "type" : "SFX",
       "channel" : 3,
-      "volume" : 100,
+      "volume" : 70,
       "fade" : 2
     },
     {
@@ -89,7 +89,7 @@
       "loop" : false,
       "type" : "SFX",
       "channel" : 4,
-      "volume" : 100,
+      "volume" : 90,
       "fade" : 0
     },
     {
@@ -105,7 +105,7 @@
       "loop" : true,
       "type" : "SFX",
       "channel" : 3,
-      "volume" : 100,
+      "volume" : 70,
       "fade" : 2
     },
     {
@@ -120,7 +120,7 @@
       "loop" : false,
       "type" : "SFX",
       "channel" : 7,
-      "volume" : 100,
+      "volume" : 80,
       "fade" : 0
     },
     {
@@ -606,15 +606,165 @@
       "groups" : [
       ],
       "events" : [
-        "play_transition_mainmenuto_gameplay"
+        "play_transition_gameplayto_mainmenu"
       ],
       "stopEvents" : [
       ],
       "loop" : false,
       "type" : "Music",
       "channel" : 6,
-      "volume" : 100,
+      "volume" : 55,
       "fade" : 0
+    },
+    {
+      "name" : "play_music_gameplay_01",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_01"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_02",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_02"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_03",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_03"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_04",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_04"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_05",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_05"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_06",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_06"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_07",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_07"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_08",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_08"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_09",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_09"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
+    },
+    {
+      "name" : "play_music_gameplay_10",
+      "groups" : [
+      ],
+      "events" : [
+        "play_music_gameplay_10"
+      ],
+      "stopEvents" : [
+      ],
+      "loop" : true,
+      "type" : "Music",
+      "channel" : 7,
+      "volume" : 50,
+      "fade" : 2
     }
   ],
   "groups" : [
@@ -631,7 +781,7 @@
       "name" : "footsteps",
       "type" : "Random",
       "events" : [
-		"play_footsteps"
+        "play_footsteps"
       ],
       "stopEvents" : [
       ]

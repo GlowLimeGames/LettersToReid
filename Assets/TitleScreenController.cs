@@ -8,7 +8,6 @@ public class TitleScreenController : MonoBehaviour {
 	void Start () {
 
 		playMainMenuMusic ();
-
 	}
 	
 	// Update is called once per frame
@@ -17,8 +16,10 @@ public class TitleScreenController : MonoBehaviour {
 	}
 
 	void playMainMenuMusic(){
-
+		EventController.Event ("stop_beginningamb");
+		EventController.Event ("stop_endingamb");
 		EventController.Event ("play_music_menu_main_theme");
+		EventController.Event ("play_music_menu_main theme");
 		Debug.Log ("playmainmenu");
 	}
 }

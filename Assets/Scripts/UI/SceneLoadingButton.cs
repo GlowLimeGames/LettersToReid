@@ -20,13 +20,9 @@ public class SceneLoadingButton : MonoBehaviour
 	void loadScene()
 	{
 		SceneManager.LoadScene(this.sceneName);
-		for (int index = 1; index < 11; index++) {
-
-			if (MapController.Instance.PeekMap ().MapName == "MP-" + index) {
-				AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
-			}
-		}
-
+		EventController.Event ("stop_mainmenu");
+		AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
+		
 	}
 
 }
