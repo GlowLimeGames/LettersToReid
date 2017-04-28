@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 1247610362}
   m_Layer: 5
   m_Name: New Game
-  m_TagString: MenuButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
