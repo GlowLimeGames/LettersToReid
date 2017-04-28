@@ -358,7 +358,7 @@ public class PlayerController : MController
 
     void handlePortalExit(MapObjectBehaviour obj)
     {
-		doorTravelSound ();
+		
 		if(collidingPortal == obj)
         {
             collidingPortal = null;
