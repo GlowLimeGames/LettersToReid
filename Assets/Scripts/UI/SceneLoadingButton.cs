@@ -19,6 +19,7 @@ public class SceneLoadingButton : MonoBehaviour
 
 	void loadScene()
 	{
+		EventController.Event ("ui_click_forward");
 		SceneManager.LoadScene(this.sceneName);
 		EventController.Event ("stop_mainmenu");
 		AudioController.Instance.StartCoroutine (AudioController.Instance.musicShift ());
