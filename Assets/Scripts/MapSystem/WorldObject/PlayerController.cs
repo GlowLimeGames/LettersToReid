@@ -239,7 +239,8 @@ public class PlayerController : MController
             if(checkForPortalCollideEvent(obj))
             {
                 handlePortalCollider(obj);
-            }
+				EventController.Event ("sx_wooden_door_open_01");            
+			}
             if(obj is MapTileBehaviour)
             {
                 handleEnterCollideWithTile(obj as MapTileBehaviour);
@@ -264,7 +265,8 @@ public class PlayerController : MController
             }
             if(obj.Descriptor.IsPortal)
             {
-                CompleteTravel();
+				
+				CompleteTravel();
                 handlePortalExit(obj);
             }
         }
@@ -323,6 +325,7 @@ public class PlayerController : MController
         if(tile.GetTile.IsClimbable)
         {
             handleExitClimbableTile(tile);
+
         }
     }
 
@@ -350,16 +353,20 @@ public class PlayerController : MController
         {
             collidingPortal = obj;
         }
+
     }
 
     void handlePortalExit(MapObjectBehaviour obj)
     {
-        if(collidingPortal == obj)
+		doorTravelSound ();
+		if(collidingPortal == obj)
         {
             collidingPortal = null;
         }
-		EventController.Event ("sx_wooden_door_open_01");
+
+
     }
+
 
     Vector2 getMoveVector()
     {
@@ -426,6 +433,7 @@ public class PlayerController : MController
 			climbing = false;
 		}
 	}
+		
 
 	IEnumerator stepSound() {
 		if (runSpacer == false) {
