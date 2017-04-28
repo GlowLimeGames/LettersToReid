@@ -62,7 +62,7 @@ public class MapController : MController
     public void SetActivePlayer(PlayerController player)
     {
         this.activePlayer = player;
-    
+    }
 
     public bool TryChangeMap(string name)
     {

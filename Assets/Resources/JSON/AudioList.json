@@ -762,7 +762,7 @@
       ],
       "loop" : true,
       "type" : "Music",
-      "channel" : ,
+      "channel" : 6,
       "volume" : 100,
       "fade" : 0
      }
