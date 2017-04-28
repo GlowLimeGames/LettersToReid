@@ -43,6 +43,9 @@ public class AudioController : Controller, IAudioController
         
     #endregion
 
+	public bool SceneMusicPlaying;
+
+
 	int musicVolume 
 	{
 		get 
@@ -320,10 +323,11 @@ public class AudioController : Controller, IAudioController
 	}
 
 	public IEnumerator musicShift() {
+		
 		EventController.Event ("play_transition_mainmenuto_gameplay");
 
 		yield return new WaitForSeconds (4);
-
+		SceneMusicPlaying = true;
         if(MapController.Instance)
         {
     		for (int index = 1; index < 8; index++) {
@@ -332,12 +336,21 @@ public class AudioController : Controller, IAudioController
     				EventController.Event("amb_beginning_01");
     			}
     		}
-    		for (int index = 8; index < 10; index++) {
+    		for (int index = 8; index < 11; index++) {
 
     			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
     				EventController.Event("amb_nature_01");
     			}
     		}
+    		for (int index = 1; index < 10; index++) {
+    			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
+    				EventController.Event("play_music_gameplay_0"+ index);
+    			}
+    		}
+    		if (MapController.Instance.PeekMap().MapName == "MP-10") {
+    			EventController.Event("play_music_gameplay_10");
+    		}
+    		SceneMusicPlaying = false;
         }
 	}
 

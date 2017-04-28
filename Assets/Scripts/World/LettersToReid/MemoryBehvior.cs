@@ -100,6 +100,7 @@ public class MemoryBehvior : MonoBehaviourExtended
         else
         {
             sRenderer.sprite = closedMemory;
+
         }
     }
 

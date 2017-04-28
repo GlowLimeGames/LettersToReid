@@ -12,6 +12,7 @@ TagManager:
   - enemy
   - BackButton
   - ForwardButton
+  - MenuButton
   layers:
   - Default
   - TransparentFX

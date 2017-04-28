@@ -89,11 +89,15 @@ public class UIButton : UIElement
 	protected virtual void executeClick() 
 	{
 		
-        if (this.tag == "BackButton") {
-            EventController.Event("ui_click_back");
-        } else {
-            EventController.Event("ui_click_forward");
-        }
+		if (this.tag == "BackButton") {
+			EventController.Event ("ui_click_back");
+			Debug.Log ("Click Forward");
+		} else if (this.tag == "MenuButton") {
+			EventController.Event ("ui_click_forward");
+			Debug.Log ("Click Back");
+		} else {
+			EventController.Event ("ui_click_forward");
+		}
 		if(clickAction != null) 
 		{
 			clickAction();
