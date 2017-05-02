@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MainMenuMusicLoader : MonoBehaviour {
+public class StopAudio : MonoBehaviour {
+
+	//Button button;
 
 	// Use this for initialization
 	void Start () {
-		EventController.Event("play_music_menu_main_theme");
+		//button = GetComponent<Button>();
 		EventController.Event ("stop_beginningamb");
 		EventController.Event ("stop_endingamb");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		//button.onClick.AddListener (stopGameMusic);
+	}
+
+	void stopGameMusic() {
 		
 	}
 }

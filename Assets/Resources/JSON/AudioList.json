@@ -621,9 +621,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_1"
+        "play_music_gameplay_01"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -636,9 +637,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_2"
+        "play_music_gameplay_02"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -651,9 +653,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_3"
+        "play_music_gameplay_03"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -666,9 +669,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_4"
+        "play_music_gameplay_04"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -681,9 +685,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_5"
+        "play_music_gameplay_05"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -696,9 +701,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_6"
+        "play_music_gameplay_06"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -711,9 +717,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_7"
+        "play_music_gameplay_07"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -726,9 +733,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_8"
+        "play_music_gameplay_08"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -741,9 +749,10 @@
       "groups" : [
       ],
       "events" : [
-        "play_music_gameplay_9"
+        "play_music_gameplay_09"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
@@ -759,6 +768,7 @@
         "play_music_gameplay_10"
       ],
       "stopEvents" : [
+        "stop_gameplay_music"
       ],
       "loop" : true,
       "type" : "Music",
