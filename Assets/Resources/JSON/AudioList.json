@@ -606,7 +606,7 @@
       "groups" : [
       ],
       "events" : [
-        "play_transition_gameplayto_mainmenu"
+        "play_transition_mainmenuto_gameplay"
       ],
       "stopEvents" : [
       ],
