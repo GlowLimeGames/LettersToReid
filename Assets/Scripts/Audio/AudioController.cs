@@ -344,11 +344,13 @@ public class AudioController : Controller, IAudioController
     		}
     		for (int index = 1; index < 10; index++) {
     			if (MapController.Instance.PeekMap().MapName == "MP-" + index) {
-    				EventController.Event("play_music_gameplay_0"+ index);
+					EventController.Event("stop_gameplay_music");
+					EventController.Event("play_music_gameplay_0"+ index);
     			}
     		}
     		if (MapController.Instance.PeekMap().MapName == "MP-10") {
-    			EventController.Event("play_music_gameplay_10");
+				EventController.Event("stop_gameplay_music");
+				EventController.Event("play_music_gameplay_10");
     		}
     		SceneMusicPlaying = false;
         }
